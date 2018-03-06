@@ -92,7 +92,7 @@ logName.apply(person, ['en', 'es']);
 
 ```
     * function borrowing
-    ```javascript
+```javascript
     // function borrowing
 var person2 = {
     firstname: 'Jane',
@@ -100,9 +100,9 @@ var person2 = {
 }
 
 console.log(person.getFullName.apply(person2)); // use the method in person in person2
-    ```
+```
     * function currying
-    ```javascript
+```javascript
     function multiply(a, b) {
     return a*b;   
 }
@@ -110,6 +110,7 @@ console.log(person.getFullName.apply(person2)); // use the method in person in p
 var multipleByTwo = multiply.bind(this, 2); // set the permanent value
 console.log(multipleByTwo(4));
 ```
+
 ## function
 * function expression and statement
 ```javascript
