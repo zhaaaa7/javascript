@@ -78,6 +78,31 @@ greetEnglish('John', 'Doe');
 greetSpanish('John', 'Doe');
 
 ```
+* function factories
+```javascript
+function makeGreeting(language) {
+ 
+    return function(firstname, lastname) {
+     
+        if (language === 'en') {
+            console.log('Hello ' + firstname + ' ' + lastname);   
+        }
+
+        if (language === 'es') {
+            console.log('Hola ' + firstname + ' ' + lastname);   
+        }
+        
+    }
+    
+}
+
+var greetEnglish = makeGreeting('en'); 
+// greetEnglish is a function whose closure points to language == english which is kept in the first excution context
+var greetSpanish = makeGreeting('es');
+
+greetEnglish('John', 'Doe');
+greetSpanish('John', 'Doe');
+```
 * Immediately Invoked Function Expression (IIFE) 
 
 ```javascript
