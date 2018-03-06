@@ -91,7 +91,7 @@ logName.apply(person, ['en', 'es']);
 }).apply(person, ['es', 'en']);
 
 ```
-    * function borrowing
+* function borrowing
 ```javascript
     // function borrowing
 var person2 = {
@@ -101,7 +101,7 @@ var person2 = {
 
 console.log(person.getFullName.apply(person2)); // use the method in person in person2
 ```
-    * function currying
+* function currying
 ```javascript
     function multiply(a, b) {
     return a*b;   
