@@ -202,11 +202,75 @@ console.log(TextBook.prototype.isPrototypeOf(csBook)); //true
 ```
 ## prototype chain
 ```javascript
-```
+const Car=function(){};
+Car.prototype={
+  log(){
+    return 'I am a car';
+  }
+};
 
+const ToyCar=function(){};
+ToyCar.prototype=Object.create(Car.prototype);
+ToyCar.prototype.log=function(){
+  return 'I am a toycar'
+};
+
+const ToyCarWood=function(){};
+ToyCarWood.prototype=Object.create(ToyCar.prototype);
+ToyCarWood.prototype.log=function(){
+  return 'I am a toycarwood'
+};
+
+const car=new Car();
+const toyCar=new ToyCar();
+const toyCarWood=new ToyCarWood();
+
+console.log(car.log());
+console.log(toyCar.log());
+console.log(toyCarWood.log());
+
+console.log(toyCarWood.__proto__); //{log: ƒ}
+console.log(ToyCarWood.__proto__); //ƒ () { [native code] }
+```
+## extending contructor
 ```javascript
-```
+let Mammal=function(legs){
+  this.legs=legs;
+};
 
+Mammal.prototype={
+  walk(){
+    return 'walking';
+  },
+
+  sleep(){
+    return 'sleeping'
+  }
+};
+
+let Bat=function(legs,isVegetarian){
+  Mammal.call(this,legs);
+  this.isVegetarian=isVegetarian;
+}
+
+console.dir(Bat); // Bat.prototype {constructor: function, __proto__: Object}
+
+Bat.prototype=Object.create(Mammal.prototype);
+console.dir(Bat);  // Bat.prototype { __proto__: walk,sleep, Object} , lose the constructor
+//set the constructor back
+Bat.prototype.constructor=Bat;
+console.dir(Bat); //{constructor: function, __proto__: walk,sleep,Object}
+
+Bat.prototype.fly=function(){
+  return 'flying';
+};
+
+let fruitBat = new Bat(4,true);
+console.log(fruitBat.walk());
+console.log(fruitBat.fly());
+```
+## Object literal 'inheritance'
+* Object.setPrototypeOf()
 ```javascript
 ```
 
