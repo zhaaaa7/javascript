@@ -118,8 +118,8 @@ logPersonName('en');
 logName.call(person, 'en', 'es');
 logName.apply(person, ['en', 'es']);
 
+//IIFE
 (function(lang1, lang2) {
-
     console.log('Logged: ' + this.getFullName());
     console.log('Arguments: ' + lang1 + ' ' + lang2);
     console.log('-----------');
