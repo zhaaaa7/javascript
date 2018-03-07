@@ -129,7 +129,6 @@ logName.apply(person, ['en', 'es']);
 ```
 * function borrowing
 ```javascript
-    // function borrowing
 var person2 = {
     firstname: 'Jane',
     lastname: 'Doe'
@@ -139,7 +138,7 @@ console.log(person.getFullName.apply(person2)); // use the method in person in p
 ```
 * function currying
 ```javascript
-    function multiply(a, b) {
+function multiply(a, b) {
     return a*b;   
 }
 
