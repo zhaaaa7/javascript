@@ -272,8 +272,28 @@ console.log(fruitBat.fly());
 ## Object literal 'inheritance'
 * Object.setPrototypeOf()
 ```javascript
+//Object.setPrototypeOf(destinationObj, sourceObj);
+
+let toyota={
+  drive(){
+    return 'driving toyota';
+  }
+};
+
+let camry={
+  wifi(){
+    return 'using wifi';
+  }
+};
+
+console.dir(camry);
+Object.setPrototypeOf(camry,toyota);
+
+console.dir(camry); 
 ```
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/obj-literal.png" alt="obj-literal" width="450px">
+
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/obj-literal.png" alt="obj-literal" width="350px">
+
 ```javascript
 ```
 
