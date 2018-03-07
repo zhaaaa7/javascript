@@ -273,7 +273,7 @@ console.log(fruitBat.fly());
 * Object.setPrototypeOf()
 ```javascript
 ```
-
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/obj-literal.png" alt="obj-literal" width="450px">
 ```javascript
 ```
 
