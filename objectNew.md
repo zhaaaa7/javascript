@@ -530,17 +530,132 @@ class Car {
 
 ```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/static-method.png" alt="staticmethod" width="350px" />
-```javascript
-```
 
+static methods as often used as utility methods
 ```javascript
-```
+class Car {
+  constructor(color,price){
+    this.color=color;
+    this.price=price;
+  }
 
-```javascript
-```
+  drive(){
+    return 'driving';
+  }  
 
-```javascript
-```
+  //this method goes inside the class, not the prototype
+  static comparePrice(car1,car2){
+    return car1.price-car2.price;
+  }
+}
 
+const car1=new Car('red',1000);
+const car2=new Car('blue',2000);
+
+console.log(Car.comparePrice(car1,car2)); //-1000
+```
+* extends static method
 ```javascript
+class Car {
+  constructor(price){
+    this.price=price;
+  }
+
+  //this method goes inside the class, not the prototype
+  static comparePrice(car1,car2){
+    return car1.price-car2.price;
+  }
+}
+
+class Toycar extends Car {
+  constructor(price){
+    super(price);
+  }
+  static comparePrice(car1,car2){
+    return `Toycar ${super.comparePrice(car1,car2)}`;
+  }
+}
+
+const toy1=new Toycar(1000);
+const toy2=new Toycar(2000);
+console.log(Toycar.comparePrice(toy1,toy2)); //Toycar -1000
+```
+## decorator
+```javascript
+const lipstick=function(color){
+    return function(target){
+  	target.lips=color;
+  };  
+};
+
+const earing=function(target){
+  target.earing='diamond';
+};
+
+
+@lipstick('pink')
+@earing
+class Girl {
+
+}
+
+console.log(Girl.lips, Girl.earing); //pink diamond
+```
+### usage -- property decorator
+```javascript
+class Car {
+  constructor(color){
+    this.color=color;
+  }
+}
+
+let decriptor={
+  value: function(){
+    return this.color;
+  },
+  writable: false,
+  configurable: true,
+  enumerable: true
+
+};
+
+const readonly=function(target,key, decriptor){
+  decriptor.writable=false;
+  return decriptor;
+}
+
+decriptor=readonly(Car.prototype,'getColor',decriptor);
+Object.defineProperty(Car.prototype,'getColor',decriptor);
+
+const redCar=new Car('red');
+
+redCar.getColor=function(){
+  return 're-write';
+};
+
+console.log(redCar.getColor()); //red, can be overwritten
+```
+* use decorator
+```javascript
+const readonly=function(target, key, decriptor){
+  decriptor.writable=false;
+  return decriptor;
+}
+
+class Car {
+  constructor(color){
+    this.color=color;
+  }
+  
+  @readonly
+  getColor(){
+    return this.color;
+  }
+}
+
+const redCar=new Car('red');
+redCar.getColor=function(){
+  return 're-write';
+};
+console.log(redCar.getColor()); //red
 ```
