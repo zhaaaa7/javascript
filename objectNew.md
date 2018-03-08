@@ -510,10 +510,26 @@ const toy=new Toycar('d','a','b','c');
 console.log(toy.__proto__); // Car {}
 console.log(toy.constructor); // class Toycar extends Car {......} 
 ```
-
+* static method -- class method
 ```javascript
-```
+class Car {
+  constructor(color){
+    this.color=color;
+  }
 
+  drive(){
+    return 'driving';
+  }
+  
+
+  //this method goes inside the class, not the prototype
+  static comparePrice(){
+    console.log('static');
+  }
+}
+
+```
+<img src="" alt="staticmethod" width="350px" />
 ```javascript
 ```
 
