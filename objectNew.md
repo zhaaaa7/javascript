@@ -443,21 +443,72 @@ class Car {
   constructor(color){
     this.color=color;
   }
+
+  drive(){
+    return 'driving';
+  }
 }
 
-console.log(typeof Car); //function
+console.log(typeof Car);    //function
+const redCar=new Car('red');
 ```
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/es6class.png" alt="es6class" width="350px"/>
+the same as
 ```javascript
+const Car=(function(){
+  const _car=function(color){
+    this.color=color;
+  };
+  _car.prototype.drive=function(){
+    return 'driving';
+  }
+  return _car;
+})();
 ```
+inheritance
+```javascript
+class Toycar extends Car {
+  constructor(color,size){
+    super(color);
+    this.size=size;
+  }
 
-```javascript
-```
+  broken(){
+    console.log('borken');
+  }
 
-```javascript
-```
+  drive(){
+    const canDrive= this.size ==='big' ? 'yes' : 'no';
+    return `${canDrive}, ${super.drive()}`;
+  }
+}
 
+const toy=new Toycar('blue','big');
+console.log(toy.drive());
+```
+es6 destructing
 ```javascript
+class Car {
+  constructor(a,b,c){
+    Object.assign(this,{a,b,c});
+    console.log('this',this); //Toycar{a:'a',b:'b',c:'c',d:'d'};
+    console.log(new.target.name); //Toycar
+  }
+}
+
+class Toycar extends Car {
+  constructor(d,...args){
+    super(...args);
+    this.d=d;
+  }
+}
+
+
+```
+The '_proto_' is the Car, while the constructor is the Toycar
+```javascript
+const toy=new Toycar('d','a','b','c');
+console.log(toy.__proto__); // Car {}
+console.log(toy.constructor); // class Toycar extends Car {......} 
 ```
 
 ```javascript
