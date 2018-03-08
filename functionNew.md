@@ -116,6 +116,7 @@ console.log(argsToArray(1,2,3)); //[1,2,3]
 console.log([1,2,3].slice());
 
 ```
+* inheritance
 
 ## IIFE
 
@@ -240,6 +241,7 @@ x.add(2).subtract(1).log(); //1
 
 
 ```javascript
+
 
 ```
 
