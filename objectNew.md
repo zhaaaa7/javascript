@@ -435,7 +435,13 @@ console.log(superman.fly().cry().isFlying()); //true
 
 ## ES6 class
 ```javascript
+class Car {
+  constructor(color){
+    this.color=color;
+  }
+}
 
+console.log(typeof Car); //function
 ```
 
 ```javascript
