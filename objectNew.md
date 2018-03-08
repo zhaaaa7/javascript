@@ -1,4 +1,75 @@
 
+## overview
+```javascript
+const pizza={
+  crust: 'thick',
+  topping: 3,
+  cheese: 'standard',
+  toppingNumber (){
+    return this.topping; //'this'can access public property and methods
+  },
+};
+
+console.log(pizza.toppingNumber());
+pizza.price=12;
+delete(pizza.crust);
+console.log(pizza);
+```
+
+```javascript
+const Pizza=function(){
+  this.crust='thin';
+  this.topping=3;
+  this.cheese='extra';
+  this.toppingNumber=function (){
+    return this.topping; //this can access public property and methods
+  }
+};
+
+const pizza1=new Pizza();
+console.log(pizza1 instanceof Pizza); //true
+console.log(pizza1.constructor); //[Function: Pizza]
+console.log(pizza1.__proto__); //Pizza {}
+console.log(Pizza.prototype); //Pizza {}
+```
+private variable anc methods
+```javascript
+ const Pizza=function(){
+  let topping=3; //private variable
+  let crust='thin';  
+  this.cheese='extra';
+  this.toppingNumber=function (){
+    return topping; 
+  }
+  
+  const getCrust=function(){
+    return crust;
+  };
+};
+
+const pizza2=new Pizza();
+console.log(pizza2.toppingNumber());  //3
+console.log(pizza2.getCrust()); // pizza2.getCrust is not a function
+
+```
+private method -- thanks to closure
+```javascript
+const Pizza=function(){
+  let topping=3; 
+  let crust='thin';  
+  const getCrust=function(){
+    return crust;
+  };
+
+  const realObj={};
+  realObj.getCrust=getCrust;
+
+  return realObj;
+};
+const pizza3=new Pizza();
+console.log(pizza3.getCrust()); //thin
+```
+
 ## Create an object
 ```javascript
 //factory pattern
