@@ -529,7 +529,7 @@ class Car {
 }
 
 ```
-<img src="" alt="staticmethod" width="350px" />
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/static-method.png" alt="staticmethod" width="350px" />
 ```javascript
 ```
 
