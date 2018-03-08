@@ -440,10 +440,10 @@ class Car {
     this.color=color;
   }
 }
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/es6class.png" alt="es6class" width="350px"/>
+
 console.log(typeof Car); //function
 ```
-
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/es6class.png" alt="es6class" width="350px"/>
 ```javascript
 ```
 
