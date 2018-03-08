@@ -118,6 +118,70 @@ console.log([1,2,3].slice());
 ```
 * inheritance
 
+```javascript
+let Mammal=function(legs){
+  this.legs=legs;
+};
+
+Mammal.prototype={
+  walk(){
+    return 'walking';
+  },
+
+  sleep(){
+    return 'sleeping'
+  }
+};
+
+let Bat=function(legs,isVegetarian){
+  Mammal.call(this,legs);
+  this.isVegetarian=isVegetarian;
+}
+
+```
+* methods that take array as arguments
+```javascript
+const list=[1,2,3];
+console.log(Math.min.apply(null,list));
+```
+* bind method back
+```javascript
+const Button=function(content){
+  this.content=content;
+};
+
+Button.prototype.click=function(){
+  console.log(`${this.content} is clicked`);
+};
+
+const newButton= new Button('add');
+newButton.click(); //add is clicked
+
+const looseClick= newButton.click;
+looseClick(); //undefined is clicked
+
+const boundClick= newButton.click.bind(newButton);
+boundClick(); //add is clicked
+```
+* function inside object methods
+```javascript
+const obj={
+  asyncGet(cb){
+    cb();
+  },
+  parse(){
+    console.log('calling parse');
+  },
+  render(){
+    this.asyncGet(function(){
+      this.parse(); // if no binding, 'this' refers to the window
+    }.bind(this)); //bind the 'obj' to 'this' inside the function
+  }
+};
+
+obj.render(); //calling parse
+```
+
 ## IIFE
 
 ```javascript
@@ -240,23 +304,6 @@ x.add(2).subtract(1).log(); //1
 ```
 
 
-```javascript
 
 
-```
 
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
