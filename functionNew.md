@@ -104,6 +104,18 @@ console.log(addToThis.bind(obj)); // [Function: bound addToThis]
 console.log(addToThis.bind(obj)(3,2)) //7
 
 ```
+usage
+* borrow function from built-in 
+```javascript
+const argsToArray=function(){
+  return [].slice.call(arguments);
+};
+
+console.log(argsToArray(1,2,3)); //[1,2,3]
+//the same as
+console.log([1,2,3].slice());
+
+```
 
 ## IIFE
 
@@ -226,9 +238,6 @@ x.add(2).subtract(1).log(); //1
 
 ```
 
-```javascript
-
-```
 
 ```javascript
 
