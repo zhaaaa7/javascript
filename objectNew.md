@@ -214,12 +214,16 @@ ToyCar.prototype=Object.create(Car.prototype);
 ToyCar.prototype.log=function(){
   return 'I am a toycar'
 };
+ToyCar.prototype.newfu=function(){
+  return 'I am a toycar'
+};
 
 const ToyCarWood=function(){};
 ToyCarWood.prototype=Object.create(ToyCar.prototype);
 ToyCarWood.prototype.log=function(){
   return 'I am a toycarwood'
 };
+
 
 const car=new Car();
 const toyCar=new ToyCar();
@@ -229,8 +233,8 @@ console.log(car.log());
 console.log(toyCar.log());
 console.log(toyCarWood.log());
 
-console.log(toyCarWood.__proto__); //{log: ƒ}
-console.log(ToyCarWood.__proto__); //ƒ () { [native code] }
+console.log(toyCar.__proto__); //{log: ƒ, newfu: ƒ}
+console.log(ToyCar.constructor); //ƒ Object() { [native code] }
 ```
 ## extending contructor
 ```javascript
