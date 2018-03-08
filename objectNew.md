@@ -270,7 +270,7 @@ console.log(fruitBat.walk());
 console.log(fruitBat.fly());
 ```
 ## Object literal 'inheritance'
-* Object.setPrototypeOf()
+* Object.setPrototypeOf() -- set up the prototype link
 ```javascript
 //Object.setPrototypeOf(destinationObj, sourceObj);
 
@@ -283,30 +283,159 @@ let toyota={
 let camry={
   wifi(){
     return 'using wifi';
-  }
+  },
+  //es6
+  drive(){
+    return `${super.drive} camry`;
+  },
 };
 
 console.dir(camry);
 Object.setPrototypeOf(camry,toyota);
-
 console.dir(camry); 
 ```
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/obj-literal.png" alt="obj-literal" width="350px">
 
-```javascript
-```
+* Object.assign -- copy the method, causing overwriting
 
 ```javascript
+let toyota={
+  drive(){
+    return 'driving toyota';
+  },
+  break(){
+    return 'breaking toyota'
+  }
+};
+
+let camry={
+  wifi(){
+    return 'using wifi';
+  },
+  drive(){
+    return 'driving camry';
+  },
+};
+
+
+Object.assign(camry,toyota);
+console.log(camry.drive()); //the self method is overwritten
+
+//create a new {} from toyota, shallow copy, just the properties, not prototype
+Object.assign({},toyota);
+
+// add new properties
+Object.assign(toyota,{
+  wifi(){
+    return 'using wifi';
+  }
+});
+
+//concise constructor
+let c1=function (x,y,z) {
+  this.x=x;
+  this.y=y;
+  this.z=z;
+}
+
+let c1=function (x,y,z) {
+  Object.assign(this,{x,y,z});
+}
 ```
+## Function mixins
+* mixin
+```javascript
+const jsSkill={
+  knowJS(){
+    return true;
+  }
+};
+
+const engDegree={
+  hasDegree(){
+    return true;
+  }
+};
+
+const backendSkill={
+  knowBackend(){
+    return true;
+  }
+}
+const jsEngineer=Object.assign({},jsSkill,engDegree);
+const fullStackEngineer=Object.assign({},jsSkill,engDegree,backendSkill);
+```
+* factory function -- close the returned object with some variable
+```javascript
+const Car=function(color){
+
+  //closure, close the returned object
+  let moving=false;
+  return Object.assign({},{
+    color:color,
+    drive(){
+      moving=true;
+      return this;
+    }, 
+    isMoving(){
+      return moving;
+    }
+
+  })
+  
+}
+
+let redCar=Car('red');
+console.log(redCar.drive().isMoving()); //true
+
+```
+* function mixin -- take an object as an argument of the function factory, get their methods and return a new object
 
 ```javascript
+
+const humanFactory=function(obj){
+  let isCrying=false;
+
+  return Object.assign({},obj,{
+    cry(){
+      isCrying=true;
+      return this;
+    },
+    isCrying(){
+      return isCrying;
+    }
+  });
+
+};
+
+const person1=humanFactory({});
+console.log(person1.isCrying());
+
+
+const flymanFactory=function(obj){
+  let isFlying=false;
+
+  return Object.assign({},obj,{
+    fly(){
+      isFlying=true;
+      return this;
+    },
+    isFlying(){
+      return isFlying;
+    }
+  });
+
+};
+
+const superman=humanFactory(flymanFactory({}));
+console.log(superman.fly().cry().isCrying()); //true
+console.log(superman.fly().cry().isFlying()); //true
 ```
 
+## ES6 class
 ```javascript
-```
 
-```javascript
 ```
 
 ```javascript
