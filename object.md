@@ -41,8 +41,8 @@ person.getFormalFullName = function() {
 console.log(john.getFormalFullName());
 console.log(jane.getFormalFullName());
 ```
-reflection
 
+* reflection
 ```javascript
 //get everthing along the prototype chain
 for (var prop in john){
@@ -61,6 +61,13 @@ for (var prop in john){
 }
 ```
 
+* extend 
+```javascript
+var amy={
+	address: 'buioofm'
+	};
+var extended=Object.assign(amy,person);
+```
 
 * building an object
 ```javascript
