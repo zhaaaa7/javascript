@@ -103,6 +103,8 @@ const t=new x();
 ```
 ## spread operator and rest operator
 spread --allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
+
+spread
 ```javascript
 const args=[1,2];
 const x=function(a,b,c){
@@ -119,25 +121,180 @@ const x=function(a,b,...n){
 x(1,2,3,4,5) // [ 3, 4, 5 ]
 
 ```
+usage
 ```javascript
+ //copy
+const x=[1,2,3,4];
+const y=Object.assign([],x);
+const z=[...x];
+
+//merge
+const a=[1,2,3];
+const b=[4,5,6];
+console.log([...a,...b]); //[ 1, 2, 3, 4, 5, 6 ]
+console.log(a.concat(...b)); //[ 1, 2, 3, 4, 5, 6 ]
+
+```
+relation to apply()
+```javascript
+let x=[1,2,3];
+const func=function(...arg){
+  console.log(arg);
+};
+func(...x);
+//the same as
+func.apply(null,x);
+
+```
+## template string 
+* backtick(``)
+```javascript
+//preserve spaces
+const str=`hello
+
+            wulu`;
+
+console.log(str);
+
+```
+```javascript
+let x1=1;
+let x2=2
+let str=`There are  ${x1+x2} apples`;
+console.log(str); //There are  3 apples
+
+```
+nature of backticks(``)
+```javascript
+let x1=1;
+let x2=2
+let str=`There are  ${x1+x2} apples`;
+const tagged=function(strArray,...vals){
+  console.log(strArray);
+  console.log(vals);
+};
+tagged `There are ${x1} +${x2} ${x1+x2} apples`;
+//[ 'There are ', ' +', ' ', ' apples' ]
+//[ 1, 2, 3 ]
+```
+* new methods
+```javascript
+//not escaping
+const raw=String.raw`Not a newline:\n`;
+console.log(raw);  //Not a newline:\n
 
 ```
 
-```javascript
-
+## iterator
+Symbol.iterator --  is the property that indicate whether this data structure is iterable
+```
+const myArray=[1,2,3,4,5];
+//extract the iterator function of array
+let iterator=myArray[Symbol.iterator]();
+console.log(iterator.next()); //{ value: 1, done: false }
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next()); //{ value: 5, done: false }
+console.log(iterator.next()); //{ value: undefined, done: true }
 ```
 
+'of' in for loop
 ```javascript
+const mySet=new Set([1,2,3,4,4]);
+console.log(mySet); //Set { 1, 2, 3, 4 }
+for(let val of mySet){
+  console.log(val); //1 2 3 4
+}
 
+//object is not iterable
+const myObj={
+  a:'a',
+  b:'b'
+};
+//cannot use of 
+//all in the prototype chain?
+for (let key in myObj){
+  console.log(key); //a b
+}
+```
+
+## generator
+a function that helps to generate the value an iterator to be used
+```
+* symbol and yield expression -- stops the producing of value
 ```
 ```javascript
+function *generator(){
+    yield 1;
+    yield 2;
+    yield 3;
+    yield 4;
+    yield 5;
+}
 
+const iterator=generator();
+console.log(iterator.next()); //{ value: 1, done: false }
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next()); //{ value: 5, done: false }
+console.log(iterator.next()); //{ value: undefined, done: true }
 ```
+
+pausing -- no stack overflow
+```javascript
+function *infiniteMaker(){
+    let i=0;
+    while(true){
+      yield i;
+      i++;
+    }
+}
+
+const iterator=infiniteMaker();
+console.log(iterator.next()); //{ value: 1, done: false }
+console.log(iterator.next());
+console.log(iterator.next());
+```
+return terminate the iterator
+```javascript
+function *generator(){
+   yield 1;
+   yield *anotherGenerator();
+   return 'stop';
+   yield 3;
+}
+
+function *anotherGenerator(){
+  yield 2;
+}
+
+const iterator=generator();
+console.log(iterator.next()); 
+console.log(iterator.next()); //{ value: 2, done: false }
+console.log(iterator.next()); //{ value: 'stop', done: true }
+```
+
+usage -- aync
 
 ```javascript
+function(url){
+  return new Promise(function(resolve,reject){
+    makeAjaxCall(url,function(err,value){
+      if(err){
+          reject(err);
+      }else{
+        resolve(value);
+      }
+    })
+  });
+}
+function *generator(){
+  yield request('url1');
+  yield request('url2');
+}
 
+//if completion of url1 request is required fro url2 request
+//..iterator
 ```
-```javascript
-
-```
-
