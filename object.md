@@ -1,5 +1,5 @@
 ## object
-* prototype
+* prototype (.__proto__)
 
 ```javascript
 
@@ -17,18 +17,23 @@ var john = {
 }
 
 // don't do this EVER! for demo purposes only!!!
-john.__proto__ = person; // assign person as the prototype of john
-console.log(john.getFullName());
-console.log(john.firstname);
+john.__proto__ = person; 
+// assign person as the prototype of john, so can use the methods in person
+console.log(john.getFullName());  //John Doe
+console.log(john.firstname);  //John
 
+```
+searches along the prototype chain
+```javascript
 var jane = {
     firstname: 'Jane'   
 }
-
 jane.__proto__ = person;
 console.log(jane.getFullName()); // Jane Default
 //"this" refers to jane first because it calls the methods, then it searches along the prototype chain
-
+```
+add new methods on prototype
+```javascript
 person.getFormalFullName = function() {
     return this.lastname + ', ' + this.firstname;   
 }
