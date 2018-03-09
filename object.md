@@ -41,6 +41,26 @@ person.getFormalFullName = function() {
 console.log(john.getFormalFullName());
 console.log(jane.getFormalFullName());
 ```
+reflection
+
+```javascript
+//get everthing along the prototype chain
+for (var prop in john){
+	console.log(prop+': '+ john[prop]);
+}
+//firstname: 'John',
+//lastname: 'Doe'
+// getFullName: function() {return this.firstname + ' ' + this.lastname;}
+```
+```javascript
+//get own property
+for (var prop in john){
+	if(john.hasOwnProperty(prop)){
+	console.log(prop+': '+ john[prop]);
+	}
+}
+```
+
 
 * building an object
 ```javascript
