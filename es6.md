@@ -298,3 +298,63 @@ function *generator(){
 //if completion of url1 request is required fro url2 request
 //..iterator
 ```
+## promise
+```javascript
+const promise1=new Promise(function(resolve,reject){
+  //cleaning the room
+
+  const isClean=false;
+
+  if(isClean){
+    resolve('cleaned');
+  }else{
+    reject('not cleaned');
+  }
+});
+
+promise1.then(function(formResolve){
+  console.log(formResolve);
+}).catch(function(fromReject){
+  console.log(fromReject);
+}); 
+```
+dependency
+```javascript
+const promise1=function(){
+  return new Promise(function(resolve,reject){
+    resolve('promise1');
+  });
+};
+
+const promise2=function(p){
+  return new Promise(function(resolve,reject){
+    resolve(p+' promise2');
+  });
+};
+
+const promise3=function(p){
+  return new Promise(function(resolve,reject){
+    resolve(p+' promise3');
+  });
+};
+
+promise1().then(function(result){
+  return promise2(result);
+}).then(function(result){
+  return promise3(result);
+}).then(function(result){
+  console.log('done',result); //done promise1 promise2 promise3
+});
+```
+
+```javascript
+Promise.all([promise1,promise2,promise3]).then(function(){
+  console.log('all done');
+});
+
+
+Promise.race([promise1,promise2,promise3]).then(function(){
+  console.log('one done');
+});
+```
+
