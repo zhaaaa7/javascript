@@ -80,13 +80,21 @@ Operator precedence: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 
 * arguments is a keyword, array-like data structure, spread is now replacing it
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/32.PNG" alt="32" width="500px"/>
+
+* 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/33.PNG" alt="33" width="500px"/>
+
+* IIFE: immediately invoked function expression. Expressions can just sit in the memory, to let js engine see a function statement as an expression, add ( ). But if you don’t invoke it immediately, it will disappear. Executing function on the fly.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/34.PNG" alt="34" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/35.PNG" alt="35" width="500px"/>
+
+* Closure: return a function that can have access to the variables in the outer function, js engin will retain all of them even after the outer function execution context is cleared
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/36.PNG" alt="36" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/37.PNG" alt="37" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/38.PNG" alt="38" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/39.PNG" alt="39" width="500px"/>
+
+* Callback functions: “I call you and you call the callback”.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.PNG" alt="40" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/41.PNG" alt="41" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/42.PNG" alt="42" width="500px"/>
