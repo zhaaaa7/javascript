@@ -64,6 +64,7 @@ var c; is executed after b() is popped off
 
 3. Variable environment: where the variable is created and lives and how it relates to others
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/11.PNG" alt="11" width="500px"/>
+
 ```javascript
 //each myVar lives in their own environment / execution context
 function b() {
@@ -103,15 +104,19 @@ a();
 //1 
 ```
 In b(), myVar is initially undefined
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/12.PNG" alt="12" width="500px"/>
 
 But b has a reference to outer environment, lexical environment, b is declared in the global environment -- where b is physically sitting.
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/13.PNG" alt="13" width="500px"/>
 
 This is scope chain.
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/14.PNG" alt="14" width="500px"/>
 
 Change the lexical environment of b.
+
 ```javascript
 function a() {   
     function b() {
@@ -125,6 +130,7 @@ var myVar = 1;
 a(); 
 //2
 ```
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/15.PNG" alt="15" width="500px"/>
 
 * scope: where a variable is available
