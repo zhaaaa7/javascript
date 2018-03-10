@@ -33,9 +33,17 @@
 
 * scope: where a variable is available
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/16.PNG" alt="16" width="500px"/>
+
+* asynchronous callbacks: many other engines running in the browser
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/17.PNG" alt="17" width="500px"/>
+
+* event queue: is watched by js engine and see if any function should be run after the execution stack is empty
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/18.PNG" alt="18" width="500px"/>
+
+* Dynamic typing
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/19.PNG" alt="19" width="500px"/>
+
+* Primitive type: represents a single value: undefined (lack of existence), null (set by programmers), boolean, number, string, symbol
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/20.PNG" alt="20" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/21.PNG" alt="21" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/22.PNG" alt="22" width="500px"/>
