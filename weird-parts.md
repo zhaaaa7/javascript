@@ -17,57 +17,7 @@ function b() {
 
 ## this keyword
 
-```javascript
-console.log(this);  //Window
-```
 
-In function
-```javascript
-function a(){
-	console.log(this);
-	this.newVar='hello'
-}
-a();  //Window
-console.log(newVar);  //attach a new property to Window object
-
-```
-
-
-In object method
-```javascript
-var c={
-	name: 'name',
-	log(){
-		console.log(this); //obejct the method sitting inside of
-		this.name='updated name';
-	}
-};
-
-c.log();
-
-```
-
-In funtion in object method
-```javascript
-//bug in es5
-
-var d={
-	name: 'name',
-	log(){
-		//const self=this; //solution objects are set by reference
-		console.log(this); //obejct the method sitting inside of
-		this.name='updated name';
-		var setName=function(newname){
-			this.name=newname;
-		};
-		setName('new name'); // the global object
-		console.log(this); // obejct the method sitting inside of
-	}
-};
-
-d.log();
-
-```
 * bind
 ```javascript
 var person = {
