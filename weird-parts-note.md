@@ -204,7 +204,7 @@ spanish.greet='hola';
 
 javascript object notation is a string, requiring “” around property name, 
 
-```javascript
+```
 //object literal
 const obj={name:'tony',age:3};
 JSON.stringify(obj);
@@ -221,14 +221,71 @@ JSON.parse(json);
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/26.PNG" alt="26" width="500px"/>
 
-Functions are objects so they have properties and methods, and they have some special properties such as name (optional) and code (the actual lines of code you write), which is invokable.
+1. Functions are objects so they have properties and methods, 
+
+```javascript
+function greet(){
+	console.log('hi');
+}
+greet.language='english';
+console.log(greet.language); //english
+```
+
+However, they have some special properties that make the special such as name (optional) and code (the actual lines of code you write), which is invokable.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/27.PNG" alt="27" width="500px"/>
+
+```
+code property is the actual lines of code you write. So thinking function as a container of the code, it has other properties.
+```
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/28.PNG" alt="28" width="500px"/>
 
-* Expression: results a value (when you enter in the console) of anything: object, function…..
-        Statement/declaration: just sit in the memory	
+2. Expression: results a value of anything: object, function…..
+        	
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/29.PNG" alt="29" width="500px"/>
 
+```
+//when you enter in the console
+a=3; //3
+1+2; //3
+b={name:'tony'}
+```
+
+3. Statement/declaration: just sit in the memory
+```
+if(a===3){  }
+cannot  a=if(a===3){  } because it doesn't result a value
+```
+4. function expression and statement
+function statement
+```javascript
+function greet(name) {
+    console.log('Hello ' + name);   
+}
+greet('John');
+```
+using a function expression
+```javascipt
+var greetFunc = function(name) {
+    console.log('Hello ' + name);
+};
+greetFunc('John');
+```
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/29.PNG" alt="29" width="500px"/>
+```javascript
+greet();
+function greet() {
+    console.log('hi');   
+}
+
+//error, function expression can't be hoisted
+anonymousGreet();
+var anonymousGreet = function() {
+    console.log('hi');   
+}
+
+
+```
 * By value: copy the value, primitives, new space in memory
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/30.PNG" alt="30" width="500px"/>
 
