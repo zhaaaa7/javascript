@@ -170,6 +170,7 @@ Operator precedence: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 
 1. Objects has properties and methods. It sits in the memory and has reference to other things in the memory(property, methods)
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/24.PNG" alt="24" width="500px"/>
+
 ```javascript
 //object literal
 const person={};
@@ -252,12 +253,14 @@ b={name:'tony'}
 ```
 
 3. Statement/declaration: just sit in the memory
+
 ```
 if(a===3){  }
 cannot  a=if(a===3){  } because it doesn't result a value
 ```
 4. function expression and statement
 function statement
+
 ```javascript
 function greet(name) {
     console.log('Hello ' + name);   
@@ -265,13 +268,16 @@ function greet(name) {
 greet('John');
 ```
 using a function expression
+
 ```javascipt
 var greetFunc = function(name) {
     console.log('Hello ' + name);
 };
 greetFunc('John');
 ```
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/29-1expression-and-statement.png" alt="29-1" width="800px"/>
+
 ```javascript
 greet();
 function greet() {
