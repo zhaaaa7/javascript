@@ -439,7 +439,7 @@ var greeting='Hola';
     console.log( greeting + name);   // hello John
 }('John')); 
 ```
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/35.PNG" alt="35" width="900px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/35.PNG" alt="35" width="500px"/>
 
 6-2. However, IIFE can affect global variable
 
@@ -464,9 +464,9 @@ function greet(whattosay){
 greet('hi')('tony');
 ```
 
-js engin will keep all of the execution context somewhere in the memory even after the outer function execution context is popped off. So 
+js engin will keep all of the variables of the outer execution context somewhere in the memory even after the outer function execution context is popped off.  
 
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/36closure.png" alt="36" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/36closure.png" alt="36" width="900px"/>
 
 ```javascript
 function buildFunctions() { 
