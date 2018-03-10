@@ -3,6 +3,7 @@
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/1.PNG" alt="1" width="500px"/>
 
 1-1. white space -- be ignored by syntax parser
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/33.PNG" alt="33" width="500px"/>
 
 2. Lexical environment: where you code is written is important, it determines how they sit in the memory. Where the function is physically declared.
