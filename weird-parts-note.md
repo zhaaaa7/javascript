@@ -24,9 +24,25 @@ const a='global'
 console.log(window.a); //global
 ```
 
-* Creation phase: all variable signs up space in memory with a value of “undefined”, functions save all the code there
+6. Creation phase: before your code is executed line by line, all variable signs up space in memory with a value of “undefined”, while function declaration save all the codes there.
+```
+undefined: a key word/special value which means the variable is declared but the value has not been set, 
+a===undefined   //not a string, no “”
+usually initially set by js engine (not programmer)
+```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/8.PNG" alt="8" width="500px"/>
+### hoisting 
+```javascript
+b();
+console.log(a); //undefined
+
+var a = 'Hello World!';
+function b() {
+    console.log('Called b!');
+}
+```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/9.PNG" alt="9" width="500px"/>
+
 
 * single threaded
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/10.PNG" alt="10" width="500px"/>
