@@ -57,12 +57,19 @@ Operator precedence: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 		   “<” coerce others to number, Number(false)=0, Number(undefined)=NaN, Number(null)=0
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/23.PNG" alt="23" width="500px"/>
 
-* 
+* Objects sit in the memory and have reference to other things in the memory (property, methods)
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/24.PNG" alt="24" width="500px"/>
+
+* Namespace: js doesn’t have, object can work as a container to 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/25.PNG" alt="25" width="500px"/>
+
+* Functions are objects, first class functions, properties and methods, has special properties such as name (optional) and code (invokable, container)
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/26.PNG" alt="26" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/27.PNG" alt="27" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/28.PNG" alt="28" width="500px"/>
+
+* Expression: results a value (when you enter in the console) of anything: object, function…..
+        Statement/declaration: just sit in the memory	
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/29.PNG" alt="29" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/30.PNG" alt="30" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/31.PNG" alt="31" width="500px"/>
