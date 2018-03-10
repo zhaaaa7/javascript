@@ -233,6 +233,7 @@ console.log(greet.language); //english
 ```
 
 However, they have some special properties that make the special such as name (optional) and code (the actual lines of code you write), which is invokable.
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/27.PNG" alt="27" width="500px"/>
 
 ```
@@ -241,7 +242,7 @@ code property is the actual lines of code you write. So thinking function as a c
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/28.PNG" alt="28" width="500px"/>
 
-2. Expression: results a value of anything: object, function…..
+2-1. Expression: results a value of anything: object, function…..
         	
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/29.PNG" alt="29" width="500px"/>
 
@@ -252,13 +253,14 @@ a=3; //3
 b={name:'tony'}
 ```
 
-3. Statement/declaration: just sit in the memory
+2-2. Statement/declaration: just sit in the memory
 
 ```
 if(a===3){  }
 cannot  a=if(a===3){  } because it doesn't result a value
 ```
-4. function expression and statement
+2-3. function expression and statement
+
 function statement
 
 ```javascript
@@ -267,7 +269,8 @@ function greet(name) {
 }
 greet('John');
 ```
-using a function expression
+
+function expression creates a function object
 
 ```javascipt
 var greetFunc = function(name) {
@@ -278,25 +281,124 @@ greetFunc('John');
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/29-1expression-and-statement.png" alt="29-1" width="800px"/>
 
+* hoisting
+
 ```javascript
 greet();
 function greet() {
     console.log('hi');   
-}
+} 
 
-//error, function expression can't be hoisted
-anonymousGreet();
+//error, function expression can't be hoisted, just the variale is hoisted
+//the function as a object is assigned to the variable in later execution stage
+anonymousGreet(); //undefined is not a function
 var anonymousGreet = function() {
     console.log('hi');   
 }
 
 
 ```
-* By value: copy the value, primitives, new space in memory
+3-1. By value: copy the value, primitives, new space in memory, no influence on each other
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/30.PNG" alt="30" width="500px"/>
 
-* By reference: point to the same address, change together, even as parameters
+3-2. By reference: point to the same address, no new space in memory, 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/31.PNG" alt="31" width="500px"/>
+
+All objects works by reference -- change together, even as parameters
+```
+let obj1={greeting:'hello'}
+let obj2=obj1;
+function changeObj(obj){ 
+  obj.greeting='Hola';
+}
+changeObj(obj1);
+console.log(obj2.greeting); // Hola
+
+//equal operator will stop such association, setting up a new memory space
+obj1={greeting:'hi'};
+console.log(obj2.greeting); //Hola
+```
+4. 'this' keyword
+
+In global environment -- window
+```javascript
+console.log(this);  //Window
+```
+
+In function -- window
+
+```javascript
+function a(){
+	console.log(this); //Window
+	this.newVar='hello'
+}
+
+const b=function(){
+	console.log(this); //Window
+};
+a();  
+b();
+console.log(newVar);  //attach a new property 'newVar' to Window object
+```
+
+In object method  -- instance
+
+```javascript
+var c={
+	name: 'name',
+	log: function(){
+		console.log(this); //obejct the method sitting inside of
+		this.name='updated name';
+	}
+};
+
+c.log(); // Object {...c}
+
+```
+
+In funtion in object method -- the global object
+```javascript
+
+var d={
+	name: 'name',
+	log: function{
+		console.log(this); //obejct the method sitting inside of
+		this.name='updated name';
+		
+		var setName=function(newname){
+			this.name=newname; // the global object
+		};
+		setName('new name'); 
+		console.log(this); // obejct the method sitting inside of
+	}
+};
+
+d.log(); //updated name
+
+```
+solution: objects are set by reference, self=this
+
+```javascript
+
+var d={
+	name: 'name',
+	log:function(){
+		var self=this; //solution 
+		
+		self.name='updated name';
+		console.log(self);
+		
+		var setName=function(newname){
+			self.name=newname;
+		};
+		setName('new name'); 
+		console.log(self); 
+	}
+};
+
+d.log(); 
+
+```
 
 * arguments is a keyword, array-like data structure, spread is now replacing it
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/32.PNG" alt="32" width="500px"/>
