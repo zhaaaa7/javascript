@@ -1,12 +1,11 @@
 ```javascript
 
 console.log([]+[]); //empty string
-
+```
+```javascript
 function a(){
   return "hello";
 }
-```
-```javascript
 const s=a `hi`;  
 console.log(s);// a('hi')
 
