@@ -67,18 +67,21 @@ var c; is executed after b() is popped off
 
 ```javascript
 function b() {
-	console.log(myVar); //undefined
+	var myVar;
+	console.log(myVar); 
 }
 
 function a() {
 	var myVar = 2;
-	b(); //2
+	console.log(myVar);
+	b(); 
 }
 
 var myVar = 1;
-a(); //1
-
-//1 2 undefined
+console.log(myVar); 
+a(); 
+console.log(myVar); 
+//1 2 undefined 1
 ```
 
 * Scope chain: reference to outer environment (lexical environment)
