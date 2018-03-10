@@ -1,6 +1,9 @@
 ## conceptual concepts
-1. Syntax parser: convert/translate your code to computer instructions. It knows 'function' is special and needs specific way of translation. It is part of interpreter/compiler.
+1. Syntax parser: convert/translate your code to computer instructions. It is part of interpreter/compiler.It has assumptions and rules. For example, t knows 'function' is special and needs specific way of translation. 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/1.PNG" alt="1" width="500px"/>
+
+1-1. white space -- be ignored by syntax parser
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/33.PNG" alt="33" width="500px"/>
 
 2. Lexical environment: where you code is written is important, it determines how they sit in the memory. Where the function is physically declared.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/2.PNG" alt="2" width="500px"/>
@@ -56,6 +59,8 @@ function b() {
 
 10. event queue: is watched by js engine and see if any function should be run after the execution stack is empty
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/18event-queue2.png" alt="18" width="800px"/>
+
+
 
 ## scoping
 
@@ -366,11 +371,64 @@ function greeting(a,b,...other){
 	}
 }
 ```
+5. function overloading
 
-* 
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/33.PNG" alt="33" width="500px"/>
+```javascript
+function greet(firstname, lastname, language) {        
+    language = language || 'en';    
+    if (language === 'en') {
+        console.log('Hello ' + firstname + ' ' + lastname);   
+    }    
+    if (language === 'es') {
+        console.log('Hola ' + firstname + ' ' + lastname);   
+    }    
+}
 
-* IIFE: immediately invoked function expression. Expressions can just sit in the memory, to let js engine see a function statement as an expression, add ( ). But if you don’t invoke it immediately, it will disappear. Executing function on the fly.
+function greetEnglish(firstname, lastname) {
+    greet(firstname, lastname, 'en');   
+}
+
+function greetSpanish(firstname, lastname) {
+    greet(firstname, lastname, 'es');   
+}
+
+greetEnglish('John', 'Doe');
+greetSpanish('John', 'Doe');
+
+```
+
+
+6. IIFE -- immediately invoked function expression, executing function on the fly. But if you don’t invoke it immediately, it will disappear. 
+Because expressions can just sit in the memory, 
+
+```javascript
+//create a function on the fly and immediately invoke it
+var greeting = function(name) {   
+    return 'Hello ' + name;    
+}('John');
+
+ // greeting holds the string, not the function
+console.log(greeting);  // Hello John
+```
+To let js engine see a function statement as an expression, add ( ) operator, because if a line begins with 'function', js see it as function statement. While for (), js sees things inside () as expression, so you just create a function object on the fly inside ().
+
+```javascript
+var firstname = 'John';
+(function(name) {    
+    var greeting = 'Inside IIFE: Hello';
+    console.log(greeting + ' ' + name);    
+}(firstname)); 
+```
+
+6-1. safe code
+
+```javascript
+(function(name) {
+    var greeting='hello';
+    console.log( greeting + name);    
+}('John'));
+```
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/34.PNG" alt="34" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/35.PNG" alt="35" width="500px"/>
 
