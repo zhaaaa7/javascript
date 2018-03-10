@@ -15,12 +15,14 @@
 5. global environment(execution context): create a global object and 'this' for you.
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/6.PNG" alt="6" width="500px"/>
+
 ```
 In the browser window object is the gloabl object and this=== window object. Global variables are attached to the global object.
 
 const a='global'
 console.log(window.a); //global
 ```
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/7.PNG" alt="7" width="500px"/>
 
 * Creation phase: all variable signs up space in memory with a value of “undefined”, functions save all the code there
