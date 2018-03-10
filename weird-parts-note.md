@@ -68,6 +68,24 @@ var c; is executed after b() is popped off
 ```javascript
 //each myVar lives in their own environment / execution context
 function b() {
+	console.log(myVar); 
+}
+
+function a() {
+	var myVar = 2;
+	b(); 
+}
+
+var myVar = 1;
+a(); 
+//1 
+```
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/11-1variable-environment.jpeg" alt="11-1" width="500px"/>
+
+4. Scope chain: reference to outer environment (lexical environment)
+```javascript
+//each myVar lives in their own environment / execution context
+function b() {
 	var myVar;
 	console.log(myVar); 
 }
@@ -84,9 +102,6 @@ a();
 console.log(myVar); 
 //1 2 undefined 1
 ```
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/11-1variable-environment.jpeg" alt="11-1" width="500px"/>
-
-* Scope chain: reference to outer environment (lexical environment)
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/12.PNG" alt="12" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/13.PNG" alt="13" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/14.PNG" alt="14" width="500px"/>
