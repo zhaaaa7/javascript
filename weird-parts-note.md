@@ -66,6 +66,7 @@ var c; is executed after b() is popped off
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/11.PNG" alt="11" width="500px"/>
 
 ```javascript
+//each myVar lives in their own environment / execution context
 function b() {
 	var myVar;
 	console.log(myVar); 
