@@ -541,6 +541,7 @@ var greetSpanish = makeGreeting('es');
 greetEnglish('John', 'Doe'); //still has access to language
 greetSpanish('John', 'Doe');
 ```
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/39-1function-factory.jpeg" alt="39" width="500px"/>
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/39.PNG" alt="39" width="500px"/>
 
