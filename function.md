@@ -1,33 +1,5 @@
 ## function
-* function expression and statement
-```javascript
-// function statement
-function greet(name) {
-    console.log('Hello ' + name);   
-}
-greet('John');
 
-// using a function expression
-var greetFunc = function(name) {
-    console.log('Hello ' + name);
-};
-greetFunc('John');
-```
-
-```javascript
-greet();
-function greet() {
-    console.log('hi');   
-}
-
-//error, function expression can't be hoisted
-anonymousGreet();
-var anonymousGreet = function() {
-    console.log('hi');   
-}
-
-
-```
 * if not passing arguments
 ```javascript
 function greet(name) {
