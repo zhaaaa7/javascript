@@ -45,9 +45,19 @@
 
 * Primitive type: represents a single value: undefined (lack of existence), null (set by programmers), boolean, number, string, symbol
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/20.PNG" alt="20" width="500px"/>
+
+* Operator: are functions (infix notation): 3+4 / +(3,4)
+Operator precedence: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/21.PNG" alt="21" width="500px"/>
+
+* Operator associativity: right-to-left
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/22.PNG" alt="22" width="500px"/>
+
+* Coercion: “+” coerce number to string 1+’2’=’12’
+		   “<” coerce others to number, Number(false)=0, Number(undefined)=NaN, Number(null)=0
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/23.PNG" alt="23" width="500px"/>
+
+* 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/24.PNG" alt="24" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/25.PNG" alt="25" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/26.PNG" alt="26" width="500px"/>
