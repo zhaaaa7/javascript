@@ -48,8 +48,14 @@ function b() {
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/9-1executionphase.jpeg" alt="9-1" width="500px"/>
 
 
-* single threaded
+8. single threaded / synchronous: one line a time
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/10.PNG" alt="10" width="500px"/>
+
+## scoping
+
+1. Invocation: run a function by using ()
+
+2. Execution stack: every time a function is called, a new execution context is created and stacked on the execution stack and will be popped off the stack when finished. It will have its own space for variables.
 
 * Variable environment: where the variable lives and how it relates to others
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/11.PNG" alt="11" width="500px"/>
