@@ -55,7 +55,7 @@ function b() {
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/17.PNG" alt="17" width="500px"/>
 
 10. event queue: is watched by js engine and see if any function should be run after the execution stack is empty
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/18.PNG" alt="18" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/18event-queue2.png" alt="18" width="800px"/>
 
 ## scoping
 
