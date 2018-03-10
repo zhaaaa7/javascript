@@ -429,7 +429,7 @@ var firstname = 'John';
     console.log( greeting + name);    
 }('John'));
 ```
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/34.PNG" alt="34" width="900px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/34.PNG" alt="34" width="500px"/>
 
 No variable collision
 ```javascript
@@ -439,7 +439,7 @@ var greeting='Hola';
     console.log( greeting + name);   // hello John
 }('John')); 
 ```
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/35.PNG" alt="35" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/35.PNG" alt="35" width="900px"/>
 
 6-2. However, IIFE can affect global variable
 
