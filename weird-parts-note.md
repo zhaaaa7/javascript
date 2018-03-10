@@ -453,8 +453,8 @@ var greeting='Hola';
 console.log(greeting); //Hello
 ```
 
-7. Closure
-It return a function that can have access to the variables in the outer function, js engin will retain all of them even after the outer function execution context is cleared.
+7. Closure -- closing in all the variables that it is supposed to have access to
+Return a function that can have access to the variables in the outer function,.
 ```javascript
 function greet(whattosay){
 	return function(name){
@@ -463,6 +463,9 @@ function greet(whattosay){
 }
 greet('hi')('tony');
 ```
+
+js engin will keep all of the execution context somewhere in the memory even after the outer function execution context is popped off. So 
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/36.PNG" alt="36" width="500px"/>
 
 ```javascript
