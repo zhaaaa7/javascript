@@ -547,10 +547,63 @@ Every time you call the function, you get a new execution context, so each inner
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/39.PNG" alt="39" width="500px"/>
 
-8. Callback functions: “I call you and you call the callback”.
+8. Callback: “I call you, and you call the callback function”.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.PNG" alt="40" width="500px"/>
 
-9. call, apply, bind are methods of all function objects, use the function as objects so don’t call them (by adding parentheses), they controls what “this” is in the function
+```javascript
+function sayHiLater(){
+	var greeting="Hi"; //closure
+	setTimeOut(function(){console.log(greeting)},3000);
+}
+sayHiLater();
+```
+
+9. call, apply, bind -- controls what “this” ends up being in the function 
+They are methods of all function objects, use the function as objects so don’t call them (by adding parentheses)
+
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.PNG" alt="40" width="500px"/>
+
+
+* bind
+```javascript
+var person = {
+    firstname: 'John',
+    lastname: 'Doe',
+    getFullName: function() {
+        
+        var fullname = this.firstname + ' ' + this.lastname;
+        return fullname;
+        
+    }
+}
+
+var logName = function(lang1, lang2) {
+
+    console.log('Logged: ' + this.getFullName());
+    console.log('Arguments: ' + lang1 + ' ' + lang2);
+    console.log('-----------');
+    
+}
+
+var logPersonName = logName.bind(person); // create a copy of function logname and assign person as the "this"
+logPersonName('en');
+```
+* call and apply
+
+```javascript
+//call and apply executes the function instead by specifying what "this" is as the first argument
+logName.call(person, 'en', 'es');
+logName.apply(person, ['en', 'es']);
+
+//IIFE
+(function(lang1, lang2) {
+    console.log('Logged: ' + this.getFullName());
+    console.log('Arguments: ' + lang1 + ' ' + lang2);
+    console.log('-----------');
+    
+}).apply(person, ['es', 'en']);
+
+```
 
 
 ## 'this' keyword
