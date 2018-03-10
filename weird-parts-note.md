@@ -101,12 +101,16 @@ Operator precedence: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 
 * inheritance. __proto__: is a property that all objects in js have, it is simple an reference to another object (the prototype). I have the special reference that says where to look for more properties and methods that not in me.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/41.PNG" alt="41" width="500px"/>
-
-* prototype chain
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/42.PNG" alt="42" width="500px"/>
 
-* Reflection: an object can look at itself and change anything
+* prototype chain
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/43.PNG" alt="43" width="500px"/>
+
+* Reflection: an object can look at itself and change anything
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/44.PNG" alt="44" width="500px"/>
+
+* .prototype is a (empty) object property of the constructor function. It is the prototype of any object that is created by the constructor function. This is where the methods live, which properties live inside the constructor.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/45.PNG" alt="45" width="500px"/>
+
+* Polyfill: codes that adds feature that engine lacks
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/46.PNG" alt="46" width="500px"/>
