@@ -543,12 +543,14 @@ greetSpanish('John', 'Doe');
 ```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/39-1function-factory.jpeg" alt="39" width="500px"/>
 
+Every time you call the function, you get a new execution context, so each inner function has different closing variable.
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/39.PNG" alt="39" width="500px"/>
 
-* Callback functions: “I call you and you call the callback”.
+8. Callback functions: “I call you and you call the callback”.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.PNG" alt="40" width="500px"/>
 
-* call, apply, bind are methods of all function objects, use the function as objects so don’t call them (by adding parentheses), they controls what “this” is in the function
+9. call, apply, bind are methods of all function objects, use the function as objects so don’t call them (by adding parentheses), they controls what “this” is in the function
 
 
 ## 'this' keyword
