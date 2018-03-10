@@ -1,18 +1,26 @@
-* Syntax parser: part of interpreter/compiler
+## conceptual concepts
+1. Syntax parser: convert/translate your code to computer instructions. It knows 'function' is special and needs specific way of translation. It is part of interpreter/compiler.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/1.PNG" alt="1" width="500px"/>
 
-* Lexical environment: where the function is physically declared, where you code is written is important, how they sit in the memory
+2. Lexical environment: where you code is written is important, it determines how they sit in the memory. Where the function is physically declared.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/2.PNG" alt="2" width="500px"/>
 
-* Execution context: which bits of code is running
+3. Execution context: which bits of code is actually running
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/3.PNG" alt="3" width="500px"/>
 
-* object collection of name/value pairs
+4. object is a  collection of name/value pairs
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/4.PNG" alt="4" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/5.PNG" alt="5" width="500px"/>
 
-* Global environment : this === window object. Global variables are attached to the global object
+5. global environment(execution context): create a global object and 'this' for you.
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/6.PNG" alt="6" width="500px"/>
+```
+In the browser window object is the gloabl object and this=== window object. Global variables are attached to the global object.
+
+const a='global'
+console.log(window.a); //global
+```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/7.PNG" alt="7" width="500px"/>
 
 * Creation phase: all variable signs up space in memory with a value of “undefined”, functions save all the code there
