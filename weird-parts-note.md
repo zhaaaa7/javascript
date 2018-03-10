@@ -2,16 +2,18 @@
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/1.PNG" alt="1" width="500px"/>
 * Lexical environment: where the function is physically declared, where you code is written is important, how they sit in the memory
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/2.PNG" alt="2" width="500px"/>
+
 * Execution context: which bits of code is running
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/3.PNG" alt="3" width="500px"/>
 
 * object collection of name/value pairs
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/4.PNG" alt="4" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/5.PNG" alt="5" width="500px"/>
 
 * Global environment : this === window object. Global variables are attached to the global object
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/5.PNG" alt="5" width="500px"/>
-* Creation phase: all variable signs up space in memory with a value of “undefined”, functions save all the code there
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/6.PNG" alt="6" width="500px"/>
+
+* Creation phase: all variable signs up space in memory with a value of “undefined”, functions save all the code there
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/7.PNG" alt="7" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/8.PNG" alt="8" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/9.PNG" alt="9" width="500px"/>
