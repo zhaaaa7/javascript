@@ -13,30 +13,8 @@ function b() {
 ```
 
 ### scope chain / lexical
-```javascript
-function b() {
-	console.log(myVar);
-}
 
-function a() {
-	var myVar = 2;
-	b();
-}
 
-var myVar = 1;
-a(); //1
-```
-```javascript
-function a() {   
-    function b() {
-        console.log(myVar);
-    }    
-	b();
-}
-
-var myVar = 1;
-a(); //1
-```
 ## this keyword
 
 ```javascript
