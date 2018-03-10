@@ -43,6 +43,9 @@ function b() {
 ```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/9.PNG" alt="9" width="500px"/>
 
+7. execution phase: runs the code line by line
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/9-1executionphase.jpeg" alt="9" width="500px"/>
+
 
 * single threaded
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/10.PNG" alt="10" width="500px"/>
