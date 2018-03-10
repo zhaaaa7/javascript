@@ -429,7 +429,7 @@ var firstname = 'John';
     console.log( greeting + name);    
 }('John'));
 ```
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/34.PNG" alt="34" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/34.PNG" alt="34" width="900px"/>
 
 No variable collision
 ```javascript
