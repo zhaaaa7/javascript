@@ -107,7 +107,7 @@ In b(), myVar is initially undefined
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/12.PNG" alt="12" width="500px"/>
 
-But b has a reference to outer environment, lexical environment, b is declared in the global environment -- where b is physically sitting.
+But b is created when the global environment is created, so b has a reference to outer environment,  lexical environment, b is declared in the global environment -- where b is physically sitting.
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/13.PNG" alt="13" width="500px"/>
 
@@ -115,7 +115,7 @@ This is scope chain.
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/14.PNG" alt="14" width="500px"/>
 
-Change the lexical environment of b.
+Change the lexical environment of b to a. b is created when a is executed.
 
 ```javascript
 function a() {   
@@ -133,8 +133,12 @@ a();
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/15.PNG" alt="15" width="500px"/>
 
-* scope: where a variable is available
+5. scope: where a variable is available
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/16.PNG" alt="16" width="500px"/>
+
+```
+let allows block scoping. Temporary Dead Zone make 'let' variables sits in the memory but not allowed to be used until the execution phase
+```
 
 * asynchronous callbacks: many other engines running in the browser
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/17.PNG" alt="17" width="500px"/>
