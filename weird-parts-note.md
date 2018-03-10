@@ -71,8 +71,14 @@ Operator precedence: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 * Expression: results a value (when you enter in the console) of anything: object, function…..
         Statement/declaration: just sit in the memory	
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/29.PNG" alt="29" width="500px"/>
+
+* By value: copy the value, primitives, new space in memory
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/30.PNG" alt="30" width="500px"/>
+
+* By reference: point to the same address, change together, even as parameters
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/31.PNG" alt="31" width="500px"/>
+
+* arguments is a keyword, array-like data structure, spread is now replacing it
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/32.PNG" alt="32" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/33.PNG" alt="33" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/34.PNG" alt="34" width="500px"/>
