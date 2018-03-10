@@ -428,12 +428,67 @@ var firstname = 'John';
     console.log( greeting + name);    
 }('John'));
 ```
-
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/34.PNG" alt="34" width="500px"/>
+
+No variable collision
+```javascript
+var greeting='Hola';
+(function(name) {
+    var greeting='hello';
+    console.log( greeting + name);   // hello John
+}('John')); 
+```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/35.PNG" alt="35" width="500px"/>
 
-* Closure: return a function that can have access to the variables in the outer function, js engin will retain all of them even after the outer function execution context is cleared
+6-2. However, IIFE can affect global variable
+
+```javascript
+(function(global, name) {    
+    var greeting = 'Hello';
+    global.greeting = 'Hello'; //affect the global object
+    console.log(greeting + ' ' + name);    
+}(window, 'John')); // IIFE
+
+console.log(greeting); //Hello
+```
+
+7. Closure
+It return a function that can have access to the variables in the outer function, js engin will retain all of them even after the outer function execution context is cleared.
+```javascript
+function greet(whattosay){
+	return function(name){
+		console.log(whattosay+' '+name);
+	}
+}
+greet('hi')('tony');
+```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/36.PNG" alt="36" width="500px"/>
+
+```javascript
+function buildFunctions() { 
+    var arr = [];    
+    for (var i = 0; i < 3; i++) {        
+        arr.push(
+            function() {
+                console.log(i);   //push 3 function objects into an array
+            }
+        )
+        
+    }
+    
+    return arr;
+}
+
+var fs = buildFunctions(); //push 3 function objects into an array and return the array as value to the var fs
+console.log(fs)//[ [Function], [Function], [Function] ]
+
+//closed by i=3, it is the same for all 3 functions when they are invoked
+fs[0]();
+fs[1]();
+fs[2]();
+
+```
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/37.PNG" alt="37" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/38.PNG" alt="38" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/39.PNG" alt="39" width="500px"/>
