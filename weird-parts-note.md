@@ -466,7 +466,7 @@ greet('hi')('tony');
 
 js engin will keep all of the execution context somewhere in the memory even after the outer function execution context is popped off. So 
 
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/36.PNG" alt="36" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/36closure.png" alt="36" width="500px"/>
 
 ```javascript
 function buildFunctions() { 
