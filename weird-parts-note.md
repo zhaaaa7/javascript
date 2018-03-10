@@ -166,14 +166,62 @@ Operator precedence: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 		   “<” coerce others to number, Number(false)=0, Number(undefined)=NaN, Number(null)=0
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/23.PNG" alt="23" width="500px"/>
 
-* Objects sit in the memory and have reference to other things in the memory (property, methods)
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/24.PNG" alt="24" width="500px"/>
+## object
 
-* Namespace: js doesn’t have, object can work as a container to 
+1. Objects has properties and methods. It sits in the memory and has reference to other things in the memory(property, methods)
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/24.PNG" alt="24" width="500px"/>
+```javascript
+//object literal
+const person={};
+//member access operator
+person.name='tony';
+//computed member access operator
+const age='age';
+person[age]=20;
+```
+
+```javascript
+function greet(person){	
+	console.log('hi'+person.name);
+}
+//create an object on the fly
+greet({name:'tony',age:3});
+```
+2. Namespace: 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/25.PNG" alt="25" width="500px"/>
 
-* Functions are objects, first class functions, properties and methods, has special properties such as name (optional) and code (invokable, container)
+js doesn’t have namespace, but object can work as a container, i.e the space
+
+```javascript
+const english={};
+const spanish={};
+english.greet='hello';
+spanish.greet='hola';
+
+```
+
+3. JSON and Object literal: JSON is more strict
+
+javascript object notation is a string, requiring “” around property name, 
+
+```javascript
+//object literal
+const obj={name:'tony',age:3};
+JSON.stringify(obj);
+
+//JSON string
+const json='{
+	'name':'tony',
+	'age':3
+}';
+JSON.parse(json);
+```
+        	
+## Functions -- first class functions
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/26.PNG" alt="26" width="500px"/>
+
+Functions are objects so they have properties and methods, and they have some special properties such as name (optional) and code (the actual lines of code you write), which is invokable.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/27.PNG" alt="27" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/28.PNG" alt="28" width="500px"/>
 
