@@ -468,33 +468,80 @@ js engin will keep all of the variables of the outer execution context somewhere
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/36closure.png" alt="36" width="900px"/>
 
+7-1. surprise!
 ```javascript
 function buildFunctions() { 
     var arr = [];    
     for (var i = 0; i < 3; i++) {        
-        arr.push(
+        arr.push(          //push 3 function objects into an array, not executing them
             function() {
-                console.log(i);   //push 3 function objects into an array
+                console.log(i);   
             }
-        )
-        
-    }
-    
+        )        
+    }    
     return arr;
 }
 
-var fs = buildFunctions(); //push 3 function objects into an array and return the array as value to the var fs
-console.log(fs)//[ [Function], [Function], [Function] ]
+var fs = buildFunctions();  //push 3 function objects into an array and return the array as value to the var fs
+console.log(fs);  //[ [Function], [Function], [Function] ]
 
-//closed by i=3, it is the same for all 3 functions when they are invoked
-fs[0]();
-fs[1]();
-fs[2]();
+//closed by i=3, it is the same for all 3 functions when they are invoked, lexical environment
+fs[0](); //3
+fs[1](); //3
+fs[2](); //3
 
 ```
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/37.PNG" alt="37" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/38.PNG" alt="38" width="500px"/>
+
+To preserve the i for each turn
+
+```javascript
+function buildFunctions2() { 
+    var arr = [];    
+    for (var i = 0; i < 3; i++) {
+    	//in es6, can use let j=i
+        arr.push(                   //push the result of IIFE which is a function
+            (function(j) {
+                return function() {
+                    console.log(j);   //closed by j which has different value in each turn
+                }
+            }(i))
+        )        
+    }
+        return arr;
+}
+
+var fs2 = buildFunctions2();
+fs2[0](); //0
+fs2[1](); //1
+fs2[2](); //2
+```
+
+7-2. function factories 
+
+```javascript
+function makeGreeting(language) { 
+    return function(firstname, lastname) {     
+        if (language === 'en') {
+            console.log('Hello ' + firstname + ' ' + lastname);   
+        }
+        if (language === 'es') {
+            console.log('Hola ' + firstname + ' ' + lastname);   
+        }        
+    }   
+}
+
+
+// greetEnglish is a function, whose closure points to 'language == english' which is kept in the first excution context
+var greetEnglish = makeGreeting('en'); 
+var greetSpanish = makeGreeting('es');
+
+greetEnglish('John', 'Doe'); //still has access to language
+greetSpanish('John', 'Doe');
+```
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/39.PNG" alt="39" width="500px"/>
 
 * Callback functions: “I call you and you call the callback”.
