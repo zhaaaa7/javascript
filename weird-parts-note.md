@@ -271,7 +271,7 @@ var greetFunc = function(name) {
 };
 greetFunc('John');
 ```
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/29.PNG" alt="29" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/29-1expression-and-statement.png" alt="29-1" width="800px"/>
 ```javascript
 greet();
 function greet() {
