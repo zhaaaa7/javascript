@@ -166,7 +166,7 @@ Operator precedence: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 		   “<” coerce others to number, Number(false)=0, Number(undefined)=NaN, Number(null)=0
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/23.PNG" alt="23" width="500px"/>
 
-## object
+# object
 
 1. Objects has properties and methods. It sits in the memory and has reference to other things in the memory(property, methods)
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/24.PNG" alt="24" width="500px"/>
@@ -318,14 +318,82 @@ console.log(obj2.greeting); // Hola
 obj1={greeting:'hi'};
 console.log(obj2.greeting); //Hola
 ```
-4. 'this' keyword
 
-In global environment -- window
+4. arguments is a keyword, array-like data structure 
+
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/32.PNG" alt="32" width="500px"/>
+
+if not passing arguments
+
+```javascript
+function greet(name) {
+    console.log('Hello ' + name);    
+}
+greet(); // 'Hello undefined', coerced to string
+```
+default value in ES5
+
+```javascript
+function greet(name) {
+    name = name || '<Your name here>';
+    console.log('Hello ' + name);    
+}
+greet('Tony');
+greet();
+```
+"||" is common in popular frameworks checking if the name us used in global environment
+```javascript
+Window.varName=Window.varName||'same varName'
+```
+```
+function greeting(a,b,c){
+	console.log(arguments);
+	if(arguments.length===0){
+		console.log('missing arguments');
+	}
+}
+greeting(); //[]
+greeting(a,b); //[a,b]
+greeting(a,b,c); //[a,b,c]
+```
+
+4-1. spread is now replacing it
+```javascript
+function greeting(a,b,...other){
+	console.log(arguments);
+	if(arguments.length===0){
+		console.log('missing arguments');
+	}
+}
+```
+
+* 
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/33.PNG" alt="33" width="500px"/>
+
+* IIFE: immediately invoked function expression. Expressions can just sit in the memory, to let js engine see a function statement as an expression, add ( ). But if you don’t invoke it immediately, it will disappear. Executing function on the fly.
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/34.PNG" alt="34" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/35.PNG" alt="35" width="500px"/>
+
+* Closure: return a function that can have access to the variables in the outer function, js engin will retain all of them even after the outer function execution context is cleared
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/36.PNG" alt="36" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/37.PNG" alt="37" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/38.PNG" alt="38" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/39.PNG" alt="39" width="500px"/>
+
+* Callback functions: “I call you and you call the callback”.
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.PNG" alt="40" width="500px"/>
+
+* call, apply, bind are methods of all function objects, use the function as objects so don’t call them (by adding parentheses), they controls what “this” is in the function
+
+
+## 'this' keyword
+
+1. In global environment -- window
 ```javascript
 console.log(this);  //Window
 ```
 
-In function -- window
+2. In function -- window
 
 ```javascript
 function a(){
@@ -341,7 +409,7 @@ b();
 console.log(newVar);  //attach a new property 'newVar' to Window object
 ```
 
-In object method  -- instance
+3. In object method  -- instance
 
 ```javascript
 var c={
@@ -356,7 +424,7 @@ c.log(); // Object {...c}
 
 ```
 
-In funtion in object method -- the global object
+4. In funtion in object method -- the global object
 ```javascript
 
 var d={
@@ -400,26 +468,10 @@ d.log();
 
 ```
 
-* arguments is a keyword, array-like data structure, spread is now replacing it
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/32.PNG" alt="32" width="500px"/>
+## array -- collection of anything
 
-* 
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/33.PNG" alt="33" width="500px"/>
 
-* IIFE: immediately invoked function expression. Expressions can just sit in the memory, to let js engine see a function statement as an expression, add ( ). But if you don’t invoke it immediately, it will disappear. Executing function on the fly.
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/34.PNG" alt="34" width="500px"/>
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/35.PNG" alt="35" width="500px"/>
 
-* Closure: return a function that can have access to the variables in the outer function, js engin will retain all of them even after the outer function execution context is cleared
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/36.PNG" alt="36" width="500px"/>
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/37.PNG" alt="37" width="500px"/>
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/38.PNG" alt="38" width="500px"/>
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/39.PNG" alt="39" width="500px"/>
-
-* Callback functions: “I call you and you call the callback”.
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.PNG" alt="40" width="500px"/>
-
-* call, apply, bind are methods of all function objects, use the function as objects so don’t call them (by adding parentheses), they controls what “this” is in the function
 
 * inheritance. __proto__: is a property that all objects in js have, it is simple an reference to another object (the prototype). I have the special reference that says where to look for more properties and methods that not in me.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/41.PNG" alt="41" width="500px"/>
