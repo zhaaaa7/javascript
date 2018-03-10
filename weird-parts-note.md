@@ -31,6 +31,7 @@ a===undefined   //not a string, no “”
 usually initially set by js engine (not programmer)
 ```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/8.PNG" alt="8" width="500px"/>
+
 ### hoisting 
 ```javascript
 b();
