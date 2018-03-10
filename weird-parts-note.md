@@ -51,6 +51,12 @@ function b() {
 8. single threaded / synchronous: one line a time
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/10.PNG" alt="10" width="500px"/>
 
+9. asynchronous callbacks: besides the js engine, there many other engines running in the browser
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/17.PNG" alt="17" width="500px"/>
+
+10. event queue: is watched by js engine and see if any function should be run after the execution stack is empty
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/18.PNG" alt="18" width="500px"/>
+
 ## scoping
 
 1. Invocation: run a function by using ()
@@ -137,14 +143,11 @@ a();
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/16.PNG" alt="16" width="500px"/>
 
 ```
-let allows block scoping. Temporary Dead Zone make 'let' variables sits in the memory but not allowed to be used until the execution phase
+let allows block scoping. Temporary Dead Zone make 'let' variables sits in the memory but not allowed to be 
+used until the execution phase
 ```
 
-* asynchronous callbacks: many other engines running in the browser
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/17.PNG" alt="17" width="500px"/>
 
-* event queue: is watched by js engine and see if any function should be run after the execution stack is empty
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/18.PNG" alt="18" width="500px"/>
 
 * Dynamic typing
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/19.PNG" alt="19" width="500px"/>
