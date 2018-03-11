@@ -1,7 +1,3 @@
-## strice mode
-"use strict"
-
-
 ## Bubbling and capturing
 https://javascript.info/bubbling-and-capturing
 
