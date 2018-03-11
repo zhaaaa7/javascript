@@ -1177,3 +1177,19 @@ undefined and null
 console.log(typeof undefined); // undefined, makes sense
 console.log(typeof null);  // object, a bug since, like, forever...
 ```
+
+## Summary
+1. Boolean(undefined/null/‘’)=false to check existence in if()
+2. Create an object on the fly: funcA({prop1:’value1’,prop2:’value2’})
+3. JSON.stringify(object), JSON.parse(json)
+4. When a function is invoked, a new execution context is created.
+5. ‘this’ will be decided by where the func is and how it is called. ‘this’ => global object (Window ), if you just create and call a function, still ‘Window’
+6. For a method, ‘this’ is the object the method sitting inside of. There is a problem with inside methods functions, to deal with it use self.this because objects are set by reference
+7. Variable scope chain: outer environment
+8. “function literal”, like object literal that is created on the fly
+Control what “this” points to and are methods of function objects
+9. Bind creates a copy of a function with an object as “this” in the original function. Apply and call calls the function, but apply requires array [    ]
+10. To build a new object, create a object, give it properties and methods, and set the prototype.
+11. There is no return in constructor function.
+12. Moment.js to deal with data https://momentjs.com
+
