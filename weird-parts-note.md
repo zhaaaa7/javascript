@@ -638,7 +638,7 @@ console.log(person.getFullName.apply(person2)); //Jane Doe
 
 * function currying
 
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.1call-apply-bind.jpeg" alt="40" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.2function-currying.jpeg" alt="40" width="500px"/>
 
 ```javascript
 function multiply(a, b) {
