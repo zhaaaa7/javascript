@@ -266,6 +266,10 @@ function greet(name) {
 greet('Tony'); // hello tony
 greet(); // hello <Your name here>
 ```
+"||" is common in popular frameworks checking if the name us used in global environment
+```javascript
+Window.varName=Window.varName||'same varName'
+```
 
 # Object
 
@@ -435,20 +439,7 @@ function greet(name) {
 }
 greet(); // 'Hello undefined', coerced to string
 ```
-default value in ES5
 
-```javascript
-function greet(name) {
-    name = name || '<Your name here>';
-    console.log('Hello ' + name);    
-}
-greet('Tony');
-greet();
-```
-"||" is common in popular frameworks checking if the name us used in global environment
-```javascript
-Window.varName=Window.varName||'same varName'
-```
 ```
 function greeting(a,b,c){
 	console.log(arguments);
