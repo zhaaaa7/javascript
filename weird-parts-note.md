@@ -794,7 +794,18 @@ d.log();
 
 2. prototype chain
 
-__proto__: is a property that all objects in js have, it is simple an reference to another object (the prototype). It is the special reference that says where to look for more properties and methods that not in me. Here forms a prototype chain.
+__proto__: is a property that all objects in js have, it is simple an reference to another object (the prototype). 
+```javascript
+const a={};
+const b=function(){};
+const c=[];
+
+a.__proto__ === Object {};
+b.__proto__ === function Empty(){};
+c.__proto__ === [];
+```
+
+__proto__ It is the special reference that says where to look for more properties and methods that not in me. Here forms a prototype chain.
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/43.PNG" alt="43" width="500px"/>
 
@@ -830,8 +841,40 @@ console.log(jane.getFullName()); // Jane Default
 
 ```
 
-* Reflection: an object can look at itself and change anything
+3. reflection and extend: 
+
+* reflection: an object can look at itself and change anything
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/44.PNG" alt="44" width="500px"/>
+
+```javascript
+//get everthing along the prototype chain
+for (var prop in john){
+	console.log(prop+': '+ john[prop]);
+}
+//firstname: 'John',
+//lastname: 'Doe'
+// getFullName: function() {return this.firstname + ' ' + this.lastname;}
+```
+to get what's on the object itself
+
+```javascript
+//get own property
+for (var prop in john){
+	if(john.hasOwnProperty(prop)){
+	console.log(prop+': '+ john[prop]);
+	}
+}
+```
+
+* extend
+
+```javascript
+var amy={
+	address: 'buioofm'
+	};
+var extended=Object.assign(amy,person);
+```
 
 * .prototype is a (empty) object property of the constructor function. It is the prototype of any object that is created by the constructor function. This is where the methods live, which properties live inside the constructor.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/45.PNG" alt="45" width="500px"/>
