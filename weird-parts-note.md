@@ -875,9 +875,73 @@ var amy={
 	};
 var extended=Object.assign(amy,person);
 ```
+## building objects
 
-* .prototype is a (empty) object property of the constructor function. It is the prototype of any object that is created by the constructor function. This is where the methods live, which properties live inside the constructor.
+1. object literal
+
+2. via function constructors and 'new' keyword. 
+
+function constructors: normal function that is used to construct objects
+
+new: an empty object is created, then constructor function is invoked, change “this” to point to the brand new, empty object, and finally, returns the new object.
+
+```javascript
+function Person(firstname, lastname) {
+    console.log(this); // Person {}, the empty object
+    this.firstname = firstname;
+    this.lastname = lastname;
+    console.log('This function is invoked.'); 
+    // no return here !!!!!
+}
+
+var john = new Person('John', 'Doe'); //"this" points to john
+console.log(john); //Person {....};
+```
+
+```javascript
+console.log(john.__proto__); // {constructor: ƒ Person}
+```
+
+
+* .prototype is a (empty) object property of the constructor function. It is not the prototype of the function
+```javascript
+console.log(Person.__proto__); // ƒ () { [native code] }
+```
+
+It is the prototype (.__proto__) of any object that is created by the constructor function. This is where the methods live, to save memory, while properties live inside the constructor.
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/45.PNG" alt="45" width="500px"/>
+
+```javascript
+function Person(firstname, lastname) {
+ 
+    console.log(this);
+    this.firstname = firstname;
+    this.lastname = lastname;
+    console.log('This function is invoked.');
+    
+}
+
+//add methods to the empty .prototype property of the constructor function
+Person.prototype.getFullName = function() { 
+    return this.firstname + ' ' + this.lastname;   
+}
+
+var john = new Person('John', 'Doe');
+console.log(john); //has a getFullName method automatically
+
+//add another method
+Person.prototype.getFormalFullName = function() {
+    return this.lastname + ', ' + this.firstname;   
+}
+
+console.log(john.getFormalFullName());
+
+console.log(john.__proto__)  //{getFullName: ƒ, getFormalFullName: ƒ, constructor: ƒ}
+```
+
+
+
 
 * Polyfill: codes that adds feature that engine lacks
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/46.PNG" alt="46" width="500px"/>
