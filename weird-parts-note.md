@@ -1,4 +1,4 @@
-## conceptual concepts
+## Conceptual concepts
 1. Syntax parser: convert/translate your code to computer instructions. It is part of interpreter/compiler.It has assumptions and rules. For example, t knows 'function' is special and needs specific way of translation. 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/1.PNG" alt="1" width="500px"/>
 
@@ -63,7 +63,7 @@ function b() {
 
 
 
-## scoping
+## Scoping
 
 1. Invocation: run a function by using ()
 
@@ -153,26 +153,121 @@ let allows block scoping. Temporary Dead Zone make 'let' variables sits in the m
 used until the execution phase
 ```
 
+## Types
 
+1. Dynamic typing
 
-* Dynamic typing
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/19.PNG" alt="19" width="500px"/>
 
-* Primitive type: represents a single value: undefined (lack of existence), null (set by programmers), boolean, number, string, symbol
+2. Primitive type: 6, represents a single value 
+
+* undefined: lack of existence, set by js engine
+* null: set by programmers
+* boolean
+* number: floating point number, there is always decimals
+* string
+* symbol
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/20.PNG" alt="20" width="500px"/>
 
-* Operator: are functions (infix notation): 3+4 / +(3,4)
-Operator precedence: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+## Operators
+1. operator: are functions (infix notation): 
+
+```javascript
+3+4 ;
+
+//in js engin
+function +(a,b){
+	return a+b;
+}
+
++(3,4);
+```
+2-1. operator precedence: 
+
+Higher one get called first
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/21.PNG" alt="21" width="500px"/>
 
-* Operator associativity: right-to-left
+2-2. operator associativity: right-to-left(right) / left-to-right(left)
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/22.PNG" alt="22" width="500px"/>
 
-* Coercion: “+” coerce number to string 1+’2’=’12’
-		   “<” coerce others to number, Number(false)=0, Number(undefined)=NaN, Number(null)=0
+```javascript
+// = , right-to-left
+var a=2, b=3, c=4;
+a=b=c;
+console.log(a,b,c); // 4 4 4
+```
+precedence determines which function run first? when they have same precedence, associativity determines the order.
+
+3. coercion 
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/23.PNG" alt="23" width="500px"/>
 
-# object
+```
+“+” coerce number to string 
+
+“<” coerce others to number
+```
+
+```javascript
+ let x=2+'2';   // '22'
+ x=2+2+'2';   // '42'
+ x=2+true;   // 3
+ x=2+true+'2';   // '33'
+ x=2+Number('2');   // 4'
+ x=Number('hello');   // NaN
+ x=typeof(x); //number
+
+```
+
+4. comparison operator: 
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
+
+```javascript
+console.log(1<2<3); //true
+console.log(3<2<1); //true, 3<2=false, to compare it with 1, coerced to ===> 0, 0<1
+```
+4-1. comparison without coersion: ===, !==
+
+```javascript
+false == 0;  //true
+null == 0; //false
+null < 1; //true
+```
+```
+object.is solves (-0,+0) (NaN, NaN)
+Boolen(null, undefined, 0, '') ===> false
+Number (null, false) ===>0
+Numbr (undefined) ==NaN
+```
+
+5. existence 
+
+```javascript
+var a=false;
+if (a) {....}
+```
+
+6. default value
+```javascript
+function greet(name){
+	console.log('hello'+name);
+}	
+//coerce undefined to string 'undefined'
+greet(); // hello undefined
+```
+```javascript
+function greet(name) {
+    name = name || '<Your name here>';
+    console.log('Hello ' + name);    
+}
+greet('Tony'); // hello tony
+greet(); // hello <Your name here>
+```
+
+# Object
 
 1. Objects has properties and methods. It sits in the memory and has reference to other things in the memory(property, methods)
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/24.PNG" alt="24" width="500px"/>
@@ -786,10 +881,13 @@ d.log();
 
 ```
 
-## array -- collection of anything
+## Array -- collection of anything
 
+```javascript
+const myArr=[1,'hello',{name:'tony'},function(){}];
+```
 
-## prototypal inheritance
+## Prototypal inheritance
 
 1. inheritance: one object gets access to the properties and methods of another object
 
