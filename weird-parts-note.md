@@ -1,3 +1,5 @@
+Notes of https://www.udemy.com/understand-javascript/learn/v4/overview.
+
 ## Conceptual concepts
 1. Syntax parser: convert/translate your code to computer instructions. It is part of interpreter/compiler.It has assumptions and rules. For example, t knows 'function' is special and needs specific way of translation. 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/1.PNG" alt="1" width="500px"/>
