@@ -1016,7 +1016,7 @@ john.lastname = 'Doe';
 console.log(john);
 
 ```
-3-1 Polyfill: codes that adds feature that engine lacks
+3-1. Polyfill: codes that adds feature that engine lacks
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/46.PNG" alt="46" width="500px"/>
 
 ```javascript
