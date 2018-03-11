@@ -789,12 +789,46 @@ d.log();
 ## prototypal inheritance
 
 1. inheritance: one object gets access to the properties and methods of another object
-__proto__: is a property that all objects in js have, it is simple an reference to another object (the prototype). It is the special reference that says where to look for more properties and methods that not in me.
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/41.PNG" alt="41" width="500px"/>
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/42.PNG" alt="42" width="500px"/>
 
-* prototype chain
+2. prototype chain
+
+__proto__: is a property that all objects in js have, it is simple an reference to another object (the prototype). It is the special reference that says where to look for more properties and methods that not in me. Here forms a prototype chain.
+
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/43.PNG" alt="43" width="500px"/>
+
+```javascript
+var person = {
+    firstname: 'Default',
+    lastname: 'Default',
+    getFullName: function() {
+        return this.firstname + ' ' + this.lastname;  
+    }
+}
+
+var john = {
+    firstname: 'John',
+    lastname: 'Doe'
+}
+
+// don't do this EVER! for demo purposes only!!!
+john.__proto__ = person; 
+// assign person as the prototype of john, so can use the methods in person
+console.log(john.getFullName());  //John Doe
+console.log(john.firstname);  //John, first look at john object not person object
+```
+
+search along up the prototype chain
+```javascript
+var jane = {
+    firstname: 'Jane'   
+}
+jane.__proto__ = person;
+console.log(jane.getFullName()); // Jane Default
+//"this" refers to jane first because it calls the methods, then it searches along the prototype chain
+
+```
 
 * Reflection: an object can look at itself and change anything
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/44.PNG" alt="44" width="500px"/>
