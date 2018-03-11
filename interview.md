@@ -1,3 +1,22 @@
+```
+&&的返回值会返回最早遇到以下类型的值：
+NaN null undefined 0 false;
+
+||的返回值会返回最早遇到的非以下类型的值：
+NaN null undefined 0 false;
+```
+```javascript
+for( var i=0 ; i<10000 ; i++ ) {
+    i == 9999 && resolve();
+}
+
+for( var i=0 ; i<10000 ; i++ ) {
+    if(i == 9999){
+              resolve();
+        }
+}
+```
+
 ```javascript
 
 console.log([]+[]); //empty string
