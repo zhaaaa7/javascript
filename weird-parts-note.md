@@ -786,9 +786,10 @@ d.log();
 ## array -- collection of anything
 
 
+## prototypal inheritance
 
-
-* inheritance. __proto__: is a property that all objects in js have, it is simple an reference to another object (the prototype). I have the special reference that says where to look for more properties and methods that not in me.
+1. inheritance: one object gets access to the properties and methods of another object
+__proto__: is a property that all objects in js have, it is simple an reference to another object (the prototype). It is the special reference that says where to look for more properties and methods that not in me.
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/41.PNG" alt="41" width="500px"/>
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/42.PNG" alt="42" width="500px"/>
 
