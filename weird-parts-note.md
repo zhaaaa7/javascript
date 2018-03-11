@@ -1178,7 +1178,7 @@ console.log(typeof undefined); // undefined, makes sense
 console.log(typeof null);  // object, a bug since, like, forever...
 ```
 
-## Summary
+## Some tips ...
 1. Boolean(undefined/null/‘’)=false to check existence in if()
 2. Create an object on the fly: funcA({prop1:’value1’,prop2:’value2’})
 3. JSON.stringify(object), JSON.parse(json)
