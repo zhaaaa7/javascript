@@ -881,9 +881,9 @@ var extended=Object.assign(amy,person);
 
 2. via function constructors and 'new' keyword. 
 
-function constructors: normal function that is used to construct objects
+* function constructors: normal function that is used to construct objects
 
-new: an empty object is created, then constructor function is invoked, change “this” to point to the brand new, empty object, and finally, returns the new object.
+* new: an empty object is created, then constructor function is invoked, change “this” to point to the brand new, empty object, and finally, returns the new object.
 
 ```javascript
 function Person(firstname, lastname) {
@@ -940,8 +940,127 @@ console.log(john.getFormalFullName());
 console.log(john.__proto__)  //{getFullName: ƒ, getFormalFullName: ƒ, constructor: ƒ}
 ```
 
+2-1. missing new will cause 'undefined' objects because function constructor has no explicit return
+
+2-2. built-in function constructors
+
+```javacript
+//primitive constructor, returns an object that contains the primitive value
+var a = new Number(3);
+var b = new String('hello');
+b.length
+
+//string primitives can use methods on the prototype
+'hello'.length
+```
+
+you can change the built-in type constructor .prototype
+
+```javascript
+String.prototype.isLengthGreaterThan = function(limit) {
+    return this.length > limit;  //"this" points to the specific object
+}
+console.log("John".isLengthGreaterThan(3)); // true
 
 
+Number.prototype.isPositive = function() {
+    return this > 0;   
+}
 
-* Polyfill: codes that adds feature that engine lacks
+3.isPositive(); //error, because js engin can't coerce number primitive into number object
+var a = new Number(3); 
+a.isPositive(); //true
+```
+
+danger!!! be careful when using built-in constructors!!
+```javascript
+var a=3;
+var b=Number(3);
+a===b; //false
+```
+
+don't use 'for...in' in array because it is object in essence, may get property in the prototype chain!
+```javascript
+Array.prototype.newprop='new!';
+var arr=['a','b','c'];
+for (var prop in arr){
+	console.log(prop+':'+arr[prop]);
+}
+//0:a
+//1:b
+//2:c
+//3:new!
+```
+
+3. Object.create() and pure prototype inheritance
+
+```javascript
+//base object
+var person = {
+    firstname: 'Default',
+    lastname: 'Default',
+    greet: function() {
+        return 'Hi ' + this.firstname;   
+        // "this" is needed because object doesn't create new execution environment
+        //otherwise js will come to the global object to finc firstname property
+    }
+};
+
+var john = Object.create(person);
+console.log(john); //Object {...person}, 
+console.log(john.__proto__); // Object person
+
+//overwrite the properties
+john.firstname = 'John';
+john.lastname = 'Doe';
+console.log(john);
+
+```
+3-1 Polyfill: codes that adds feature that engine lacks
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/46.PNG" alt="46" width="500px"/>
+
+```javascript
+if (!Object.create) {
+  //get a object that becomes the prototype of an empty constructor function
+  Object.create = function (o) {
+    if (arguments.length > 1) {
+      throw new Error('Object.create implementation'
+      + ' only accepts the first parameter.');
+    }
+    function F() {}
+    F.prototype = o; //set o as the prototype of an empty object
+    return new F(); 
+  };
+}
+```
+## weird 
+1. typeof and instanceof
+```javascript
+var a = 3;
+console.log(typeof a);
+
+var b = "Hello";
+console.log(typeof b);
+
+var c = {};
+console.log(typeof c);
+
+var d = [];
+console.log(typeof d); // object, weird!
+console.log(Object.prototype.toString.call(d)); // [object Array],better!
+
+function Person(name) {
+    this.name = name;
+}
+
+var e = new Person('Jane');
+console.log(typeof e); //object
+console.log(e instanceof Person); // true, if exists in the prototype chain
+
+console.log(typeof undefined); // undefined, makes sense
+console.log(typeof null); // object, a bug since, like, forever...
+
+var z = function() { };
+console.log(typeof z); //function
+
+```
