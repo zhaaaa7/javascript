@@ -180,8 +180,10 @@ Operator precedence: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 ```javascript
 //object literal
 const person={};
-//member access operator
+
+//member access operator, faster
 person.name='tony';
+
 //computed member access operator
 const age='age';
 person[age]=20;
@@ -191,6 +193,7 @@ person[age]=20;
 function greet(person){	
 	console.log('hi'+person.name);
 }
+
 //create an object on the fly
 greet({name:'tony',age:3});
 ```
@@ -883,7 +886,7 @@ var extended=Object.assign(amy,person);
 
 * function constructors: normal function that is used to construct objects
 
-* new: an empty object is created, then constructor function is invoked, change “this” to point to the brand new, empty object, and finally, returns the new object.
+* new: new is an operator/keyword. What happens : 1)an empty object is created, 2)then constructor function is invoked, 3)change “this” to point to the brand new, empty object, 4)and finally, returns the new object.
 
 ```javascript
 function Person(firstname, lastname) {
@@ -943,6 +946,8 @@ console.log(john.__proto__)  //{getFullName: ƒ, getFormalFullName: ƒ, construc
 2-1. missing new will cause 'undefined' objects because function constructor has no explicit return
 
 2-2. built-in function constructors
+
+Primitive types has their__proto__ property that refers to their prototype that has all the built-in methods and attributes
 
 ```javacript
 //primitive constructor, returns an object that contains the primitive value
@@ -1037,30 +1042,40 @@ if (!Object.create) {
 1. typeof and instanceof
 ```javascript
 var a = 3;
-console.log(typeof a);
+console.log(typeof a); // number
 
 var b = "Hello";
-console.log(typeof b);
+console.log(typeof b); //strinf
 
 var c = {};
-console.log(typeof c);
+console.log(typeof c); //object
 
+var z = function() { };
+console.log(typeof z);  //function
+```
+
+array
+
+```javascript
 var d = [];
 console.log(typeof d); // object, weird!
 console.log(Object.prototype.toString.call(d)); // [object Array],better!
+```
 
+function constructor
+
+```javascript
 function Person(name) {
     this.name = name;
 }
 
 var e = new Person('Jane');
-console.log(typeof e); //object
+console.log(typeof e);  //object
 console.log(e instanceof Person); // true, if exists in the prototype chain
+```
 
+undefined and null
+```javascript
 console.log(typeof undefined); // undefined, makes sense
-console.log(typeof null); // object, a bug since, like, forever...
-
-var z = function() { };
-console.log(typeof z); //function
-
+console.log(typeof null);  // object, a bug since, like, forever...
 ```
