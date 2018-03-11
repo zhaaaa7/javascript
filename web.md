@@ -3,10 +3,11 @@ https://javascript.info/bubbling-and-capturing
 https://davidwalsh.name/event-delegate
 
 
-## event queue
+## event loop
 https://www.youtube.com/watch?v=TbCgGWe8LN8&list=PL7pEw9n3GkoW5bYOhVAtmJlak3ZK7SaDf&index=26
 https://github.com/techsithgit/setTimeout
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
+https://zhuanlan.zhihu.com/p/26238030
 
 ### tasks and microtasks
 https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
