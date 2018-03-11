@@ -561,50 +561,93 @@ sayHiLater();
 9. call, apply, bind -- controls what “this” ends up being in the function 
 They are methods of all function objects, use the function as objects so don’t call them (by adding parentheses)
 
-<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.PNG" alt="40" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.1call-apply-bind.jpeg" alt="40" width="500px"/>
 
 
-* bind
 ```javascript
 var person = {
     firstname: 'John',
     lastname: 'Doe',
-    getFullName: function() {
-        
+    getFullName: function() {        
         var fullname = this.firstname + ' ' + this.lastname;
-        return fullname;
-        
+        return fullname;        
     }
 }
 
 var logName = function(lang1, lang2) {
-
-    console.log('Logged: ' + this.getFullName());
+    console.log('Logged: ' + this.getFullName()); // this ===> window
     console.log('Arguments: ' + lang1 + ' ' + lang2);
-    console.log('-----------');
-    
+    console.log('-----------');    
 }
-
-var logPersonName = logName.bind(person); // create a copy of function logname and assign person as the "this"
-logPersonName('en');
 ```
-* call and apply
+
+* bind -- create a copy of function with specified 'this'
 
 ```javascript
-//call and apply executes the function instead by specifying what "this" is as the first argument
-logName.call(person, 'en', 'es');
-logName.apply(person, ['en', 'es']);
+var logName = function(lang1, lang2) {
+    console.log('Logged: ' + this.getFullName()); // this ===> person
+    console.log('Arguments: ' + lang1 + ' ' + lang2);
+    console.log('-----------');    
+}.bind(person);
+logName(); // John Doe undefined undefined
+```
 
-//IIFE
+```javascript
+var logPersonName = logName.bind(person); // create a copy of function logname, and assign person as the "this"
+logPersonName('en'); // John Doe en undefined
+```
+
+* call and apply -- executes the function
+
+```javascript
+//call and apply executes the function, and specifying what "this" is as the first argument, the difference is apply accepts an array of arguments
+logName.call(person, 'en', 'es'); // John Doe en es
+logName.apply(person, ['en', 'es']);
+```
+IIFE
+
+```javascript
 (function(lang1, lang2) {
     console.log('Logged: ' + this.getFullName());
     console.log('Arguments: ' + lang1 + ' ' + lang2);
-    console.log('-----------');
-    
-}).apply(person, ['es', 'en']);
-
+    console.log('-----------');    
+}).apply(person, ['es', 'en']);   // John Doe en es
 ```
 
+9-1. usage
+
+* function borrowing
+
+```javascript
+var person = {
+    firstname: 'John',
+    lastname: 'Doe',
+    getFullName: function() {        
+        var fullname = this.firstname + ' ' + this.lastname;
+        return fullname;        
+    }
+}
+
+var person2 = {
+    firstname: 'Jane',
+    lastname: 'Doe'
+}
+// use the method defined in person in person2
+console.log(person.getFullName.apply(person2)); //Jane Doe
+```
+
+* function currying
+
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/screenshots/40.1call-apply-bind.jpeg" alt="40" width="500px"/>
+
+```javascript
+function multiply(a, b) {
+    return a*b;   
+}
+
+var multipleByTwo = multiply.bind(this, 2); // set the permanent value of a when copy is made
+console.log(multipleByTwo(4)); //8
+```
 
 ## 'this' keyword
 
