@@ -1,11 +1,15 @@
 ## Bubbling and capturing
 https://javascript.info/bubbling-and-capturing
+https://davidwalsh.name/event-delegate
 
 
 ## event queue
 https://www.youtube.com/watch?v=TbCgGWe8LN8&list=PL7pEw9n3GkoW5bYOhVAtmJlak3ZK7SaDf&index=26
 https://github.com/techsithgit/setTimeout
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
+
+### tasks and microtasks
+https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 
 
 ## web worker
