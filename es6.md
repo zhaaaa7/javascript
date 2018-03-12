@@ -358,3 +358,14 @@ Promise.race([promise1,promise2,promise3]).then(function(){
 });
 ```
 
+## Some tips
+
+https://www.udemy.com/react-the-complete-guide-incl-redux/learn/v4/t/lecture/8199180?start=0
+
+1. default export can be imported with any name, named export needs destructing
+2. When you use arrow function, you will have no problem with “this”
+3. spread and rest “operator”. Spread is to split array or object. Rest is to merge function arguments into an array.
+4. filter() returns an array
+5. destructing is different from spread which allows you to exact one elements and assign it to as variable, while spread takes out all elements and distribute them in new arrays or objects.
+6. spread is used to create a “real copy” of an object, not the reference
+7. array function: takes a function as an input which is executed on each element.
