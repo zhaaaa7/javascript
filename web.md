@@ -1,3 +1,16 @@
+## how inline javascript work
+
+wrap " " around the function body
+
+```
+<form action="challenge5.html" onsubmit="return checkForm();">
+		
+documentByTagName("form").addEventListener("submit", function () {
+		return checkForm();
+	} 
+```
+
+
 ## Bubbling and capturing
 https://javascript.info/bubbling-and-capturing
 https://davidwalsh.name/event-delegate
