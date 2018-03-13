@@ -3,8 +3,8 @@
 2. Event handlers are not callback functions. They accept a callback function as a parameter. 
 They are jQuery methods that executes a callback function when an event occurs.
 ```javascript
-$(‘.hide').on('click', () => {
-  `$('div').hide();
+$('.hide').on('click', () => {
+  $('div').hide();
 });
 ```
 When an element of the class hide is clicked, all div elements are hidden.
