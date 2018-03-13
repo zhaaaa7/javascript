@@ -44,3 +44,16 @@ $('#go').on('click',() => {
   $('#rest').next('p').toggleClass('highlight')
 });
 ```
+9. pass "this"
+```
+$(".preview").on('mouseover',show); //pass .preview  object to show function
+	 function show(){
+	    console.log(this); // <img .... />
+   }
+```
+
+10. relation to vanilla javascript
+```
+$(this).attr("src") === this.src
+$(this).attr("alt") === this.alt
+```
