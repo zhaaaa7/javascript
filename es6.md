@@ -375,6 +375,12 @@ Promise.race([promise1,promise2,promise3]).then(function(){
   console.log('one done');
 });
 ```
+## request
+1. onreadystatechange is an event handler property 
+2. JSON.stringify() converts JSON objects to strings that can be read by APIs.
+3. GET requests only request data from other websites whereas POST requests submit data to other sites.
+4. await keyword causes an async function to pause execution until the desired Promise is resolved.
+
 
 ## Some tips
 
