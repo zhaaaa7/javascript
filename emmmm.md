@@ -119,3 +119,27 @@ const args=function(){
 
 console.log(args(1,2,3)); // 3
 ```
+
+10. 'this' in object
+```javascript
+let tempObject = {
+  num: 2,
+  numSquared() {
+    num = 3;
+    return this.num * this.num;
+  }
+};
+
+console.log(tempObject.numSquared()); //4
+```
+```javascript
+let tempObject = {
+  num: 2,
+  numSquared() {
+    num = 3;
+    return num * num;
+  }
+};
+
+console.log(tempObject.numSquared()); //9
+```
