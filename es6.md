@@ -1,3 +1,21 @@
+## class
+
+Why class:
+To share data and methods between objects.
+
+The subclass inherits all of the parent's getters, setters, and methods. You can also use the super keyword to set properties in the parent class. Each instance of a class has the same properties, getters, setters, and methods. Only the property values change.
+
+* super keyword
+
+The super keyword is used in subclasses to call a parent constructor(). super accepts arguments for the parent constructor()'s parameters. If you use this before super, JavaScript will throw an error.
+
+Static method*
+
+They are made directly on the class and are not callable on instances of the class. 
+
+
+
+
 ## map
 why need a map
 ```javascript
