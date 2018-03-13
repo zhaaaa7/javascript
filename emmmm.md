@@ -143,3 +143,13 @@ let tempObject = {
 
 console.log(tempObject.numSquared()); //9
 ```
+11. undefined arguments
+
+```javascript
+const workoutJournal = (miles, avgTime) => {
+  console.log('I ran ' + miles + ' miles at an average of ' + avgTime + ' per mile.');
+}
+workoutJournal(‘3’); // I ran 3 miles at an average of undefined per mile.
+
+```
+there is no arguments in arrow function.
