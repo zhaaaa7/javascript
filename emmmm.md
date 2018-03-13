@@ -153,3 +153,20 @@ workoutJournal(‘3’); // I ran 3 miles at an average of undefined per mile.
 
 ```
 there is no arguments in arrow function.
+
+12. complex condition
+```javascript
+let runTime = 35;
+let runDistance = 3.5;
+if (runTime <= 30 && runDistance > 3.5) {
+  console.log("You're super fast!");
+} else if (runTime >= 30 && runDistance <=3) {
+  console.log("You're not making your pace!");
+} else if (runTime > 30 || runDistance > 3) {
+  console.log('Nice workout!'); 
+} else {
+  console.log('Keep on running!');
+}
+//Nice workout!
+
+```
