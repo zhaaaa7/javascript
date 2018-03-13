@@ -4,6 +4,8 @@ wrap " " around the function body
 
 ```
 <form action="challenge5.html" onsubmit="return checkForm();">
+
+is the same as : 
 		
 documentByTagName("form").addEventListener("submit", function () {
 		return checkForm();
