@@ -1,6 +1,9 @@
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-
+List method:
+* change the list: .pop() .shift() .push()
+* Make a new copy: slice() map() filter()
+* Return undefined: forEach()
 
 1. map()  => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 
