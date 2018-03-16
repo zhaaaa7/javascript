@@ -245,3 +245,5 @@ words.forEach(function(word) {
 # Return an iterator
 ## keys()
 ## entries()
+## values()
+ -- arr[Symbol.iterator]()
