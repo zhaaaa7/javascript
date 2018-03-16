@@ -26,6 +26,29 @@ console.log(months);
 ## pop() 
 ## shift() 
 ## push()
+## reverse()
+## sort
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+
+The sort() method sorts the elements of an array in place and returns the array. The sort is not necessarily stable. The default sort order is according to string Unicode code points.
+
+```javascript
+arr.sort([compareFunction])
+```
+If compareFunction is not supplied, elements are sorted by converting them to strings and comparing strings in Unicode code point order.
+```javascript
+var numbers = [4, 2, 5, 1, 3];
+numbers.sort(function(a, b) {
+  return a - b;
+});
+console.log(numbers);
+
+// [1, 2, 3, 4, 5]
+```
+
+rules: 
+* If compareFunction(a, b) is less than 0, sort a to an index lower than b, i.e. a comes first.
+* If compareFunction(a, b) is greater than 0, sort b to an index lower than a, i.e. b comes first.
 
 
 
@@ -47,42 +70,6 @@ console.log(map1);
 // expected output: Array [2, 8, 18, 32]
 ```
 
-## find()  
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
-
-The find() method returns the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
-
-```javascript
-const value=arr.find(callback(currentValue[, index[, array]]){...........}[, thisArg])
-```
-```javascript
-var array1 = [5, 12, 8, 130, 44];
-
-var found = array1.find(function(element) {
-  return element > 10;
-});
-
-console.log(found);
-// expected output: 12
-```
-
-## findIndex()
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
-
-The findIndex() method returns the index of the first element in the array that satisfies the provided testing function. Otherwise -1 is returned.
-```javascript
-const index=arr.findIndex(callback(currentValue[, index[, array]]){...........}[, thisArg])
-```
-```javascript
-var array1 = [5, 12, 8, 130, 44];
-
-function findFirstLargeNumber(element) {
-  return element > 13;
-}
-
-console.log(array1.findIndex(findFirstLargeNumber));
-// expected output: 3
-```
 ## filter()
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
@@ -189,6 +176,48 @@ console.log(animals.slice(1, 5));
 * If begin is greater than the length of the sequence, an empty array is returned. If end is greater than the length of the sequence, slice extracts through to the end of the sequence (arr.length)
 
 
+## Return a value
+## find()  
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+
+The find() method returns the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
+
+```javascript
+const value=arr.find(callback(currentValue[, index[, array]]){...........}[, thisArg])
+```
+```javascript
+var array1 = [5, 12, 8, 130, 44];
+
+var found = array1.find(function(element) {
+  return element > 10;
+});
+
+console.log(found);
+// expected output: 12
+```
+
+## findIndex()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+
+The findIndex() method returns the index of the first element in the array that satisfies the provided testing function. Otherwise -1 is returned.
+```javascript
+const index=arr.findIndex(callback(currentValue[, index[, array]]){...........}[, thisArg])
+```
+```javascript
+var array1 = [5, 12, 8, 130, 44];
+
+function findFirstLargeNumber(element) {
+  return element > 13;
+}
+
+console.log(array1.findIndex(findFirstLargeNumber));
+// expected output: 3
+```
+## every()
+## some()
+
+## join()
+
 # Return undefined
 ## forEach()
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
@@ -211,3 +240,8 @@ words.forEach(function(word) {
 // two
 // four
 ```
+
+
+# Return an iterator
+## keys()
+## entries()
