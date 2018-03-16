@@ -246,4 +246,4 @@ words.forEach(function(word) {
 ## keys()
 ## entries()
 ## values()
- -- arr[Symbol.iterator]()
+ -- arr`[Symbol.iterator]`()
