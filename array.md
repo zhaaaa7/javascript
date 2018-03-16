@@ -1,10 +1,35 @@
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 
 List method:
-* change the list: .pop() .shift() .push()
-* Make a new copy: slice() map() filter()
-* Return undefined: forEach()
 
+# Mutate the array
+## splice()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+
+The splice() method changes the contents of an array by removing existing elements and/or adding new elements.
+
+```javascript
+(originalArray===) array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+```
+```javascript
+var months = ['Jan', 'March', 'April', 'June'];
+months.splice(1, 0, 'Feb');
+// inserts at 1st index position
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'June']
+
+months.splice(4, 1, 'May');
+// replaces 1 element at 4th index
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'May']
+```
+## pop() 
+## shift() 
+## push()
+
+
+
+# Make a new copy
 ## map() 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 
@@ -163,23 +188,26 @@ console.log(animals.slice(1, 5));
 * If begin is undefined, slice begins from index 0. If end is omitted, slice extracts through the end of the sequence (arr.length).
 * If begin is greater than the length of the sequence, an empty array is returned. If end is greater than the length of the sequence, slice extracts through to the end of the sequence (arr.length)
 
-## splice()
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
 
-The splice() method changes the contents of an array by removing existing elements and/or adding new elements.
+# Return undefined
+## forEach()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 
+The forEach() method executes a provided function once for each array element.
+
+forEach() executes the callback function once for each array element; unlike map() or reduce() it always **returns the value undefined and is not chainable**. The typical use case is to execute side effects **at the end of a chain**.
+
+If the array is modified during iteration, other elements might be skipped.
+The following example logs "one", "two", "four". When the entry containing the value "two" is reached, the first entry of the whole array is shifted off, which results in all remaining entries moving up one position. Because element "four" is now at an earlier position in the array, "three" will be skipped. forEach() does not make a copy of the array before iterating.
 ```javascript
-(originalArray===) array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
-```
-```javascript
-var months = ['Jan', 'March', 'April', 'June'];
-months.splice(1, 0, 'Feb');
-// inserts at 1st index position
-console.log(months);
-// expected output: Array ['Jan', 'Feb', 'March', 'April', 'June']
-
-months.splice(4, 1, 'May');
-// replaces 1 element at 4th index
-console.log(months);
-// expected output: Array ['Jan', 'Feb', 'March', 'April', 'May']
+var words = ['one', 'two', 'three', 'four'];
+words.forEach(function(word) {
+  console.log(word);
+  if (word === 'two') {
+    words.shift();
+  }
+});
+// one
+// two
+// four
 ```
