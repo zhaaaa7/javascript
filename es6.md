@@ -317,6 +317,9 @@ function *generator(){
 //..iterator
 ```
 ## promise
+
+When we resolve a promise, we have the value which becomes the value of the promise
+
 ```javascript
 const promise1=new Promise(function(resolve,reject){
   //cleaning the room
