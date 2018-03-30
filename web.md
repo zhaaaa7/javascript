@@ -13,7 +13,7 @@ documentByTagName("form").addEventListener("submit", function () {
 ```
 
 
-## Bubbling and capturing
+## Event propagation
 https://javascript.info/bubbling-and-capturing
 
 https://davidwalsh.name/event-delegate
