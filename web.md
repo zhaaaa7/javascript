@@ -22,7 +22,7 @@ https://www.sitepoint.com/event-bubbling-javascript/
 
 a snippet code, adapted from https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing
 
-```javascript
+```
 <!DOCTYPE html>
 <html>
   <head>
@@ -89,7 +89,7 @@ a snippet code, adapted from https://stackoverflow.com/questions/4616694/what-is
 </html>
 
 ```
-<img src="" alt="event" width="500px"/>
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/event.png" alt="event" width="500px"/>
 
 
 ## event loop
