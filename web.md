@@ -15,10 +15,12 @@ documentByTagName("form").addEventListener("submit", function () {
 
 ## Bubbling and capturing
 https://javascript.info/bubbling-and-capturing
+
 https://davidwalsh.name/event-delegate
 
 https://www.sitepoint.com/event-bubbling-javascript/
 
+https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing
 
 
 ## event loop
