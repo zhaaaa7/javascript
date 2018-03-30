@@ -17,6 +17,9 @@ documentByTagName("form").addEventListener("submit", function () {
 https://javascript.info/bubbling-and-capturing
 https://davidwalsh.name/event-delegate
 
+https://www.sitepoint.com/event-bubbling-javascript/
+
+
 
 ## event loop
 https://www.youtube.com/watch?v=TbCgGWe8LN8&list=PL7pEw9n3GkoW5bYOhVAtmJlak3ZK7SaDf&index=26
