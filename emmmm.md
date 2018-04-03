@@ -170,3 +170,44 @@ if (runTime <= 30 && runDistance > 3.5) {
 //Nice workout!
 
 ```
+
+13 DOM event
+```
+<div class="test1"></div>
+<script>
+    document.querySelector('.test1').addEventListener('click', function () {
+        console.log(1)
+    })
+    document.querySelector('.test1').addEventListener('click', function () {
+        console.log(2)
+    }, true)
+</script>
+请问：点击div.test1后，数字1和2的出现顺序是什么样的？
+```
+
+1,2
+
+因为 如果被监听的元素没有子元素，那么哪个监听代码写在前面，就先执行哪个！
+
+
+
+```
+<label>Click me <input type="text"></label>
+<script>
+    document.querySelector('label').addEventListener('click',function () {
+        console.log(1)
+    })
+    document.querySelector('input').addEventListener('click',function () {
+        console.log(2)
+    })
+</script>
+```
+请问：点击label后，数字1和2的出现顺序是什么样的？
+
+答案： 1,2,1
+
+因为label和input是有绑定的
+
+点击label后，浏览器自动帮你再点击一次label 
+过程就是先进行一次事件机制，这一次对内部input元素的事件监听是不管不问的，所以先打出 1
+结束后，再进行一次事件机制，这一次，按照正常事件机制流程走，所以接着打出了 2,1
