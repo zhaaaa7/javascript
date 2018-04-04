@@ -234,3 +234,17 @@ var c = fun(0).fun(1);  // undefined 0
 c.fun(2);        // 1
 c.fun(3);        // 1
 ```
+
+```javascript
+var name = 'window';
+var obj = {
+    name: 'object',
+    getName: function() {
+        return this.name;
+    }
+};
+obj.getName(); //object
+(obj.getName = obj.getName)(); //window 非严格模式下
+```
+`obj.getName();`这时getName()是在对象obj的环境中执行的，所以this指向obj。
+`(obj.getName = obj.getName)`赋值语句返回的是等号右边的值，在全局作用域中返回，所以`(obj.getName = obj.getName)();`的this指向全局。要把函数名和函数功能分割开来。
