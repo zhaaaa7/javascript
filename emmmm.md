@@ -171,7 +171,7 @@ if (runTime <= 30 && runDistance > 3.5) {
 
 ```
 
-13 DOM event
+13. DOM event
 ```
 <div class="test1"></div>
 <script>
@@ -211,3 +211,26 @@ if (runTime <= 30 && runDistance > 3.5) {
 点击label后，浏览器自动帮你再点击一次label 
 过程就是先进行一次事件机制，这一次对内部input元素的事件监听是不管不问的，所以先打出 1
 结束后，再进行一次事件机制，这一次，按照正常事件机制流程走，所以接着打出了 2,1
+
+14. closure
+```javascript
+function fun(n,o){
+  console.log(o);
+  return {
+    fun: function(m){
+      return fun(m,n);
+    }
+  };
+}
+
+var a = fun(0);  // undefined
+a.fun(1);        // 0        
+a.fun(2);        // 0
+a.fun(3);        // 0
+
+var b = fun(0).fun(1).fun(2).fun(3);  // undefined 0 1 2
+
+var c = fun(0).fun(1);  // undefined 0
+c.fun(2);        // 1
+c.fun(3);        // 1
+```
