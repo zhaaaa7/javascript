@@ -248,3 +248,18 @@ obj.getName(); //object
 ```
 `obj.getName();`这时getName()是在对象obj的环境中执行的，所以this指向obj。
 `(obj.getName = obj.getName)`赋值语句返回的是等号右边的值，在全局作用域中返回，所以`(obj.getName = obj.getName)();`的this指向全局。要把函数名和函数功能分割开来。
+
+```
+function setup(x){
+  var i = 0;
+  return function() {
+    return x[i++];
+  };
+  }
+//调用setup()，创建我们所需的next()函数
+var next = setup(['a', 'b', 'c']);
+//重复调用next()，就可以不停的获取下一个元素
+next();//输出"a"
+next();//输出"b"
+next();//输出"c"
+```
