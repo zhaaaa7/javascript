@@ -1,0 +1,136 @@
+1.Data submitted via a POST request is appended to the URL.  //T
+2. When form data is sent to a server, it is possible to access form element values via their name. // T
+3. Which of the following is true about the w3 validator?
+
+	Neither missing nor empty alt attributes will generate a w3 validation error.
+	A missing alt attribute will generate a w3 validation error.  //T
+	Both missing and empty alt attributes will generate a w3 validation error.
+	An empty alt attribute will generate a w3 validation error.
+
+4. The ________________ attribute on a form tag dictates which file should be used to handle the data in the form.
+
+	onsubmit  
+	method
+	action // T
+	return
+  
+5. Validating our code though the w3 validator is important because:
+	it guarantees that our pages will render properly across all browsers
+	it guarantees that our code is accessible
+	all of these options
+	it scans for syntactic mistakes so we can fix them // T
+	none of these options
+  
+  
+6. What is the correct HTML for referring to an external style sheet named mystyle.css stored in a subfolder called styles?
+	<link rel="styles/stylesheet" href="mystyle.css"> 
+	<style rel="stylesheet" href="styles/mystyle.css">
+	<style src="css/mystyle.css">
+	<link rel="stylesheet" href="styles/mystyle.css"> // T
+  
+  
+7. Which CSS property/properties control(s) the text size?
+	font  // T
+	text-style
+	font-size // T
+	font-height
+  
+8. The "." symbol specifies that the selector is a/an
+	class // T
+	first
+	tag
+	id
+  
+  
+9. Which of the following would be used to create  a class called button which has a width of 30px, a height of 500px and the color of the text is black?
+	#button { height: 500px; width: 30px; color: black; }
+	#button { height: 30px; width: 500px; text: black; }
+	.button { height: 500px; width: 30px; color: black; } //T
+	.button { height: 500px; width: 30px; text: black; } 
+  
+  
+10. You can access the server-side code used to generate a page by using Inspect Element.
+
+	True 
+	False. // T
+  
+11. You can access the css code used to style a page by using Inspect Element.
+	True // T
+	False
+  
+12. id, class, src, href are referred to as __________ and provide additional information for elements.
+	selectors 
+	elements
+	tags
+	attributes // T
+  
+13. Which of the following is true:
+	http://www.cnn.com is a relative reference and http://www.cnn.com/docs/document.html is an absolute reference.
+	None of the statements are true
+	http://www.cnn.com is an absolute reference and http://www.cnn.com/imgs/document.jpg is a relative reference
+	http://www.cnn.com is relative reference and imgs/jpg.css is an absolute reference
+	http://www.cnn.com is an absolute reference and imgs/jpg.css is a relative reference // T
+  
+  
+14. Which of these JavaScript statements will NOT generate an error?
+	document.getElementsByTagName(tagName).innerHTML ="hi";
+	document.getElementsByClassName(className)[0].innerHTML ="hi"; // T
+	document.getElementsById(idName)[0].innerHTML ="hi";
+  
+15. Which is the correct syntax to change the contents of the HTML element below?
+
+<p id = "two">This is a quiz. </p>
+ 
+	#two.innerHTML="New content!!";
+	document.getElementsByTagName('p').innerHTML ="New content!!";
+	document.getElementById('two').innerHTML ="New content!!";  // T
+	two.innerHTML="New content!";
+  
+  
+16. Which of the following best defines the relationship between defining a function and calling a function?
+	You can call a function without it being defined first.
+	Defining and calling a function are the same thing
+	You can define a function without calling it.  // T
+  
+17. "1"  + 45  =145
+
+"12" == 12   =true
+
+12 + 65  =77
+
+18. What is the important HTML element that improves the accessibility of your forms by allowing the user to click on the text to activate an input field.
+	placeholder
+	name
+	label // T
+	nav
+	value
+  
+19. There are four principles to accessibility.  What is the acronym for those principles?
+	PORE
+	POUR // T
+	ROPE
+	ROUP
+ 
+20. It is possible to have more than one class for an element, e.g <section class=”one two”>
+	True  // T
+	False
+  
+21. It is possible to have an id and a class as attributes for an element.
+	True  // T
+	False
+  
+22. Every valid web page can be represented as a tree. This tree is referred to as the
+	API
+	JavaScript 
+	DOM // T
+	DOCTYPE
+  
+  
+23. JavaScript uses what kind of interface to access the DOM structure?
+	HTML5
+	DOM
+	API // T
+	CSS3
+  
+
+   
