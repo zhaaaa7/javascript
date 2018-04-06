@@ -132,5 +132,11 @@
 	API // T
 	CSS3
   
+24. Syntax within HTML is the practice of giving content on the page meaning and structure by using the proper element. // False
+Semantics within HTML is the practice of giving content on the page meaning and structure by using the proper element.  // True
 
+25. A header element is used to identify the top of a page, article, section, or other segment of a page. 
+ A footer element identifies the closing or end of a page, article, section, or other segment of a page.
+ The a element creates a hyperlink from one page to another. 
    
+26. We should choose the heading (<h1>, <h2>, <h3>, etc.) element based on the order that is relevant to the content of a page
