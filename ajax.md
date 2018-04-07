@@ -261,3 +261,37 @@ $.getJSON(urlToExpand, response => {
   	response.longUrl + '</p>');
 	});
 ```
+
+Promise
+A Promise is an object that acts as a **placeholder** for data that has been requested but not yet received. Eventually, a Promise will **resolve to the value requested or to a reason why the request failed**.
+
+If the requested information or any error except a network error is received, the Promise is **fulfilled** and calls a function to handle the response. If there is a **network error**, the Promise is **rejected** and will call a function to 
+handle the error.
+
+1. fetch()
+The fetch() function
+* creates a request object using the information provided to it
+* sends that request object to the URL provided
+* returns a Promise that ultimately resolves to a response object, which contains a lot of information, including (if everything went well), the information requested.
+
+2. We chain a .then() method to the closing parentheses of the fetch() function. This is **where the asynchronicity of JavaScript comes in** - the fetch() function makes the request and returns the response, and **we don't call the function that will handle the response until it has been received**.
+
+```javascript
+//.then() takes two callback functions as parameters, the first of which handles success and the second of which handles failure.
+fetch('https://api-to-call.com/endpoint').then(response=>{ 
+
+  //response is the resolution of the Promise returned by the fetch() function.
+  if(response.ok){
+    return response.json();
+  }
+  throw new Error('Request failed!'); 
+  //This error will only be thrown if response.json() is not returned because the response was not ok.
+},
+networkError=>console.log(networkError.message) 
+//This error will only be thrown if response.json() is not returned because the response was not ok.
+).then(jsonResponse=>{
+  ....deal with jsonResponse 
+  //This is an object that contains the information we requested from the API and we can use that information on our website.
+});
+//Because the .json() method takes some time to implement, it returns a Promise that will eventually resolve with the desired JSON object. We will then chain another .then() method call to use the converted response object. We return response.json().
+```
