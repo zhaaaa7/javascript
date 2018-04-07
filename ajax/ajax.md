@@ -521,5 +521,38 @@ function shorten() {
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/async.png" alt="async">
 
 ### await
-<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/async.png" alt="async">
+The await expression causes async function execution to pause until  a Promise is fulfilled, that is resolved or rejected, and to resume execution of the async function after fulfillment. When resumed, the value of the await expression is that of the fulfilled Promise.
+
+If the Promise is rejected, the await expression throws the rejected value.
+
+If the value of the expression following the await operator is not a Promise, it's converted to a resolved Promise.
+
+**If you log the value of fullfiled / rejected Promise: Response object
+
+```javascript
+async function shortenUrl(){
+  const urlToShorten = $inputField.val();
+  const urlWithKey = url + '?key=' + apiKey;
+  try{
+    
+    let response= await fetch(urlWithKey,{
+      method:'POST',
+      body:JSON.stringify({longUrl: urlToShorten}),
+      headers: {"Content-type": "application/json"}
+    });
+    console.log("[reponse]",response);
+    if(response.ok){
+       let jsonResponse= await response.json();
+      $responseField.append('<p> Your shortened URL is </p><p>' + jsonResponse.id + '</p>');
+return jsonResponse;
+       }
+    throw new Error('Request failed!');
+  }catch(error){
+    console.log("[error]",error);
+  }
+}
+```
+
+
+<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/await.png" alt="async">
 
