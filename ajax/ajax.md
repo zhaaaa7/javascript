@@ -274,7 +274,7 @@ handle the error.
 The fetch() function
 * creates a request object using the information provided to it
 * sends that request object to the URL provided
-* returns a Promise that ultimately resolves to a response object, which contains a lot of information, including (if everything went well), the information requested.
+* returns a Promise that ultimately resolves to a **response object**, which contains a lot of information, including (if everything went well), the information requested.
 
 2. We chain a .then() method to the closing parentheses of the fetch() function. This is **where the asynchronicity of JavaScript comes in** - the fetch() function makes the request and returns the response, and **we don't call the function that will handle the response until it has been received**.
 
@@ -305,18 +305,22 @@ networkError=>console.log(networkError.message)
 //We will then chain another .then() method call to use the converted response object: response.json().
 ```
 
-2. what's a promise
+2. what's a Response object
 ```javascript
 function expandUrl() {
   const urlToExpand=url + '?shortUrl=' + $inputField.val() + '&key=' + apiKey;
   fetch(urlToExpand).then(response=>{
     if(response.ok){
+      console.log(response);
       console.log(response.json()); // response.json() returns a promise
     }    
   });
 };
 ```
+<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/ajax-promise.png" alt="ajax-promise">
 
+ what's a promise
+ 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/ajax-promise.png" alt="ajax-promise">
 
 
