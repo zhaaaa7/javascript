@@ -389,4 +389,4 @@ function shortenUrl() {
   });
 };
 ```
-<img src="" alt="fetch-POST">
+<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/fetch-POST.png" alt="fetch-POST">
