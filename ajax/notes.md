@@ -53,7 +53,7 @@ const $responseField = $('#responseField');
 
 // AJAX functions
 function expandUrl() {
-	const urlToExpand=url+'?key='+apiKey+'&shortUrl='+$inputField.val();
+  const urlToExpand=url+'?key='+apiKey+'&shortUrl='+$inputField.val();
   const xhr=new XMLHttpRequest();
   xhr.responseType='json';
   xhr.onreadystatechange=function(){
@@ -77,35 +77,8 @@ The object containing this data is passed to the JSON.stringify() method, which 
 
 7. 'POST'
 ```javascript
-// Include data for accessing Google APIs
-
-const apiKey = 'AIzaSyAv4hU-zRjuCQg3j6TbDLLGuGTMa6Fza3o';
-const url="https://www.googleapis.com/urlshortener/v1/url";
-// Some page elements
-
-const $inputField = $('#input');
-const $expandButton = $('#expand');
-const $shortenButton = $('#shorten');
-const $responseField = $('#responseField');
-
-// AJAX functions
-
-function expandUrl() {
-	const urlToExpand=url+'?key='+apiKey+'&shortUrl='+$inputField.val();
-  const xhr=new XMLHttpRequest();
-  xhr.responseType='json';
-  xhr.onreadystatechange=function(){
-    if(xhr.readyState===XMLHttpRequest.DONE){
-      console.log(xhr.response);
-      $responseField.append('<p>Your expanded url is: </p><p>' + xhr.response.longUrl + '</p>');
-     }
-  };
-  xhr.open('GET',urlToExpand);
-  xhr.send();
-}
-
 function shortenUrl() {
-	const urlWithKey=url+'?key='+apiKey;
+const urlWithKey=url+'?key='+apiKey;
   const urlToShorten=$inputField.val();
   const data=JSON.stringify({longUrl:urlToShorten});
   const xhr=new XMLHttpRequest();
@@ -120,23 +93,6 @@ function shortenUrl() {
   xhr.setRequestHeader('Content-Type','application/json');
   xhr.send(data);
 }
-
-function expand() {
-  $responseField.empty();
-  expandUrl();
-  return false;
-}
-
-function shorten() {
-  $responseField.empty();
-  shortenUrl();
-  return false;
-}
-
-// Call functions on submit
-
-$expandButton.click(expand);
-$shortenButton.click(shorten);
 
 ```
 
@@ -180,9 +136,7 @@ $.ajax({
 3. 'GET'
 ```javascript
 function expandUrl() {
-  const urlToExpand = url + 
-        '?key=' + apiKey +
-        '&shortUrl=' + $inputField.val();
+  const urlToExpand = url + '?key=' + apiKey +'&shortUrl=' + $inputField.val();
   $.ajax({
     url:urlToExpand,
     type:'GET',
@@ -238,6 +192,7 @@ function expandUrl() {
 ```javascript
 $.post('https://api-to-call.com/endpoint', {data}, response => {...}, 'json');
 ```
+Because there is a `contentType` configuration, we use a structure that more like $.ajax().
 
 ```javascript
 $.post({
@@ -257,9 +212,9 @@ $.post({
 7. $.getJSON()
 ```javascript
 $.getJSON(urlToExpand, response => {
-  	$responseField.append('<p>Your expanded url is: </p><p>' +
-  	response.longUrl + '</p>');
-	});
+  $responseField.append('<p>Your expanded url is: </p><p>' +
+  response.longUrl + '</p>');
+});
 ```
 
 # Promise
@@ -319,7 +274,7 @@ function expandUrl() {
 ```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/fetch-response.png" alt="Reponse object">
 
- what's response.json() -- a promise
+* what's response.json() -- a promise
  
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/ajax-promise.png" alt="ajax-promise">
 
