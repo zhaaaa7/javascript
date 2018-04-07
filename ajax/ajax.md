@@ -299,3 +299,17 @@ networkError=>console.log(networkError.message)
 //it returns a Promise that will eventually resolve with the desired JSON object. 
 //We will then chain another .then() method call to use the converted response object: response.json().
 ```
+
+3. what's a promise
+```javascript
+function expandUrl() {
+  const urlToExpand=url + '?shortUrl=' + $inputField.val() + '&key=' + apiKey;
+  fetch(urlToExpand).then(response=>{
+    if(response.ok){
+      console.log(response.json()); // response.json() returns a promise
+    }    
+  });
+};
+```
+
+<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/ajax-promise.png" alt="ajax-promise">
