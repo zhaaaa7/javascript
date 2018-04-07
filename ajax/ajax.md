@@ -319,6 +319,7 @@ function expandUrl() {
 
 
 3. full fetch()
+
 response=>(): to handle the Promise if it resolves
 
 networkError=>(): to handle network errors if the Promise is rejected
@@ -353,6 +354,7 @@ fetch(url).then(response => {
 1. On the first line of the code, the fetch() function is called. We pass it two arguments - the **URL of the API** to call and a **settings object**. This settings object includes the method, POST, and an additional property - body. The value of body is the data that we need to send to the API passed to the JSON.stringify() method as an argument. Depending on the API, you may include other information in the settings object as well. You can find a list of accepted settings https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch. https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
 
 2. boilerplate
+
 ```javascript
 fetch('https://api-to-call.com/endpoint',
   {
@@ -369,3 +371,22 @@ fetch('https://api-to-call.com/endpoint',
 3. full Post
 
 we're introducing new information into Google's database rather than retrieving existing information.
+
+```javascript
+function shortenUrl() {
+  const urlWithKey = url + '?key=' + apiKey;
+  const urlToShorten = $inputField.val();
+  fetch(urlWithKey, {
+    method: 'POST', 
+    headers: {
+      "Content-type": "application/json"
+    }, 
+    body: JSON.stringify({longUrl: urlToShorten})
+  }).then(response=>{
+    if(response.ok){
+       console.log(response.json());
+     }
+  });
+};
+```
+<img src="" alt="fetch-POST">
