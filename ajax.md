@@ -276,6 +276,8 @@ The fetch() function
 
 2. We chain a .then() method to the closing parentheses of the fetch() function. This is **where the asynchronicity of JavaScript comes in** - the fetch() function makes the request and returns the response, and **we don't call the function that will handle the response until it has been received**.
 
+boilerplate
+
 ```javascript
 //.then() takes two callback functions as parameters, the first of which handles success and the second of which handles failure.
 fetch('https://api-to-call.com/endpoint').then(response=>{ 
@@ -293,5 +295,7 @@ networkError=>console.log(networkError.message)
   ....deal with jsonResponse 
   //This is an object that contains the information we requested from the API and we can use that information on our website.
 });
-//Because the .json() method takes some time to implement, it returns a Promise that will eventually resolve with the desired JSON object. We will then chain another .then() method call to use the converted response object. We return response.json().
+//Because the .json() method takes some time to implement, 
+//it returns a Promise that will eventually resolve with the desired JSON object. 
+//We will then chain another .then() method call to use the converted response object: response.json().
 ```
