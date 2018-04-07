@@ -5,7 +5,7 @@
  5. GET requests receive information from other sites by sending a query. POST requests can change information on another site and will receive information or data in response.
  
  
- ### vanilla javascript
+ ## vanilla javascript
  1. boilerplate
  ```javascript
  // GET
@@ -140,7 +140,7 @@ $shortenButton.click(shorten);
 
 ```
 
-### jQuery $.ajax
+## jQuery $.ajax
 
 1. $.ajax() is a **method** provided by the jQuery library specifically to handle AJAX requests. All parts of the request are included in a single **object** that is passed to the method as an **argument**.
 
@@ -262,7 +262,7 @@ $.getJSON(urlToExpand, response => {
 	});
 ```
 
-Promise
+## Promise
 A Promise is an object that acts as a **placeholder** for data that has been requested but not yet received. Eventually, a Promise will **resolve to the value requested or to a reason why the request failed**.
 
 If the requested information or any error except a network error is received, the Promise is **fulfilled** and calls a function to handle the response. If there is a **network error**, the Promise is **rejected** and will call a function to 
@@ -276,7 +276,10 @@ The fetch() function
 
 2. We chain a .then() method to the closing parentheses of the fetch() function. This is **where the asynchronicity of JavaScript comes in** - the fetch() function makes the request and returns the response, and **we don't call the function that will handle the response until it has been received**.
 
-boilerplate
+
+
+### fetch get 
+1. boilerplate
 
 ```javascript
 //.then() takes two callback functions as parameters, the first of which handles success and the second of which handles failure.
@@ -300,7 +303,7 @@ networkError=>console.log(networkError.message)
 //We will then chain another .then() method call to use the converted response object: response.json().
 ```
 
-3. what's a promise
+2. what's a promise
 ```javascript
 function expandUrl() {
   const urlToExpand=url + '?shortUrl=' + $inputField.val() + '&key=' + apiKey;
@@ -315,7 +318,7 @@ function expandUrl() {
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/ajax-promise.png" alt="ajax-promise">
 
 
-4. full fetch()
+3. full fetch()
 response=>(): to handle the Promise if it resolves
 
 networkError=>(): to handle network errors if the Promise is rejected
@@ -335,7 +338,7 @@ const urlToExpand=url + '?shortUrl=' + $inputField.val() + '&key=' + apiKey;
 ```
 we want to be able to access the information **returned with the Promise**. This is why we're going to chain an additional .then() method.
 
-what's a jsonResponse
+4. what's a jsonResponse
 ```javascript
 fetch(url).then(response => {
   // Code 
@@ -346,3 +349,20 @@ fetch(url).then(response => {
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/jsonResponse.png" alt="ajax-promise">
 
+### fetch post 
+1. On the first line of the code, the fetch() function is called. We pass it two arguments - the **URL of the API** to call and a **settings object**. This settings object includes the method, POST, and an additional property - body. The value of body is the data that we need to send to the API passed to the JSON.stringify() method as an argument. Depending on the API, you may include other information in the settings object as well. You can find a list of accepted settings https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch. https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+
+2. boilerplate
+```javascript
+fetch('https://api-to-call.com/endpoint',
+  {
+    method:'POST',
+    body:JSON.stringify({id: '200'})
+}).then(response=>{
+  if(response.ok){
+    return response.json();
+  }
+  throw new Error('Request failed!');
+},networkError=>console.log(networkError.message))
+.then(jsonResponse=>jsonResponse);
+```
