@@ -418,8 +418,9 @@ return jsonResponse;
   });
 };
 ```
+
 ## async / await
-1. The async keyword creates a function that will **return a Promise**.
+1. The async keyword creates a function that will **return a Promise**. You use it as regular function.
 2. We use a **try/catch** statement to separate the code that will handle success from the code that will handle errors.
 3. We use the **await** keyword to tell the program to continue moving through the message queue while the Promise resolves. 
 
@@ -504,3 +505,15 @@ return jsonResponse;
   }
 }
 ```
+### async
+You call the shortenUrl() as usual, however, you can chain a then() method to get the returned value.
+```javascript
+function shorten() {
+  $responseField.empty();
+  console.log(shortenUrl());
+  shortenUrl().then(res=>console.log('lala',res));
+  return false;
+};
+```
+
+<img src="" alt="async">
