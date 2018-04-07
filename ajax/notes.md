@@ -6,6 +6,7 @@
  
  
  ## vanilla javascript
+ ### 'GET'
  1. boilerplate
  ```javascript
  // GET
@@ -22,27 +23,13 @@ xhr.send();
 // we call the .send() method on our xhr object and pass it no arguments. This is because data sent in GET requests is sent as part of the URL.
 
 
-// POST
-const xhr = new XMLHttpRequest();
-const url = 'http://api-to-call.com/endpoint';
-const data = JSON.stringify({
-  id: '200'
-});
-xhr.responseType = 'json';
-xhr.onreadystatechange = function() {
-  if (xhr.readyState === XMLHttpRequest.DONE) {
-    console.log(xhr.response);
-  }
-};
-xhr.open('POST', url);
-xhr.send(data);
 ```
 2. it required the use of an XMLHttpRequest object, a JavaScript object that is used to retrieve data. 
 `onreadystatechange` is an event handler that is called whenever the value of the readyState property changes. 
 `.open()` creates and structures the request. It tells the request what method to use, GET or POST, and what URL to query.
 Calling the `.send()` method sends the xhr object with its relevant information to the API URL.
 
-3. 'GET'
+3. full 'GET'
 ```javascript
 const apiKey = 'AIzaSyAv4hU-zRjuCQg3j6TbDLLGuGTMa6Fza3o';
 const url="https://www.googleapis.com/urlshortener/v1/url";
@@ -66,16 +53,32 @@ function expandUrl() {
   xhr.send();
 }
 ```
+### 'POST'
+1. boilerplate
+ ```javascript
+// POST
+const xhr = new XMLHttpRequest();
+const url = 'http://api-to-call.com/endpoint';
+const data = JSON.stringify({
+  id: '200'
+});
+xhr.responseType = 'json';
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+    console.log(xhr.response);
+  }
+};
+xhr.open('POST', url);
+xhr.send(data);
+```
+2. Recall that in a GET request, the query information (what you're asking the server to return) is generally sent as part of the URL whereas in a POST request, the information is sent to the server as part of the body of the request. This information is created and saved in the data constant and sent to the API as an argument passed to the **.send()** method.
 
-4. Recall that in a GET request, the query information (what you're asking the server to return) is generally sent as part of the URL whereas in a POST request, the information is sent to the server as part of the body of the request. This information is created and saved in the data constant and sent to the API as an argument passed to the .send() method.
+3. The first two lines of this request are identical to the first two lines of the GET request. The third line is new. The data that we want to send to our API must be formatted properly. **The particular properties and values sent will depend on the API you're using and the information you wish to send and retrieve.** The object containing this data is passed to the JSON.stringify() method, which will **format the object as a string**. This is saved to a const called data.
 
-5. The first two lines of this request are identical to the first two lines of the GET request. The third line is new. The data that we want to send to our API must be formatted properly. **The particular properties and values sent will depend on the API you're using and the information you wish to send and retrieve.**
 
-The object containing this data is passed to the JSON.stringify() method, which will **format the object as a string**. This is saved to a const called data.
+4. So far, we've only been writing GET requests which request information from another site. Specifically, we've been entering shortened URLs and retrieving the original. If we want to shorten a URL, we have to use a POST request. This is because we'll be asking Google to store this URL and its shortened version — we're introducing new information into Google's database rather than retrieving existing information.
 
-6. So far, we've only been writing GET requests which request information from another site. Specifically, we've been entering shortened URLs and retrieving the original. If we want to shorten a URL, we have to use a POST request. This is because we'll be asking Google to store this URL and its shortened version — we're introducing new information into Google's database rather than retrieving existing information.
-
-7. 'POST'
+6. full 'POST'
 ```javascript
 function shortenUrl() {
 const urlWithKey=url+'?key='+apiKey;
