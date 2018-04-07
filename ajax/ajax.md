@@ -430,7 +430,7 @@ return jsonResponse;
 async function getData(){
   try {
     let response= await fetch('https://api-to-call.com/endpoint');
-    //save the returned Promise
+    //save the value the Promise reloved to : data(fullfilled) or error(rejected);
     
     //checks if the ok property of the response object evaluates to a truthy value.
     if(response.ok){
@@ -519,3 +519,7 @@ function shorten() {
 ```
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/async.png" alt="async">
+
+### await
+<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/async.png" alt="async">
+
