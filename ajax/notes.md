@@ -357,7 +357,9 @@ fetch(url).then(response => {
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/jsonResponse.png" alt="ajax-promise">
 
 ### fetch post 
-1. On the first line of the code, the fetch() function is called. We pass it two arguments - the **URL of the API** to call and a **settings object**. This settings object includes the method, POST, and an additional property - body. The value of body is the data that we need to send to the API passed to the JSON.stringify() method as an argument. Depending on the API, you may include other information in the settings object as well. You can find a list of accepted settings https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch. https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+1. On the first line of the code, the fetch() function is called. We pass it two arguments - the **URL of the API** to call and a **settings object**. 
+2. This settings object includes the method, POST, and an additional property - body. The value of body is the data that we need to send to the API passed to the JSON.stringify() method as an argument.
+3. Depending on the API, you may include other information in the settings object as well. You can find a list of accepted settings https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch.
 
 2. boilerplate
 
