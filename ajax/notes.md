@@ -34,10 +34,6 @@ Calling the `.send()` method sends the xhr object with its relevant information 
 const apiKey = 'AIzaSyAv4hU-zRjuCQg3j6TbDLLGuGTMa6Fza3o';
 const url="https://www.googleapis.com/urlshortener/v1/url";
 
-// Some page elements
-const $inputField = $('#input');
-const $responseField = $('#responseField');
-
 // AJAX functions
 function expandUrl() {
   const urlToExpand=url+'?key='+apiKey+'&shortUrl='+$inputField.val();
