@@ -262,7 +262,9 @@ $.getJSON(urlToExpand, response => {
 	});
 ```
 
-## Promise
+# Promise
+
+## fetch
 A Promise is an object that acts as a **placeholder** for data that has been requested but not yet received. Eventually, a Promise will **resolve to the value requested or to a reason why the request failed**.
 
 If the requested information or any error except a network error is received, the Promise is **fulfilled** and calls a function to handle the response. If there is a **network error**, the Promise is **rejected** and will call a function to 
@@ -390,3 +392,49 @@ function shortenUrl() {
 };
 ```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/fetch-POST.png" alt="fetch-POST">
+
+```javascript
+function shortenUrl() {
+  const urlWithKey = url + '?key=' + apiKey;
+  const urlToShorten = $inputField.val();
+  fetch(urlWithKey, {
+    method: 'POST', 
+    headers: {
+      "Content-type": "application/json"
+    }, 
+    body: JSON.stringify({longUrl: urlToShorten})
+  }).then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Request failed!');
+  }, networkError => console.log(networkError.message)).then(jsonResponse=>{
+    $responseField.append('<p> Your shortened URL is </p><p>' + jsonResponse.id + '</p>');
+return jsonResponse;
+  });
+};
+```
+## async / await
+1. The async keyword creates a function that will **return a Promise**.
+2. We use a **try/catch** statement to separate the code that will handle success from the code that will handle errors.
+3. We use the **await** keyword to tell the program to continue moving through the message queue while the Promise resolves. 
+
+4. boilerplate
+```javascript
+async function getData(){
+  try {
+    let response= await fetch('https://api-to-call.com/endpoint');
+    //save the returned Promise
+    
+    //checks if the ok property of the response object evaluates to a truthy value.
+    if(response.ok){
+       let jsonResponse= await response.json();
+       //await the resolution of calling the .json() method on the response object.
+       return jsonResponse;
+     }
+    throw new Error('Request failed!');
+  }catch(error){
+    console.log(error);
+  }
+}
+```
