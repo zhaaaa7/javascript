@@ -313,3 +313,27 @@ function expandUrl() {
 ```
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/ajax-promise.png" alt="ajax-promise">
+
+
+4. full fetch()
+response=>(): to handle the Promise if it resolves
+
+networkError=>(): to handle network errors if the Promise is rejected
+
+```javascript
+function expandUrl() {
+const urlToExpand=url + '?shortUrl=' + $inputField.val() + '&key=' + apiKey;
+  fetch(urlToExpand).then(response=>{
+    if(response.ok){
+      return response.json();
+    }
+    throw new Error('Request failed!');
+  },networkError=>{
+    console.log(networkError.message);
+  });
+};
+```
+we want to be able to access the information **returned with the Promise**. This is why we're going to chain an additional .then() method.
+
+<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/ajax-promise.png" alt="ajax-promise">
+
