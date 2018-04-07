@@ -335,5 +335,14 @@ const urlToExpand=url + '?shortUrl=' + $inputField.val() + '&key=' + apiKey;
 ```
 we want to be able to access the information **returned with the Promise**. This is why we're going to chain an additional .then() method.
 
-<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/ajax-promise.png" alt="ajax-promise">
+what's a jsonResponse
+```javascript
+fetch(url).then(response => {
+  // Code 
+}, networkError => {
+  // Code
+}).then( jsonResponse => console.log(jsonResponse) );
+```
+
+<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/jsonResponse.png" alt="ajax-promise">
 
