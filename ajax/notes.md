@@ -67,7 +67,7 @@ xhr.onreadystatechange = function() {
 xhr.open('POST', url);
 xhr.send(data);
 ```
-2. Recall that in a GET request, the query information (what you're asking the server to return) is generally sent as part of the URL whereas in a POST request, the information is sent to the server as part of the body of the request. This information is created and saved in the data constant and sent to the API as an argument passed to the **.send()** method.
+2. Recall that in a GET request, the query information (what you're asking the server to return) is generally sent as part of the **URL**, whereas in a POST request, the information is sent to the server as part of the **body of the request**. This information is created and saved in the data constant and sent to the API as an argument passed to the **.send()** method.
 
 3. The first two lines of this request are identical to the first two lines of the GET request. The third line is new. The data that we want to send to our API must be formatted properly. **The particular properties and values sent will depend on the API you're using and the information you wish to send and retrieve.** The object containing this data is passed to the JSON.stringify() method, which will **format the object as a string**. This is saved to a const called data.
 
