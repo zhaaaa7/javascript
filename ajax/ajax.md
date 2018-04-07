@@ -453,8 +453,9 @@ async function expandUrl(){
     if(response.ok){
        let jsonResponse=await response.json();
        $responseField.append('<p> Your expanded URL is </p><p>' + jsonResponse.longUrl+ '</p>');
-return jsonResponse;
+	return jsonResponse;
     }
+    throw new Error('Request failed!');
   }catch(error){
     console.log(error);
   }
@@ -497,9 +498,10 @@ async function shortenUrl(){
     
     if(response.ok){
        let jsonResponse= await response.json();
-      $responseField.append('<p> Your shortened URL is </p><p>' + jsonResponse.id + '</p>');
-return jsonResponse;
-       }
+       $responseField.append('<p> Your shortened URL is </p><p>' + jsonResponse.id + '</p>');
+       return jsonResponse;
+     }
+     throw new Error('Request failed!');
   }catch(error){
     console.log(error);
   }
