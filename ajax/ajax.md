@@ -527,9 +527,10 @@ If the Promise is rejected, the await expression throws the rejected value.
 
 If the value of the expression following the await operator is not a Promise, it's converted to a resolved Promise.
 
-**If you log the value of fullfiled / rejected Promise: Response object
+**If you log the value of fullfiled / rejected Promise: Response object**
 
 ```javascript
+// the error is caused by the wrong url key
 async function shortenUrl(){
   const urlToShorten = $inputField.val();
   const urlWithKey = url + '?key=' + apiKey;
@@ -540,7 +541,9 @@ async function shortenUrl(){
       body:JSON.stringify({longUrl: urlToShorten}),
       headers: {"Content-type": "application/json"}
     });
+    
     console.log("[reponse]",response);
+    
     if(response.ok){
        let jsonResponse= await response.json();
       $responseField.append('<p> Your shortened URL is </p><p>' + jsonResponse.id + '</p>');
