@@ -510,10 +510,10 @@ You call the shortenUrl() as usual, however, you can chain a then() method to ge
 ```javascript
 function shorten() {
   $responseField.empty();
-  console.log(shortenUrl());
-  shortenUrl().then(res=>console.log('lala',res));
+  console.log(shortenUrl());  // a promise
+  shortenUrl().then(res=>console.log('lala',res)); // the value the promise resloved to
   return false;
 };
 ```
 
-<img src="" alt="async">
+<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/async.png" alt="async">
