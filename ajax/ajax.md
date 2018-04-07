@@ -272,7 +272,7 @@ handle the error.
 
 1. fetch()
 The fetch() function
-* creates a request object using the information provided to it
+* creates a **request object** using the information provided to it
 * sends that request object to the URL provided
 * returns a Promise that ultimately resolves to a **response object**, which contains a lot of information, including (if everything went well), the information requested.
 
@@ -317,7 +317,7 @@ function expandUrl() {
   });
 };
 ```
-<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/ajax-promise.png" alt="ajax-promise">
+<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/fetch-response.png" alt="Reponse object">
 
  what's a promise
  
@@ -423,7 +423,8 @@ return jsonResponse;
 2. We use a **try/catch** statement to separate the code that will handle success from the code that will handle errors.
 3. We use the **await** keyword to tell the program to continue moving through the message queue while the Promise resolves. 
 
-4. boilerplate
+### 'GET'
+1. boilerplate
 ```javascript
 async function getData(){
   try {
@@ -437,6 +438,67 @@ async function getData(){
        return jsonResponse;
      }
     throw new Error('Request failed!');
+  }catch(error){
+    console.log(error);
+  }
+}
+```
+2. full 'GET'
+```javascript
+async function expandUrl(){
+  const urlToExpand = url + '?shortUrl=' + $inputField.val() + '&key=' + apiKey;
+  try{
+    let response=await fetch(urlToExpand);
+    if(response.ok){
+       let jsonResponse=await response.json();
+       $responseField.append('<p> Your expanded URL is </p><p>' + jsonResponse.longUrl+ '</p>');
+return jsonResponse;
+    }
+  }catch(error){
+    console.log(error);
+  }
+}
+```
+
+### POST
+1. boilerplate
+```javascript
+async function getData(){
+  try {
+    let response= await fetch('https://api-to-call.com/endpoint',{
+      method:'POST',
+      body: JSON.stringify({id:200}),
+    });
+    
+    if(response.ok){
+       let jsonResponse= await response.json();
+      return jsonResponse;
+     }  
+    throw new Error('Request failed!');
+    
+  }catch(error){
+    console.log(error);
+  }
+}
+```
+
+2. full 'POST'
+```javascript
+async function shortenUrl(){
+  const urlToShorten = $inputField.val();
+  const urlWithKey = url + '?key=' + apiKey;
+  try{
+    let response= await fetch(urlWithKey,{
+      method:'POST',
+      body:JSON.stringify({longUrl: urlToShorten}),
+      headers: {"Content-type": "application/json"}
+    });
+    
+    if(response.ok){
+       let jsonResponse= await response.json();
+      $responseField.append('<p> Your shortened URL is </p><p>' + jsonResponse.id + '</p>');
+return jsonResponse;
+       }
   }catch(error){
     console.log(error);
   }
