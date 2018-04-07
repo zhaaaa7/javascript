@@ -366,3 +366,6 @@ fetch('https://api-to-call.com/endpoint',
 },networkError=>console.log(networkError.message))
 .then(jsonResponse=>jsonResponse);
 ```
+3. full Post
+
+we're introducing new information into Google's database rather than retrieving existing information.
