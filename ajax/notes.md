@@ -1,7 +1,9 @@
 ## DEMO: 
 https://zhaaaa7.github.io/code-academy/ajax/
+test: https://goo.gl/cjyLB1 to expand
+      https://www.google.com to shorten.
 
-
+### non-blocking javascript
  1. There are numerous reasons why JavaScript is the preferred language of the web. Amongst the most important reasons are JavaScript's non-blocking properties, or that it is an asynchronous language.
  2. Most websites have to make multiple requests to work fully. The way JavaScript handles multiple requests is called its event loop. 
  3. In the case of requesting information from another site, we separate the request (asking another website for information) from what we want to do with the response (the information the website returns to us). We can do this using a system of technologies called Asynchronous JavaScript and XML, or AJAX.
