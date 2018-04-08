@@ -274,7 +274,7 @@ function expandUrl() {
 ```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/fetch-response.png" alt="Reponse object">
 
-* what's response.json() -- a promise
+* what's response.json() -- a promise that reslove to a javascript object.
  
 <img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/ajax-promise.png" alt="ajax-promise">
 
