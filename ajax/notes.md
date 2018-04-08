@@ -1,9 +1,11 @@
 ## DEMO: 
 https://zhaaaa7.github.io/code-academy/ajax/
 
-test: https://goo.gl/cjyLB1 to expand
+test: 
 
-      https://www.google.com to shorten.
+https://goo.gl/cjyLB1 to expand
+
+https://www.google.com to shorten.
 
 ### non-blocking javascript
  1. There are numerous reasons why JavaScript is the preferred language of the web. Amongst the most important reasons are JavaScript's non-blocking properties, or that it is an asynchronous language.
