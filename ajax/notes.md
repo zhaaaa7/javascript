@@ -225,6 +225,7 @@ If the requested information or any error except a network error is received, th
 handle the error.
 
 1. fetch()
+
 The fetch() function
 * creates a **request object** using the information provided to it
 * sends that request object to the URL provided
