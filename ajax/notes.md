@@ -475,7 +475,7 @@ function shorten() {
 };
 ```
 
-<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/async.png" alt="async">
+<img src="https://github.com/zhaaaa7/javascript/blob/master/ajax/async1.png" alt="async">
 
 ### await
 The await expression causes async function execution to pause until  a Promise is fulfilled, that is resolved or rejected, and to resume execution of the async function after fulfillment. When resumed, the value of the await expression is that of the fulfilled Promise.
