@@ -484,7 +484,7 @@ If the Promise is rejected, the await expression throws the rejected value.
 
 If the value of the expression following the await operator is not a Promise, it's converted to a resolved Promise.
 
-**If you log the value of fullfiled / rejected Promise: Response object**
+**If you log the value of fullfiled / rejected Promise: you will see the Response object, the resolved Promise value fetch() returns.**
 
 ```javascript
 // the error is caused by the wrong url key
