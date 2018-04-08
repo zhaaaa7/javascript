@@ -300,7 +300,7 @@ const urlToExpand=url + '?shortUrl=' + $inputField.val() + '&key=' + apiKey;
 ```
 we want to be able to access the information **returned with the Promise**. This is why we're going to chain an additional .then() method.
 
-4. what's a jsonResponse
+4. what's a jsonResponse -- the javascript object response.json() resolves to
 ```javascript
 fetch(url).then(response => {
   // Code 
