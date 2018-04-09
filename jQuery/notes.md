@@ -142,3 +142,89 @@ $('.menu-button').on('click', () => {
 ```
 
 ## Mouse Events
+1. click
+```javascript
+$('.login-button').on('click', () => {
+    $('.login-form').show();
+  })
+```
+2. mouseenter
+The mouseenter event triggers a callback function when a user enters the area that a targeted element occupies.
+```javascript
+$('.menu-button').on('mouseenter',()=>{
+    $('.nav-menu').show();
+  })
+```
+
+3. mouseleave
+```javascript
+$('.nav-menu').on('mouseleave',()=>{
+    $('.nav-menu').hide();
+  })
+```
+
+4. Chaining Events
+jQuery also allows us to chain multiple methods. Instead of **re-declaring the HTML element** you're selecting, you can append one event to another. 
+```javaacript
+ $('.product-photo').on('mouseenter',()=>{
+    $('.product-photo').addClass('photo-active');
+  }).on('mouseleave',()=>{
+    $('.product-photo').removeClass('photo-active');
+  })
+```
+
+5. currentTarget
+The currentTarget attribute refers to only the .product-photo element that the learner has moused over.
+
+```javascript
+ $('.product-photo').on('mouseenter', (event) => {
+    $(event.currentTarget).addClass('photo-active')
+  }).on('mouseleave', event => {
+    $(event.currentTarget).removeClass('photo-active')
+  })
+```
+
+## style method
+1. .css()
+To modify CSS properties of an element, jQuery provides a method called .css(). This method accepts an argument for a CSS property name, and a corresponding CSS value.
+```javascript
+$('.example-class').css('color', '#FFFFFF');
+```
+2. To set multiple properties at once, you can pass the whole object into the .css() method as a single element.
+```javascript
+$('.example-class').css({
+  color: '#FFFFFF',
+  backgroundColor: '#000000',
+  fontSize: '20px'
+})
+```
+When referencing CSS properties in an **object, the property names are camelCased** — they are modified to have no quotes or spaces, and to start each new word with a capital letter. 
+
+2. .animate()
+The jQuery .animate() method enhances the visual possibilities by making CSS value changes over a period of time.
+
+The first argument passed to .animate() is a JavaScript object of CSS property/value pairs that represent an element's end state.
+
+The second parameter of the .animate() method determines how long the animation takes to complete. It is optional; if you do not provide an argument, the default value is 400 milliseconds. You can use a number (in milliseconds) or the strings 'fast' or 'slow'. 
+```javascript
+$('.example-class').animate({
+  height: '100px',
+  width: '100px',
+  borderWidth: '10px'
+}, 500);
+```
+
+3. .addClass()
+A JavaScript file can quickly get overloaded with styles if you regularly use the `css` method to modify element styles. It's a best practice to group all of the style code in a CSS file, and use jQuery to add and remove the classes from elements — this approach aligns to a design principle called separation of concerns.
+
+**Separation of concerns** is a design principle stating that code should be separated based on its purpose in a program. In web development, that generally means the structure of a page is defined in an HTML document, styles are stored in a CSS file, and code that defines dynamic behavior is stored in a JavaScript file.
+
+To keep CSS properties in a CSS file, jQuery can add a CSS class to an element with a method named addClass. It's syntax looks like this:
+```javascript
+$('.example-class').addClass('active');
+```
+In the example above:
+.addClass() is called on the jquery `.example-class` selector.
+.addClass() adds the `'active'` class to all .example-class elements.
+Notice that the argument passed to addClass **does not have a period preceding it. This is because it expects a class**, and therefore only needs the name of the class.
+
