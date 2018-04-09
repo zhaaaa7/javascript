@@ -1,3 +1,4 @@
+## set up
 1. 
 ```javascript
 const login = document.getElementById('login');
@@ -20,6 +21,12 @@ $('#login').click(() => {
 
 2. jQuery Methods
 The JavaScript language represents an infinite supply of Lego blocks — the possibilities are endless but time-consuming. The pre-made Lego structures are like jQuery methods. You can use these methods to add dynamic behavior, such as .hide(), .show(), .fadeIn(), .fadeOut() etc., to HTML elements.
+
+The jQuery library provides a collection of methods that serve one of two purposes.
+
+* To listen for an event — an event (e.g. clicking a button) is something the user does to trigger an action.
+* To add a visual effect — a visual effect (e.g. a drop-down menu appearing when a user clicks a button) is something that changes the appearance of the web page. Events are often responsible for triggering a visual effect.
+
 
 3. The document is loaded from top to bottom. So the style dependencies in the <head> will load first, then the structural elements in the <body> will load next. It has become common practice to link the main JavaScript file at the bottom of the HTML document because a good deal of the content of the script will require that the dependencies, style sheets and elements exist before the browser can run the JavaScript that uses and references those things.
   
@@ -62,3 +69,76 @@ Developers often save jQuery objects in variables, like so:
 ```javascript
 const $jQueryObject = $('.someClass');
 ```
+9. Event Handlers
+The jQuery .on() method adds event handlers to jQuery objects. The method takes two parameters: **a string declaring the event to listen for (the handler) and a callback function to fire** when the event is detected.
+```javascript
+$('#login').on('click', () => {
+  $loginForm.show();
+})
+```
+
+10. 
+```javascript
+$(document).ready(() => {
+  const $menuButton = $('.menu-button');
+  const $navDropdown = $('#nav-dropdown');
+
+  $menuButton.on('click', () => {
+    $navDropdown.show();
+  })
+  
+  $navDropdown.on('mouseleave', () => {
+    $navDropdown.hide();
+  })
+})
+```
+
+## effects
+1. .hide()
+ When you hide an element, your browser will render the HTML as if the hidden element does not exist. It will disappear from the page and **the space that it was taking up will disappear as well**.
+ ```javascript
+$('.hide-arrow').on('click', () => {
+  $('.shoe-information').hide();
+});
+```
+.show()
+```javascript
+$('.show-arrow').on('click', () => {
+  $('.shoe-information-2').show();
+});
+```
+
+.toggle()
+It is common for web pages to have one button that will either hide or show elements depending on their current state. We can achieve this by using the .toggle() method.
+```javascript
+$('.toggle-button').on('click', () => {
+  $('.shoe-information-3').toggle();
+});
+```
+
+2. .fadeIn() and .fadeOut()
+.fadeIn() and .fadeOut() make the element appear or disappear **over a given period of time**. You can think of this as an animation. The transition between being visible and invisible happens over a duration of time.
+
+Both .fadeIn() and .fadeOut() take an optional parameter that specifies how long the animation will take. 
+```javascript
+$('div').fadeOut(1000);
+```
+In the example above, the 1000 argument is optional; you don't need to put a number between the parentheses. This number represents the number of **milliseconds** it takes for the animation to complete. If no argument is given, the **default animation duration is 400 milliseconds**.
+
+.fadeToggle()
+This method is similar to .toggle(). Like the other fade methods, .fadeToggle() can take an argument that sets the duration of the effect.
+```javascript
+$('div').fadeToggle(1000);
+```
+3. Sliding
+
+By using sliding effects, an element on your web page will slide up or down into place instead of appearing or disappearing. Just like with the other effects, sliding can be applied to any element on your page whether it be an image, a video, or text.
+
+Sliding methods are animations; they happen over a period of time. 
+```javascript
+$('.menu-button').on('click', () => {
+  $('.menu-content').slideDown('slow');
+});
+```
+
+## Mouse Events
