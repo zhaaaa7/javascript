@@ -33,6 +33,32 @@ To include jQuery, we use a <script> tag as follows:
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
   ```
-In this example, the jQuery library is loaded from the jQuery content delivery network (CDN). A **CDN** is a collection of servers that can deliver content.
+In this example, the jQuery library is loaded from the jQuery content delivery network (CDN). A **CDN is a collection of servers that can deliver content**.
 
 You must include the <script> tag in the HTML document before you link to a JavaScript file that uses the jQuery library. The integrity and crossorigin properties in the example ensure the file is delivered without any third-party manipulation.
+  
+5. .ready()
+The jQuery .ready() method waits until the HTML page's DOM is ready to manipulate. You should wrap all JavaScript behavior inside of the .ready() method. This will make sure the web page is rendered in the browser before any jQuery code executes.
+```javascript
+$(document).ready(() => {
+
+}); 
+```
+6. Targeting by Class
+```javascript
+$('.product-photo').show();
+```
+7. Targeting by id
+```javascript
+$('#someId').hide();
+```
+
+8. jQuery Objects
+The $ symbol is an alias for the jQuery function. The `$` symbol and `jQuery` are interchangeable.
+
+The **jQuery function** takes a parameter that targets an element, like '#navMenu', and **turns it into a jQuery object**. Then, you can call any **jQuery method** on a jQuery object.
+
+Developers often save jQuery objects in variables, like so:
+```javascript
+const $jQueryObject = $('.someClass');
+```
