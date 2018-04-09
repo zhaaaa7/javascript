@@ -186,6 +186,7 @@ The currentTarget attribute refers to only the .product-photo element that the l
 
 ## style method
 1. .css()
+
 To modify CSS properties of an element, jQuery provides a method called .css(). This method accepts an argument for a CSS property name, and a corresponding CSS value.
 ```javascript
 $('.example-class').css('color', '#FFFFFF');
@@ -201,6 +202,7 @@ $('.example-class').css({
 When referencing CSS properties in an **object, the property names are camelCased** — they are modified to have no quotes or spaces, and to start each new word with a capital letter. 
 
 2. .animate()
+
 The jQuery .animate() method enhances the visual possibilities by making CSS value changes over a period of time.
 
 The first argument passed to .animate() is a JavaScript object of CSS property/value pairs that represent an element's end state.
@@ -215,6 +217,7 @@ $('.example-class').animate({
 ```
 
 3. .addClass()
+
 A JavaScript file can quickly get overloaded with styles if you regularly use the `css` method to modify element styles. It's a best practice to group all of the style code in a CSS file, and use jQuery to add and remove the classes from elements — this approach aligns to a design principle called separation of concerns.
 
 **Separation of concerns** is a design principle stating that code should be separated based on its purpose in a program. In web development, that generally means the structure of a page is defined in an HTML document, styles are stored in a CSS file, and code that defines dynamic behavior is stored in a JavaScript file.
