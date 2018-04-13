@@ -20,6 +20,7 @@ $('#login').click(() => {
 ```
 
 2. jQuery Methods
+
 The JavaScript language represents an infinite supply of Lego blocks — the possibilities are endless but time-consuming. The pre-made Lego structures are like jQuery methods. You can use these methods to add dynamic behavior, such as .hide(), .show(), .fadeIn(), .fadeOut() etc., to HTML elements.
 
 The jQuery library provides a collection of methods that serve one of two purposes.
@@ -33,6 +34,7 @@ The jQuery library provides a collection of methods that serve one of two purpos
 When you add the jQuery library to your project in the next exercise, you will do so on the line before the </body> tag. Because HTML files load from top to bottom, adding the jQuery library at the bottom of your project will ensure that it will not affect the HTML (structure) and CSS (style) load times.
 
 4. Adding jQuery
+
 To include jQuery, we use a <script> tag as follows:
 ```javascript
 <script
@@ -45,6 +47,7 @@ In this example, the jQuery library is loaded from the jQuery content delivery n
 You must include the <script> tag in the HTML document before you link to a JavaScript file that uses the jQuery library. The integrity and crossorigin properties in the example ensure the file is delivered without any third-party manipulation.
   
 5. .ready()
+
 The jQuery .ready() method waits until the HTML page's DOM is ready to manipulate. You should wrap all JavaScript behavior inside of the .ready() method. This will make sure the web page is rendered in the browser before any jQuery code executes.
 ```javascript
 $(document).ready(() => {
@@ -52,15 +55,18 @@ $(document).ready(() => {
 }); 
 ```
 6. Targeting by Class
+
 ```javascript
 $('.product-photo').show();
 ```
 7. Targeting by id
+
 ```javascript
 $('#someId').hide();
 ```
 
 8. jQuery Objects
+
 The $ symbol is an alias for the jQuery function. The `$` symbol and `jQuery` are interchangeable.
 
 The **jQuery function** takes a parameter that targets an element, like '#navMenu', and **turns it into a jQuery object**. Then, you can call any **jQuery method** on a jQuery object.
@@ -70,6 +76,7 @@ Developers often save jQuery objects in variables, like so:
 const $jQueryObject = $('.someClass');
 ```
 9. Event Handlers
+
 The jQuery .on() method adds event handlers to jQuery objects. The method takes two parameters: **a string declaring the event to listen for (the handler) and a callback function to fire** when the event is detected.
 ```javascript
 $('#login').on('click', () => {
@@ -95,6 +102,7 @@ $(document).ready(() => {
 
 ## effects
 1. .hide()
+
  When you hide an element, your browser will render the HTML as if the hidden element does not exist. It will disappear from the page and **the space that it was taking up will disappear as well**.
  ```javascript
 $('.hide-arrow').on('click', () => {
@@ -117,6 +125,7 @@ $('.toggle-button').on('click', () => {
 ```
 
 2. .fadeIn() and .fadeOut()
+
 .fadeIn() and .fadeOut() make the element appear or disappear **over a given period of time**. You can think of this as an animation. The transition between being visible and invisible happens over a duration of time.
 
 Both .fadeIn() and .fadeOut() take an optional parameter that specifies how long the animation will take. 
@@ -149,6 +158,7 @@ $('.login-button').on('click', () => {
   })
 ```
 2. mouseenter
+
 The mouseenter event triggers a callback function when a user enters the area that a targeted element occupies.
 ```javascript
 $('.menu-button').on('mouseenter',()=>{
@@ -164,6 +174,7 @@ $('.nav-menu').on('mouseleave',()=>{
 ```
 
 4. Chaining Events
+
 jQuery also allows us to chain multiple methods. Instead of **re-declaring the HTML element** you're selecting, you can append one event to another. 
 ```javaacript
  $('.product-photo').on('mouseenter',()=>{
@@ -174,6 +185,7 @@ jQuery also allows us to chain multiple methods. Instead of **re-declaring the H
 ```
 
 5. currentTarget
+
 The currentTarget attribute refers to only the .product-photo element that the learner has moused over.
 
 ```javascript
@@ -231,3 +243,54 @@ In the example above:
 .addClass() adds the `'active'` class to all .example-class elements.
 Notice that the argument passed to addClass **does not have a period preceding it. This is because it expects a class**, and therefore only needs the name of the class.
 
+4. .removeClass()
+```javascript
+$('.example-class').removeClass('active');
+```
+toggleClass()
+
+```javascript
+$('.example-class').toggleClass('active');
+```
+
+## Traverse the DOM
+1. You can target elements based on their position relative to other elements.
+2. .children()
+
+It is important to note that only the direct descendants are considered children. 
+
+3. Parent & Siblings
+```javascript
+$('.choice').on('click', event => {
+  $(event.currentTarget).parent().hide();
+});
+```
+In the example above, the .parent() method targets the parent element of '.choice' elements and removes it from the DOM.
+```javascript
+$('.choice').on('click', event => {
+  $(this).siblings().removeClass('selected');
+  $(event.currentTarget).addClass('selected');
+});
+```
+In the code above, the .siblings() method targets elements adjacent to the clicked '.choice' and removes the 'selected' class from any previously clicked '.choice's. **Then the 'selected' class is added only to the clicked '.choice'**
+
+4. Closest
+
+To select an element close to the current element, we can use jQuery's .closest() method.
+
+The .closest() method will travel up the DOM tree to find a specified selector closest to it. Its syntax looks like:
+```javascript
+$('.example-class-one').closest('.another-class');
+```
+
+5. .next()
+
+Sometimes you don't want to target all the siblings of an element — you just want to target the next one. 
+
+6. .next()
+
+This method finds and targets singular or multiple elements that are descendants of an element. Unlike the .children() method, it traverses **all descendants of the specified element, not just the first level down**.
+```javascript
+const $items = $('.myList').find('li');
+```
+The .find() method takes a parameter that specifies how to filter results. **This parameter is just like anything you might use to select a jQuery object, ('#id', '.class', tag, etc.)**.
