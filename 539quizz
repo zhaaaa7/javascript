@@ -1,4 +1,4 @@
-1.Data submitted via a POST request is appended to the URL.  //T
+1.Data submitted via a POST request is appended to the URL.  //F
 2. When form data is sent to a server, it is possible to access form element values via their name. // T
 3. Which of the following is true about the w3 validator?
 
