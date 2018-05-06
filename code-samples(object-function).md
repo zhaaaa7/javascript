@@ -33,7 +33,7 @@ console.log(pizza1.constructor); //[Function: Pizza]
 console.log(pizza1.__proto__); //Pizza {}
 console.log(Pizza.prototype); //Pizza {}
 ```
-private variable anc methods
+private variable and methods
 ```javascript
  const Pizza=function(){
   let topping=3; //private variable
