@@ -2,6 +2,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 List method:
 
+# create an array
+```javascript
+console.log(new Array(50)); [empty,.......empty]
+```
+
 # Mutate the array
 ## splice()
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
