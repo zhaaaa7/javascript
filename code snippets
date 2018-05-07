@@ -1,0 +1,12 @@
+1.  reverse string
+```javascript
+function reverseString(str) {
+  str_list=str.split('');
+  str_list.reverse();
+  console.log(str_list);
+  new_str=str_list.join('');
+  return new_str;
+}
+
+reverseString("hello");
+```
