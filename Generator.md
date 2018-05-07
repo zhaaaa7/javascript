@@ -1,4 +1,4 @@
-```javadscript
+```javascript
 function* read() {
     console.log(100);  //100
     let a = yield '200';
