@@ -282,3 +282,24 @@ function log(a,b){
 }
 test.then(log);
 ```
+16. variable scope
+```javascript
+function foo() {
+    h = 1;
+}
+foo(); 
+
+
+function bar1() {
+  console.log('foo1',h); //foo1 1
+}
+bar1();
+
+function bar2() {
+    h = 2;
+    console.log('foo2',h); //foo2 2
+}
+bar2(); // ???
+
+console.log('h',h); //h 2
+```
