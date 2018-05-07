@@ -272,3 +272,13 @@ parseInt('1',0) = 1,
 parseInt('2',1) = NaN
 parseInt('3',2) = NaN
 ```
+
+```javascript
+const test= new Promise((resolve,reject)=>{
+	resolve('yes');
+});
+function log(a,b){
+	console.log(a,b); // yes undefined
+}
+test.then(log);
+```
