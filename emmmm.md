@@ -263,3 +263,12 @@ next();//输出"a"
 next();//输出"b"
 next();//输出"c"
 ```
+
+15. console.log(["1", "2", "3"].map(parseInt)); // [ 1, NaN, NaN ]
+
+explanation: parseInt accepts the first arguments map pass in -- element and index
+```
+parseInt('1',0) = 1,
+parseInt('2',1) = NaN
+parseInt('3',2) = NaN
+```
