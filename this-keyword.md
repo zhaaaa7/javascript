@@ -1,4 +1,4 @@
-1. call in the form of object method
+1. call in the form of object method -- object
 ```javascript
 var myObj = {
  
@@ -21,7 +21,7 @@ var myObj = {
 var myInnerObj = myObj.createInnerObj();
 console.log( myInnerObj.innerFunc() ); // hidden: 'value-in-closure', myProp: 'inner-value'
 ```
-2. call the function directly
+2. call the function directly  -- window
 ```javascript
 var myObjGlobal = {
  
@@ -41,4 +41,24 @@ var myObjGlobal = {
 };
 
 myObjGlobal.createInnerObj();
+```
+
+3. function's property -- function
+```javascript
+callTest.call2=function(){
+	console.log('[inside call2]',this); // [inside call2] [function callTest()]
+}
+
+callTest.call2();
+
+```
+
+4. call methods -- the first argument in call method
+```javascript
+function callTest(){
+	console.log('[inside callTest]', this); // [inside callTest] { callTestObj: 'test' } 
+}
+
+const callTestObj={'callTestObj':'test'};
+callTest.call(callTestObj);
 ```
