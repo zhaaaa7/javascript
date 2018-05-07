@@ -32,6 +32,12 @@ function createDrinkOrder(passenger) {
 createDrinkOrder(passengers[0])(); //not first class
 ```
 
+### add property on the fly
+```javascript
+const b={};
+console.log(b.add); //undefined
+```
+
 ### Object.assign
 ```javascript
 var receiver = {}, 
@@ -147,6 +153,46 @@ var f = wrapped[0];
 console.log(f()); // [3,undefined]
 ```
 
+```javascript
+function f(){
+  var a = [];
+  var i;
+  for (i = 0; i < 3; i++){
+    a[i] = (function(x){
+      return function(){
+        return x;
+      }
+    })(i);
+  }
+  return a;
+  }
+
+var a = f();
+a[0]();// 0
+a[1]();// 1
+a[2]();// 2
+
+// another version
+function f(){
+  function aa(x){
+    return function(){
+      return x;  
+    }
+  }
+  var a = [];
+  var i;
+  for (i = 0; i < 3; i++){
+   	a[i] = aa(i);
+  }
+  return a;
+ } 
+
+var a = f();
+a[0](); //0
+a[1](); //1
+a[2](); //2
+```
+
 
 ### function contructor
 ```javascript
@@ -215,7 +261,19 @@ log(function() {
     console.log('hi');   
 });
 ```
+### apply
+```javascript
+function myFunc(myArg) {
+  return this.myProp + " " + myArg;
+}
+ 
+var result = myFunc.apply(
+  { myProp: "prop" },
+  [ "arg" ]
+);
 
+console.log(result); // prop arg
+```
 
 ### Symbol
 ```javascript
