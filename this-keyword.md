@@ -62,3 +62,13 @@ function callTest(){
 const callTestObj={'callTestObj':'test'};
 callTest.call(callTestObj);
 ```
+
+```javascript
+function stat(){
+	console.log('inside stat', this)
+}
+stat.a=function(){console.log('inside static a', this)};
+
+stat.a(); // this => stat
+stat();  // this => global
+```
