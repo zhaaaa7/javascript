@@ -30,7 +30,7 @@ a snippet code, adapted from https://stackoverflow.com/questions/4616694/what-is
     <title>test</title>
     <style>
         p {
-        line-height: 0;
+        line-height: 1;
         }
 
         div {
