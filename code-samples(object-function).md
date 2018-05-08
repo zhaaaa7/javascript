@@ -105,8 +105,7 @@ var person3=new peoplePrototype();
 person3.age=3;
 console.log('name' in person3); //true
 console.log(person3.hasOwnProperty('name')); //false
-
-person3.printPerson();
+person3.printPerson(); //default name is 3
 
 //dynamic prototype pattern
 var peopleDynamicProto=function (age,name) {
@@ -121,7 +120,7 @@ var peopleDynamicProto=function (age,name) {
 }
 
 var person4=new peopleDynamicProto(4,'julie');
-person4.printPerson();
+person4.printPerson();  //julie is 4
 console.log(person4.hasOwnProperty('name')); //true
 ```
 ## Inheritance
