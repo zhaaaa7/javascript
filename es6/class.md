@@ -29,6 +29,11 @@ const Car=(function(){
 ```
 2. inheritance
 The subclass inherits all of the parent's getters, setters, and methods. You can also use the super keyword to set properties in the parent class. Each instance of a class has the same properties, getters, setters, and methods. Only the property values change.
+
+* super keyword
+
+The super keyword is used in subclasses to call a parent constructor(). super accepts arguments for the parent constructor()'s parameters. If you use this before super, JavaScript will throw an error.
+
 ```javascript
 class Toycar extends Car {
   constructor(color,size){
@@ -75,7 +80,10 @@ const toy=new Toycar('d','a','b','c');
 console.log(toy.__proto__); // Toycar {}
 console.log(toy.constructor); // f Toycar
 ```
-* static method -- class method
+3. static method -- class method
+
+They are made directly on the class and are not callable on instances of the class. 
+
 ```javascript
 class Car {
   constructor(color){
