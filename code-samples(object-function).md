@@ -17,22 +17,6 @@ delete(pizza.crust);
 console.log(pizza);
 ```
 
-```javascript
-const Pizza=function(){
-  this.crust='thin';
-  this.topping=3;
-  this.cheese='extra';
-  this.toppingNumber=function (){
-    return this.topping; //this can access public property and methods
-  }
-};
-
-const pizza1=new Pizza();
-console.log(pizza1 instanceof Pizza); //true
-console.log(pizza1.constructor); //[Function: Pizza]
-console.log(pizza1.__proto__); //Pizza {}
-console.log(Pizza.prototype); //Pizza {}
-```
 private variable and methods
 ```javascript
  const Pizza=function(){
