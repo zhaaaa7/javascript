@@ -56,11 +56,11 @@ console.log(pizza3.getCrust()); //thin
 ```
 
 ## Create an object
+1. factory pattern
 ```javascript
-//factory pattern
+
 var peopleFactory=function(age,name){
   var temp={};
-  // var temp= new Object;
   temp.age=age;
   temp.name=name;
 
@@ -73,11 +73,11 @@ var peopleFactory=function(age,name){
 
 var person1=peopleFactory(1,'julie1');
 person1.printPerson();
+```
 
-
-//constructor pattern
+2. constructor pattern
+```javascript
 var peopleConstructor=function(age,name){
-	//a property of the function itself
 	this.name=name;
 	this.age=age;
 
@@ -89,8 +89,9 @@ var peopleConstructor=function(age,name){
 
 var person2 = new peopleConstructor(2,'julie2');
 person2.printPerson();
-
-//prototype pattern
+```
+3. prototype pattern
+```javascript
 var peoplePrototype=function(){
 
 };
@@ -106,8 +107,10 @@ person3.age=3;
 console.log('name' in person3); //true
 console.log(person3.hasOwnProperty('name')); //false
 person3.printPerson(); //default name is 3
+```
+4. dynamic prototype pattern
+```javascript
 
-//dynamic prototype pattern
 var peopleDynamicProto=function (age,name) {
 	this.age=age;
 	this.name=name;
@@ -125,45 +128,29 @@ console.log(person4.hasOwnProperty('name')); //true
 ```
 ## Inheritance
 ```javascript
-//inheritance
-// constructor
-var x=function (j) {
-  this.i=0;
-  this.j=j
-}
-x.prototype.getJ=function(){
-    console.log(this.j);
-  };
-var x1=new x(1);
-var x2=new x(2);
-
-x1.getJ();
-console.log(x1.hasOwnProperty('getJ'));
-x2.getJ();
-
-console.dir(x);
-
 //base class object
 var Job=function(){
   this.pays=true;
+  this.name="inside job"
 };
 Job.prototype.log=function(){
-  console.log(this.pays?'I\'ll take this job':'No.');
+  console.log(this.name, this.pays?'I\'ll take this job':'No.');
 };
+
 //sub-class object
 var TechJob=function(title,pays){
   //1.inherit from the Job constructor
   Job.call(this);
-  this.pays=pays;
+  this.pays=pays; //overwritting
   this.title=title;
 }
 //2.inherit from Job prototype
 TechJob.prototype=Object.create(Job.prototype);
-//3.set the constructor for TechJob
+//3.set the constructor in prototype back to TechJob
 TechJob.prototype.constructor=TechJob;
 
 var developer=new TechJob('js',false);
-developer.log(); //=>I'll take this job
+developer.log();  // inside job, no
 ```
 ## Constructor
 ```javascript
