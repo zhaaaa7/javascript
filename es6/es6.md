@@ -1,34 +1,16 @@
-## class
-
-Why class:
-To share data and methods between objects.
-
-The subclass inherits all of the parent's getters, setters, and methods. You can also use the super keyword to set properties in the parent class. Each instance of a class has the same properties, getters, setters, and methods. Only the property values change.
-
-* super keyword
-
-The super keyword is used in subclasses to call a parent constructor(). super accepts arguments for the parent constructor()'s parameters. If you use this before super, JavaScript will throw an error.
-
-Static method*
-
-They are made directly on the class and are not callable on instances of the class. 
-
-
-
-
 ## map
-why need a map
+1. why need a map -- we can't use object as object property name. it will be converted to string by calling Object.prototype.toString().
 ```javascript
 const x={};
 const a={};
 const b={num:1};
 
-x[a]='a';
+x[a]='a';  // { '[object Object]': 'a' }
 x[b]='b';
 
 console.log(x); //{ '[object Object]': 'b' }
 ```
-how map works
+2. how map works
 ```javascript
 const a={};
 const b={num:1};
@@ -37,29 +19,68 @@ map.set(a,'a').set(b,'b');
 console.log(map); //Map { {} => 'a', { num: 1 } => 'b' }
 map.delete(b);
 ```
-map has iterator
+
+3. map has iterator -- so can use `let of` to iterate through it
 
 ```javascript
-for (let [key,value] of map.entries()){
-  console.log(key,value);
-  //{} 'a'
-  //{ num: 1 } 'b'
+let myMap = new Map();
+myMap.set(0, 'zero');
+myMap.set(1, 'one');
+for (let [key, value] of myMap) {
+  console.log(key + ' = ' + value);
 }
+// 0 = zero
+// 1 = one
 
+for (let key of myMap.keys()) {
+  console.log(key);
+}
+// 0
+// 1
+
+for (let value of myMap.values()) {
+  console.log(value);
+}
+// zero
+// one
+
+for (let [key, value] of myMap.entries()) {
+  console.log(key + ' = ' + value);
+}
+// 0 = zero
+// 1 = one
+```
+4. is closely related to Array
+```javascript
 const arr=[...map];
 console.log(arr); //[ [ {}, 'a' ], [ { num: 1 }, 'b' ] ]
-
 ```
-weakmap
+
+```javascript
+var kvArray = [['key1', 'value1'], ['key2', 'value2']];
+
+// Use the regular Map constructor to transform a 2D key-value Array into a map
+var myMap = new Map(kvArray);
+
+myMap.get('key1'); // returns "value1"
+
+// Use the Array.from function to transform a map into a 2D key-value Array
+console.log(Array.from(myMap)); // [['key1', 'value1'], ['key2', 'value2']]
+
+// Or use the keys or values iterators and convert them to an array
+console.log(Array.from(myMap.keys())); ["key1", "key2"]
+```
+### weakmap -- to save memory
 
 ```javascript
 {
-  let x={a:[1,2]}; //block varibale
+  let x={a:[1,2]}; //x is a block varibale
   var map=new Map();
   map.set(x,'set x');
 };
 
-console.log(map); //but still exists here, Map { { a: [ 1, 2 ] } => 'set x' }
+//but x still exists here, because map has a reference to x
+console.log(map); // Map { { a: [ 1, 2 ] } => 'set x' }
 
 
 {
@@ -71,6 +92,8 @@ console.log(map); //but still exists here, Map { { a: [ 1, 2 ] } => 'set x' }
 console.log(weakmap); //WeakMap {}, memory is cleared
 
 ```
+
+
 ## default value
 ```javascript
 x={
@@ -120,9 +143,18 @@ const t=new x();
 
 ```
 ## spread operator and rest operator
-spread --allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
 
-spread
+1. rest -- used when defining parameters when declaring a function
+
+```javascript
+const x=function(a,b,...n){
+  console.log(n);
+};
+x(1,2,3,4,5) // [ 3, 4, 5 ]
+```
+
+2. spread -- used when passing in arguments when calling a function
+
 ```javascript
 const args=[1,2];
 const x=function(a,b,c){
@@ -131,15 +163,9 @@ const x=function(a,b,c){
 x(1,...args) // 1
 
 ```
-rest
-```javascript
-const x=function(a,b,...n){
-  console.log(n);
-};
-x(1,2,3,4,5) // [ 3, 4, 5 ]
 
-```
-usage
+3. usage
+3-1. spread allows an iterable such as an **array expression** or **string** to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
 ```javascript
  //copy
 const x=[1,2,3,4];
@@ -153,7 +179,7 @@ console.log([...a,...b]); //[ 1, 2, 3, 4, 5, 6 ]
 console.log(a.concat(...b)); //[ 1, 2, 3, 4, 5, 6 ]
 
 ```
-relation to apply()
+3-2. to replace apply()
 ```javascript
 let x=[1,2,3];
 const func=function(...arg){
@@ -164,8 +190,10 @@ func(...x);
 func.apply(null,x);
 
 ```
+
+
 ## template string 
-* backtick(``)
+1.  backtick(``)
 ```javascript
 //preserve spaces
 const str=`hello
@@ -175,6 +203,7 @@ const str=`hello
 console.log(str);
 
 ```
+2. add varaible
 ```javascript
 let x1=1;
 let x2=2
@@ -182,7 +211,7 @@ let str=`There are  ${x1+x2} apples`;
 console.log(str); //There are  3 apples
 
 ```
-nature of backticks(``)
+3. the nature of backticks(``) -- split the string into a string array and a variable array
 ```javascript
 let x1=1;
 let x2=2
@@ -195,18 +224,19 @@ tagged `There are ${x1} +${x2} ${x1+x2} apples`;
 //[ 'There are ', ' +', ' ', ' apples' ]
 //[ 1, 2, 3 ]
 ```
-* new methods
+
+4. a new string method
 ```javascript
 //not escaping
 const raw=String.raw`Not a newline:\n`;
-console.log(raw);  //Not a newline:\n
-
+console.log(raw);  // Not a newline:\n
 ```
 
 ## iterator
-Symbol.iterator --  is the property that indicate whether this data structure is iterable
+1. Symbol.iterator --  is the property that indicate whether this data structure is iterable
 ```
 const myArray=[1,2,3,4,5];
+
 //extract the iterator function of array
 let iterator=myArray[Symbol.iterator]();
 console.log(iterator.next()); //{ value: 1, done: false }
@@ -217,31 +247,33 @@ console.log(iterator.next()); //{ value: 5, done: false }
 console.log(iterator.next()); //{ value: undefined, done: true }
 ```
 
-'of' in for loop
+2. can use 'of' in for loop
 ```javascript
 const mySet=new Set([1,2,3,4,4]);
 console.log(mySet); //Set { 1, 2, 3, 4 }
 for(let val of mySet){
   console.log(val); //1 2 3 4
 }
+```
+to contrast: object is not iterable
+```javascript
 
-//object is not iterable
 const myObj={
   a:'a',
   b:'b'
 };
-//cannot use of 
-//all in the prototype chain?
+//cannot use `of`, can just use `in` along the prototype chain?
 for (let key in myObj){
   console.log(key); //a b
 }
 ```
 
 ## generator
-a function that helps to generate the value an iterator to be used
+1. a function that helps to generate the value an iterator to be used
 ```
-* symbol and yield expression -- stops the producing of value
+* symbol and yield expression together -- stops the producing of value
 ```
+2. 
 ```javascript
 function *generator(){
     yield 1;
@@ -260,7 +292,7 @@ console.log(iterator.next()); //{ value: 5, done: false }
 console.log(iterator.next()); //{ value: undefined, done: true }
 ```
 
-pausing -- no stack overflow
+3. pausing ensures no stack overflow
 ```javascript
 function *infiniteMaker(){
     let i=0;
@@ -275,7 +307,7 @@ console.log(iterator.next()); //{ value: 1, done: false }
 console.log(iterator.next());
 console.log(iterator.next());
 ```
-return terminate the iterator
+4. `return` terminates the iterator
 ```javascript
 function *generator(){
    yield 1;
@@ -292,9 +324,10 @@ const iterator=generator();
 console.log(iterator.next()); 
 console.log(iterator.next()); //{ value: 2, done: false }
 console.log(iterator.next()); //{ value: 'stop', done: true }
+console.log(iterator.next()); //{ value: undefined, done: true }
 ```
 
-usage -- aync
+5. usage -- do aynchronous request
 
 ```javascript
 function(url){
@@ -316,68 +349,9 @@ function *generator(){
 //if completion of url1 request is required fro url2 request
 //..iterator
 ```
-## promise
-
-When we resolve a promise, we have the value which becomes the value of the promise
-
-```javascript
-const promise1=new Promise(function(resolve,reject){
-  //cleaning the room
-
-  const isClean=false;
-
-  if(isClean){
-    resolve('cleaned');
-  }else{
-    reject('not cleaned');
-  }
-});
-
-promise1.then(function(formResolve){
-  console.log(formResolve);
-}).catch(function(fromReject){
-  console.log(fromReject);
-}); 
-```
-dependency
-```javascript
-const promise1=function(){
-  return new Promise(function(resolve,reject){
-    resolve('promise1');
-  });
-};
-
-const promise2=function(p){
-  return new Promise(function(resolve,reject){
-    resolve(p+' promise2');
-  });
-};
-
-const promise3=function(p){
-  return new Promise(function(resolve,reject){
-    resolve(p+' promise3');
-  });
-};
-
-promise1().then(function(result){
-  return promise2(result);
-}).then(function(result){
-  return promise3(result);
-}).then(function(result){
-  console.log('done',result); //done promise1 promise2 promise3
-});
-```
-
-```javascript
-Promise.all([promise1,promise2,promise3]).then(function(){
-  console.log('all done');
-});
 
 
-Promise.race([promise1,promise2,promise3]).then(function(){
-  console.log('one done');
-});
-```
+
 ## request
 1. onreadystatechange is an event handler property 
 2. JSON.stringify() converts JSON objects to strings that can be read by APIs.
