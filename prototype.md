@@ -30,7 +30,7 @@ console.log(Person.__proto__); // ƒ () { [native code] }
 1. It is a property that all function instance have.
 2. Why we need a prototype object? To share the properties and methods among instances.
 
-## .__proto__
+## `.__proto__`
 1. It is a property that all object have.
 2. It is the reference to the prototype object of its own contructor function.
 
