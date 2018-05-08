@@ -537,8 +537,9 @@ class Toycar extends Car {
 The '_proto_' is the Car, while the constructor is the Toycar
 ```javascript
 const toy=new Toycar('d','a','b','c');
-console.log(toy.__proto__); // Car {}
-console.log(toy.constructor); // class Toycar extends Car {......} 
+
+console.log(toy.__proto__); // Toycar {}
+console.log(toy.constructor); // f Toycar
 ```
 * static method -- class method
 ```javascript
