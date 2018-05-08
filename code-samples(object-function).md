@@ -278,7 +278,7 @@ console.log(toyCarWood.log());
 console.log(toyCar.__proto__); //{log: ƒ, newfu: ƒ}
 console.log(ToyCar.constructor); //ƒ Object() { [native code] }
 ```
-## extending contructor
+## .call
 ```javascript
 let Mammal=function(legs){
   this.legs=legs;
@@ -299,21 +299,7 @@ let Bat=function(legs,isVegetarian){
   this.isVegetarian=isVegetarian;
 }
 
-console.dir(Bat); // Bat.prototype {constructor: function, __proto__: Object}
 
-Bat.prototype=Object.create(Mammal.prototype);
-console.dir(Bat);  // Bat.prototype { __proto__: walk,sleep, Object} , lose the constructor
-//set the constructor back
-Bat.prototype.constructor=Bat;
-console.dir(Bat); //{constructor: function, __proto__: walk,sleep,Object}
-
-Bat.prototype.fly=function(){
-  return 'flying';
-};
-
-let fruitBat = new Bat(4,true);
-console.log(fruitBat.walk());
-console.log(fruitBat.fly());
 ```
 ## Object literal 'inheritance'
 * Object.setPrototypeOf() -- set up the prototype link
