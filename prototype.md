@@ -88,3 +88,20 @@ console.log(amy); //Person {name: undefined, age:10}
 
 console.log(Person.__proto__); // ƒ () { [native code] }
 ```
+
+```javascript
+const Pizza=function(){
+  this.crust='thin';
+  this.topping=3;
+  this.cheese='extra';
+  this.toppingNumber=function (){
+    return this.topping; //this can access public property and methods
+  }
+};
+
+const pizza1=new Pizza();
+console.log(pizza1 instanceof Pizza); //true
+console.log(pizza1.constructor); // [Function: Pizza]
+console.log(pizza1.__proto__); //Pizza {}
+console.log(pizza1.__proto__===Pizza.prototype); //true
+```
