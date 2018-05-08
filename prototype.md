@@ -12,7 +12,7 @@ console.log(amy); //Person {name: undefined, age:10}
 console.log(Person.__proto__); // ƒ () { [native code] }
 ```
 
-
+reference: https://segmentfault.com/a/1190000014717972
 
 ## Function object
 1. The global Function object has no methods or properties of its own. However, since it is a function itself, it does inherit some methods and properties through the prototype chain from `Function.prototype`.
@@ -70,7 +70,16 @@ typeof(Math)
 ```
 
 ```
+//Object instance `obj`
 var obj = new Object();
+
+
+//Function instance `Foo`
+function Foo(){
+    
+}
+
+//regular instance `foo`
 var foo = new Foo();
 ```
 
