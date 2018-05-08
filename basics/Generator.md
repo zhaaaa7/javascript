@@ -34,7 +34,7 @@ for (let key in myObj){
 }
 ```
 
-## generator
+## Generator
 1. a function that helps to generate the value an iterator to be used
 ```
 * symbol and yield expression together -- stops the producing of value
