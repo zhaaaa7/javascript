@@ -302,7 +302,7 @@ let Bat=function(legs,isVegetarian){
 
 ```
 ## Object literal 'inheritance'
-* Object.setPrototypeOf() -- set up the prototype link
+1. Object.setPrototypeOf() -- set up the prototype link
 ```javascript
 //Object.setPrototypeOf(destinationObj, sourceObj);
 
@@ -329,7 +329,7 @@ console.dir(camry);
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/obj-literal.png" alt="obj-literal" width="350px">
 
-* Object.assign -- copy the method, causing overwriting
+2. Object.assign -- copy the method, causing overwriting
 
 ```javascript
 let toyota={
@@ -363,8 +363,10 @@ Object.assign(toyota,{
     return 'using wifi';
   }
 });
+```
+ a more concise constructor
+```javascript
 
-//concise constructor
 let c1=function (x,y,z) {
   this.x=x;
   this.y=y;
