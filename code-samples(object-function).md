@@ -553,7 +553,7 @@ class Car {
   }
   
 
-  //this method goes inside the class, not the prototype
+  //this method goes onto the function itself, not the prototype
   static comparePrice(){
     console.log('static');
   }
