@@ -11,7 +11,7 @@ function createCurry(func, args) {
         [].push.apply(_args, args);
         console.log('_args',_args);
 
-        // 如果参数个数小于最初的func.length，则递归调用，继续收集参数
+        // if the length of the arguments object < func.length，continue collecting argument
         if (_args.length < arity) {
             return createCurry.call(this, func, _args);
         }
