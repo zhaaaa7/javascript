@@ -28,6 +28,7 @@ const Car=(function(){
 })();
 ```
 2. inheritance
+
 The subclass inherits all of the parent's getters, setters, and methods. You can also use the super keyword to set properties in the parent class. Each instance of a class has the same properties, getters, setters, and methods. Only the property values change.
 
 * super keyword
@@ -54,7 +55,7 @@ class Toycar extends Car {
 const toy=new Toycar('blue','big');
 console.log(toy.drive());
 ```
-es6 destructing
+can use es6 destructing
 ```javascript
 class Car {
   constructor(a,b,c){
@@ -73,14 +74,16 @@ class Toycar extends Car {
 
 
 ```
-The '_proto_' is the Car, while the constructor is the Toycar
+
+3.  class is not a native object type, just a key word.-- syntax sugar
 ```javascript
 const toy=new Toycar('d','a','b','c');
 
 console.log(toy.__proto__); // Toycar {}
 console.log(toy.constructor); // f Toycar
 ```
-3. static method -- class method
+
+4. static method -- class method
 
 They are made directly on the class and are not callable on instances of the class. 
 
