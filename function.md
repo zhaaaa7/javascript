@@ -1,3 +1,12 @@
+## arguments object
+```javascript
+function log(){
+    console.log(arguments); //{ [Iterator]  '0': 1, '1': 2 }
+}
+
+log(1,2);
+```
+
 ## closure
 1. 函数所绑定的是作用域本身，而不是该作用域中的变量或变量当前所返回的值。变量最后只会保存一个值.
 ```javascrip
