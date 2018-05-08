@@ -1,3 +1,4 @@
+1. Promise is an object
 ```javascript
 
 const p1=Promise.resolve(1);
@@ -16,4 +17,55 @@ p2.then(value=>{
 	console.log(value);  // 1
 });
 
+```
+
+2. async call
+```javascript
+const step1 = function () {
+  let val = 1
+  console.log(`this is step1 , the value is ${val}`)
+  // 拒绝的情况，balalala...
+  if (val > 0){
+    return Promise.resolve(val)
+  }
+  return Promise.reject(val)
+}
+
+const step2 = function (val) {
+  val += 1
+  console.log(`this is step2 , the value is ${val}`)
+  return Promise.resolve(val)
+}
+
+const step3 = function (val) {
+  val += 1
+  console.log(`this is step3 , the value is ${val}`)
+  return Promise.resolve(val)
+}
+
+let steps = [step1, step2, step3]
+```
+
+```javascript
+steps.reduce((promise, fn, index)=>{
+  console.log(index)
+  return promise.then((val)=>{   // return Promise.resolve().then(val=>step1(val))
+    return fn(val)
+  })
+  
+}, Promise.resolve());  // provide initialValue
+
+
+//another solution
+async function foo () {
+  let val
+  for (let i = 0; i < steps.length; i++) {
+    if (i===0) {
+      val = await steps[i]()
+    }else {
+      val = await steps[i](val)
+    }
+  }
+}
+foo();
 ```
