@@ -1,3 +1,123 @@
+## iterator
+1. Symbol.iterator --  is the property that indicate whether this data structure is iterable
+```
+const myArray=[1,2,3,4,5];
+
+//extract the iterator function of array
+let iterator=myArray[Symbol.iterator]();
+console.log(iterator.next()); //{ value: 1, done: false }
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next()); //{ value: 5, done: false }
+console.log(iterator.next()); //{ value: undefined, done: true }
+```
+
+2. can use 'of' in for loop
+```javascript
+const mySet=new Set([1,2,3,4,4]);
+console.log(mySet); //Set { 1, 2, 3, 4 }
+for(let val of mySet){
+  console.log(val); //1 2 3 4
+}
+```
+to contrast: object is not iterable
+```javascript
+
+const myObj={
+  a:'a',
+  b:'b'
+};
+//cannot use `of`, can just use `in` along the prototype chain?
+for (let key in myObj){
+  console.log(key); //a b
+}
+```
+
+## generator
+1. a function that helps to generate the value an iterator to be used
+```
+* symbol and yield expression together -- stops the producing of value
+```
+2. 
+```javascript
+function *generator(){
+    yield 1;
+    yield 2;
+    yield 3;
+    yield 4;
+    yield 5;
+}
+
+const iterator=generator();
+console.log(iterator.next()); //{ value: 1, done: false }
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next()); //{ value: 5, done: false }
+console.log(iterator.next()); //{ value: undefined, done: true }
+```
+
+3. pausing ensures no stack overflow
+```javascript
+function *infiniteMaker(){
+    let i=0;
+    while(true){
+      yield i;
+      i++;
+    }
+}
+
+const iterator=infiniteMaker();
+console.log(iterator.next()); //{ value: 1, done: false }
+console.log(iterator.next());
+console.log(iterator.next());
+```
+4. `return` terminates the iterator
+```javascript
+function *generator(){
+   yield 1;
+   yield *anotherGenerator();
+   return 'stop';
+   yield 3;
+}
+
+function *anotherGenerator(){
+  yield 2;
+}
+
+const iterator=generator();
+console.log(iterator.next()); 
+console.log(iterator.next()); //{ value: 2, done: false }
+console.log(iterator.next()); //{ value: 'stop', done: true }
+console.log(iterator.next()); //{ value: undefined, done: true }
+```
+
+5. usage -- do aynchronous request
+
+```javascript
+function(url){
+  return new Promise(function(resolve,reject){
+    makeAjaxCall(url,function(err,value){
+      if(err){
+          reject(err);
+      }else{
+        resolve(value);
+      }
+    })
+  });
+}
+function *generator(){
+  yield request('url1');
+  yield request('url2');
+}
+
+//if completion of url1 request is required fro url2 request
+//..iterator
+```
+
+
+
 ## Generator and iterator
 
 ```javascript
