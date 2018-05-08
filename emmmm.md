@@ -303,3 +303,17 @@ bar2(); // ???
 
 console.log('h',h); //h 2
 ```
+
+17. 
+```javascript
+const x=1;
+let y=2; 
+const z=y=x;
+console.log('z is', z);  //z is 1
+```
+
+18.
+```javascript
+const t=1&&2&&3000;
+console.log(t); //3000
+```
