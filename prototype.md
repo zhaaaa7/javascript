@@ -1,16 +1,3 @@
-```javascript
-function Person(name){
-	this.name=name;
-	this.age=10;
-}
-
-
-const amy=new Person();
-console.log(amy); //Person {name: undefined, age:10}
-
-
-console.log(Person.__proto__); // ƒ () { [native code] }
-```
 
 reference: https://segmentfault.com/a/1190000014717972
 
@@ -75,12 +62,26 @@ var obj = new Object();
 
 
 //Function instance `Foo`
-function Foo(){
-    
-}
+function Foo(){};
 
 //regular instance `foo`
 var foo = new Foo();
 ```
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/prototypeChain.jpg" width="800px" alt="prototype chain">
+
+
+#### example 
+```javascript
+function Person(name){
+	this.name=name;
+	this.age=10;
+}
+
+
+const amy=new Person();
+console.log(amy); //Person {name: undefined, age:10}
+
+
+console.log(Person.__proto__); // ƒ () { [native code] }
+```
