@@ -307,6 +307,26 @@ console.log(obj instanceof MyObject); //false
 console.log(obj[Symbol.hasInstance]); //undefined
 ```
 
+### Array.map
+```javascript
+const onDismiss=(a)=>{
+  console.log('on dismiss',a); 
+  return a;
+};
+
+const arr=[1,2,3];
+
+const newArr=arr.map(item=>{
+  const onDismissHandler=(item)=>onDismiss(item); 
+  
+  return onDismissHandler(item);  // on dismiss 1   on dismiss 1   on dismiss 1
+});
+
+console.log(newArr); // [1,2,3]
+```
+
+
+
 
 ### Set
 ```javascript
