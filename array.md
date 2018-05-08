@@ -31,6 +31,13 @@ console.log(months);
 ## pop() 
 ## shift() 
 ## push()
+
+push() return the new array's length
+```javascript
+const b=[1,2];
+console.log(b.push(2)); //3
+```
+
 ## reverse()
 ## sort
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
