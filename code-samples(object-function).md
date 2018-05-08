@@ -1,6 +1,7 @@
 
 # Object
 ## overview
+1. an example
 ```javascript
 const pizza={
   crust: 'thick',
@@ -16,6 +17,7 @@ pizza.price=12;
 delete(pizza.crust);
 console.log(pizza);
 ```
+2. properties are all public 
 
 private variable and methods
 ```javascript
@@ -53,6 +55,21 @@ const Pizza=function(){
 };
 const pizza3=new Pizza();
 console.log(pizza3.getCrust()); //thin
+```
+
+3. getter ans setter
+```javascript
+
+let CarPrivate=function(_color){
+  this.setColor=function(color){
+    _color:color;
+  }
+  this.getColor=function(){
+    return _color;
+  } 
+};
+let yellowCar=new CarPrivate('yellow');
+console.log(yellowCar.getColor());  //yellow
 ```
 
 ## Create an object
@@ -175,30 +192,15 @@ Car {
 redCar.constructor ==> f Car();
 
 ```
+
+## how does `new` work
 ```javascript
 //without new, 'this' refers to the window object
-let blueCar= Car('blue');
-//********************** not a comment console.log(window.color); //blue
-
 //to locate the error of missing 'new'
 let CarNew=function(color){
   if(!new.target) throw 'Car() must be called with new';
   this.color=color;
 };
-
-//all public properties
-//private property: closure
-//setter and getter
-let CarPrivate=function(_color){
-  this.setColor=function(color){
-    _color:color;
-  }
-  this.getColor=function(){
-    return _color;
-  } 
-};
-let yellowCar=new CarPrivate('yellow');
-console.log(yellowCar.getColor());
 
 ```
 * prototype
