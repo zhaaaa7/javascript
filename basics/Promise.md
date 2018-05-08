@@ -1,3 +1,4 @@
+## concepts
 1. Promise is an object
 ```javascript
 
@@ -19,13 +20,78 @@ p2.then(value=>{
 
 ```
 
+2. When we resolve/settle a promise, we have the value which becomes the value of the promise
 
-*******
+```javascript
+const promise1=new Promise(function(resolve,reject){
+  //cleaning the room
+
+  const isClean=false;
+
+  if(isClean){
+    resolve('cleaned');
+  }else{
+    reject('not cleaned');
+  }
+});
+
+promise1.then(function(formResolve){
+  console.log(formResolve);
+}).catch(function(fromReject){
+  console.log(fromReject);
+});   // not cleaned
+```
+3. dependency among mutiple Promise
+```javascript
+const promise1=function(){
+  return new Promise(function(resolve,reject){
+    resolve('promise1');
+  });
+};
+
+const promise2=function(p){
+  return new Promise(function(resolve,reject){
+    resolve(p+' promise2');
+  });
+};
+
+const promise3=function(p){
+  return new Promise(function(resolve,reject){
+    resolve(p+' promise3');
+  });
+};
+
+promise1().then(function(result){
+  return promise2(result);
+}).then(function(result){
+  return promise3(result);
+}).then(function(result){
+  console.log('done',result); //done promise1 promise2 promise3
+});
+```
+
+3. Promise.all and Promise.race
+```javascript
+Promise.all([promise1,promise2,promise3]).then(function(){
+  console.log('all done');
+});
+
+
+Promise.race([promise1,promise2,promise3]).then(function(){
+  console.log('one done');
+});
+```
 
 
 
 
-2. async call -- async will not blocking the execution
+
+
+
+
+
+## advanced
+1. async call -- async will not blocking the execution
 ```javascript
 const step1 = function () {
   let val = 1;
