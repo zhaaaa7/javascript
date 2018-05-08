@@ -153,8 +153,9 @@ var developer=new TechJob('js',false);
 developer.log();  // inside job, no
 ```
 ## Constructor
-```javascript
+1. object instance has no `constructor` property, but it can access to it because it is on `Object.prototype`. It is actually Object.prototype.constructor.
 
+```javascript
 let Car=function(color){
   this.color=color;
 };
@@ -165,16 +166,13 @@ What inside an (instance) object
 ``` 
 Car {
   color:"red",
-  //see _proto_ as the creator of the redCar
-  _proto_:{
-    //constructor is part of the creator
-    //the redCar has a reference to the constructor
+  __proto__:{
     contructor:f(color),
     _proto_:Object
   }
 }
 
-redCar.constructor.prototype ==> {constructor: ƒ}
+redCar.constructor ==> f Car();
 
 ```
 ```javascript
