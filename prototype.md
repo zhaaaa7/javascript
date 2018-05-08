@@ -3,6 +3,9 @@ reference: https://segmentfault.com/a/1190000014717972
 
 ## Function object
 1. The global Function object has no methods or properties of its own. However, since it is a function itself, it does inherit some methods and properties through the prototype chain from `Function.prototype`.
+
+Function.prototype is an object which has a `constructor property` that specifies the function that creates an object's prototype. It also contains any other properties you add to it later.
+
 2. properties
 * Function.arguments: Use the arguments object available within the function instead.
 * Function.length: Specifies the number of arguments **expected** by the function.
