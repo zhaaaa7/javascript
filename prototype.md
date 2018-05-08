@@ -69,4 +69,9 @@ typeof(Math)
 //all of them are function
 ```
 
-<img src="" width="800px" alt="prototype chain">
+```
+var obj = new Object();
+var foo = new Foo();
+```
+
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/prototypeChain.jpg" width="800px" alt="prototype chain">
