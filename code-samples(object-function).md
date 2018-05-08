@@ -377,95 +377,7 @@ let c1=function (x,y,z) {
   Object.assign(this,{x,y,z});
 }
 ```
-## Function mixins
-* mixin
-```javascript
-const jsSkill={
-  knowJS(){
-    return true;
-  }
-};
 
-const engDegree={
-  hasDegree(){
-    return true;
-  }
-};
-
-const backendSkill={
-  knowBackend(){
-    return true;
-  }
-}
-const jsEngineer=Object.assign({},jsSkill,engDegree);
-const fullStackEngineer=Object.assign({},jsSkill,engDegree,backendSkill);
-```
-* factory function -- close the returned object with some variable
-```javascript
-const Car=function(color){
-
-  //closure, close the returned object
-  let moving=false;
-  return Object.assign({},{
-    color:color,
-    drive(){
-      moving=true;
-      return this;
-    }, 
-    isMoving(){
-      return moving;
-    }
-
-  })
-  
-}
-
-let redCar=Car('red');
-console.log(redCar.drive().isMoving()); //true
-
-```
-* function mixin -- take an object as an argument of the function factory, get their methods and return a new object
-
-```javascript
-
-const humanFactory=function(obj){
-  let isCrying=false;
-
-  return Object.assign({},obj,{
-    cry(){
-      isCrying=true;
-      return this;
-    },
-    isCrying(){
-      return isCrying;
-    }
-  });
-
-};
-
-const person1=humanFactory({});
-console.log(person1.isCrying());
-
-
-const flymanFactory=function(obj){
-  let isFlying=false;
-
-  return Object.assign({},obj,{
-    fly(){
-      isFlying=true;
-      return this;
-    },
-    isFlying(){
-      return isFlying;
-    }
-  });
-
-};
-
-const superman=humanFactory(flymanFactory({}));
-console.log(superman.fly().cry().isCrying()); //true
-console.log(superman.fly().cry().isFlying()); //true
-```
 
 ## ES6 class
 ```javascript
@@ -691,4 +603,92 @@ redCar.getColor=function(){
 console.log(redCar.getColor()); //red
 ```
 
+## Function mixins
+* mixin
+```javascript
+const jsSkill={
+  knowJS(){
+    return true;
+  }
+};
 
+const engDegree={
+  hasDegree(){
+    return true;
+  }
+};
+
+const backendSkill={
+  knowBackend(){
+    return true;
+  }
+}
+const jsEngineer=Object.assign({},jsSkill,engDegree);
+const fullStackEngineer=Object.assign({},jsSkill,engDegree,backendSkill);
+```
+* factory function -- close the returned object with some variable
+```javascript
+const Car=function(color){
+
+  //closure, close the returned object
+  let moving=false;
+  return Object.assign({},{
+    color:color,
+    drive(){
+      moving=true;
+      return this;
+    }, 
+    isMoving(){
+      return moving;
+    }
+
+  })
+  
+}
+
+let redCar=Car('red');
+console.log(redCar.drive().isMoving()); //true
+
+```
+* function mixin -- take an object as an argument of the function factory, get their methods and return a new object
+
+```javascript
+
+const humanFactory=function(obj){
+  let isCrying=false;
+
+  return Object.assign({},obj,{
+    cry(){
+      isCrying=true;
+      return this;
+    },
+    isCrying(){
+      return isCrying;
+    }
+  });
+
+};
+
+const person1=humanFactory({});
+console.log(person1.isCrying());
+
+
+const flymanFactory=function(obj){
+  let isFlying=false;
+
+  return Object.assign({},obj,{
+    fly(){
+      isFlying=true;
+      return this;
+    },
+    isFlying(){
+      return isFlying;
+    }
+  });
+
+};
+
+const superman=humanFactory(flymanFactory({}));
+console.log(superman.fly().cry().isCrying()); //true
+console.log(superman.fly().cry().isFlying()); //true
+```
