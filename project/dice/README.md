@@ -12,11 +12,13 @@
 
 2. generate random number between [1,6]
 dice= `Math.floor(Math.random()*6)+1` => [1,6]
-3. set the plain text of selected element
+3. 
+
+* set the plain text of selected element
 `document.querySelector('#current-'+activePlayer).textContent`
 
-set the HTML: a string is required
+* set the HTML: a string is required
 `document.querySelector('#current-'+activePlayer).innerHTML='<em>'+dice+'<em>'`
 
-change the css
+* change the css
 `document.querySelector('.dice').style.display='none'`
