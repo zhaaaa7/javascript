@@ -39,6 +39,18 @@ console.log(b.push(2)); //3
 ```
 
 ## reverse()
+The reverse method transposes the elements of the calling array object in place, mutating the array, and returning a reference to the array.
+```javascript
+var array1 = ['one', 'two', 'three'];
+var reversed = array1.reverse(); 
+
+console.log(array1);
+// expected output: Array ['three', 'two', 'one']
+
+console.log(reversed);
+// expected output: Array ['three', 'two', 'one']
+```
+
 ## sort
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
