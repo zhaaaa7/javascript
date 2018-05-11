@@ -1,25 +1,52 @@
-1. module, data encapsulation, private and public variable
-2. closure and IIFE
-3. the inner funtion always has access to variable in the outer funtio  even after it is returned
-4. 
+## structure of the app
+
+### To-do list
+1. add event handler
+2. get input values
+3. add new item to data structure
+4. add new item to UI
+5. calculate budget
+
+### mvc pattern
+1. separation of concerns
+2. connect the separated module
+
+<img src="" alt="todo list mvc">
+
+
+### modules -- closures and IIFEs
+1. important aspect of robust application's architecture
+2. keep the units of code clearly separated and organized
+3. encapsulate some data into privacy and expose other data publicly (code encapsulation)
+
+4. IIFEs are **just anonymous functions wrapped in parentheses**
+
+5. closure: the inner funtion always has access to variable in the outer funtion  even after it is returned
+
+
+
 ```javascript
+// budgetController is a object with all the public functions
 var budgetController=(function(){
     var x=23;
+    
+    //private method
     var add=function(a){
         return x+a;
     };
+    // public method
     return {
         publicTest : function(b){
             return add(b);
         }
     };
 })();
-
-var UIController = (function(){
-    
-
-})();
-
+```
+```javascript
+var UIController = (function(){...})();
+```
+```
+```javascript
 var controller=(function(budgetCtrl,UICtrl){
     var z=budgetCtrl.publicTest(5);
     return {
@@ -30,6 +57,8 @@ var controller=(function(budgetCtrl,UICtrl){
 
 })(budgetController,UIController);
 ```
+
+
 
 5. KeyboardEvent, keycode
 
