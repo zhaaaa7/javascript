@@ -59,11 +59,52 @@ var controller=(function(budgetCtrl,UICtrl){
 ```
 
 
+## notes
+1. detect when user press the "Enter" key
+```javascript
+document.addEventListener('keypress',function(event){
+    // keycode property of KeyboardEvent, for "Enter" is 13
+    // for old browsers, the property is which
+    if(event.keycode === 13 || event.which===13) {
+       console.log("Enter was pressed");
+    }
+});
+```
 
-5. KeyboardEvent, keycode
+The event here is a KeyboardEvent, `KeyboardEvent.__proto__=== UIEvent`
+keyboard keycode: http://keycodes.atjayjo.com
 
-6. controll tell what other modules to do
-7. value of a select is defined in the html
+
+2. controller tell what other modules to do: call the public methods in "c" in "mvc"
+
+#### in UI controller
+
+1. value of a select is defined in the html
+
+`document.querySelector('.add__type').value; // inc / exp`
+
+2. a private object to store DOMstrings (DOM selectors), a public method to return the object
+
+
+#### in controller
+1. `DOM=UICtrl.getDOMstring();`
+
+2. initialization function
+```
+setupEventListeners=function(){};
+return {
+    init: function(){
+        setupEventListeners();
+    }
+};
+````
+
+
+
+
+
+
+
 
 8. querySelectorAll returns a list, similar to array but lack useful methods
 
