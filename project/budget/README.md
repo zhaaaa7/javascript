@@ -1,7 +1,9 @@
 1. module, data encapsulation, private and public variable
 2. closure and IIFE
 3. the inner funtion always has access to variable in the outer funtio  even after it is returned
-4. var budgetController=(function(){
+4. 
+```javascript
+var budgetController=(function(){
     var x=23;
     var add=function(a){
         return x+a;
@@ -27,6 +29,7 @@ var controller=(function(budgetCtrl,UICtrl){
     };
 
 })(budgetController,UIController);
+```
 
 5. KeyboardEvent, keycode
 
