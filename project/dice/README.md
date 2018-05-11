@@ -77,5 +77,7 @@ https://developer.mozilla.org/en-US/docs/Web/Events
 3. Events happen in the browser are put in **Message Queue**. When the execution stack is empty, the attached event listener will be called and get it own execution context.
 
 
+<img src="https://github.com/zhaaaa7/javascript/blob/master/project/dice/event.png" width="700px" alt="how event listener work">
+
 ### state variable: 
 1. the condition of the system
