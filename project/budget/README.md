@@ -90,7 +90,7 @@ keyboard keycode: http://keycodes.atjayjo.com
 1. `DOM=UICtrl.getDOMstring();`
 
 2. initialization function
-```
+```javascript
 setupEventListeners=function(){};
 return {
     init: function(){
@@ -100,6 +100,25 @@ return {
 ````
 
 
+#### in model controller (budgetController)
+1. use a function constructor to create following Expense objects and Income objects, write methods on the .prototype
+```
+var exp=new Expense(1,'buy a car', 30000);
+```
+
+2. data structure: store expense and income in an array
+```
+var data={
+    allItems: {
+        exp:[],
+        inc:[]
+    },
+    totals: {
+        exp:0,
+        inc: 0
+    }
+};
+```
 
 
 
