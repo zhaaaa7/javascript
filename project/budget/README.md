@@ -45,13 +45,13 @@ var budgetController=(function(){
 ```javascript
 var UIController = (function(){...})();
 ```
-```
+
 ```javascript
 var controller=(function(budgetCtrl,UICtrl){
     var z=budgetCtrl.publicTest(5);
     return {
         another: function(){
-            console.log(z);
+            console.log(z);  //28
         }
     };
 
