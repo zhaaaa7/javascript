@@ -75,7 +75,17 @@ The event here is a KeyboardEvent, `KeyboardEvent.__proto__=== UIEvent`
 keyboard keycode: http://keycodes.atjayjo.com
 
 
-2. controller tell what other modules to do: call the public methods in "c" in "mvc"
+2. controller tell what other modules to do: call the public methods in "c" in "mvc", get the data and use the data
+
+
+3. inserAdjacentHTML()
+
+4. querySelectorAll returns a NodeList, similar to array but lack useful methods, use `slice` to convert the list to array
+
+5. forEach(function(current,index,array){...})
+
+6. philosophy: return functions simply setting data or getting data
+
 
 #### in UI controller
 
@@ -84,6 +94,80 @@ keyboard keycode: http://keycodes.atjayjo.com
 `document.querySelector('.add__type').value; // inc / exp`
 
 2. a private object to store DOMstrings (DOM selectors), a public method to return the object
+
+3. add new item to UI
+```
+addListItem(obj, type){
+    // 1. add HTML string placeholder: html= '...';
+    
+    // 2. replace with actual data : html.replace('%id%',obj.id);
+    
+    // insert html into the DOM: element.inserAdjacentHTML('beforeend',newhtml);
+}
+```
+4. clear input field
+```
+fields = document.querySelectorAll('.. , ..');
+fieldsArr=Array.prototype.slice.call(fields);
+
+forEach(function(current,index,array){
+    current.value='';
+})
+
+fieldsArr[0].focus()
+```
+5. convert input string to a number `parseFloat`
+
+6. display budget
+
+
+#### in model controller (budgetController)
+1. use a function constructor to create following Expense objects and Income objects, write methods on the .prototype
+```
+var exp=new Expense(1,'buy a car', 30000);
+```
+
+2. private data structure: store expense and income in an array
+```
+var data={
+    allItems: {
+        exp:[],
+        inc:[]
+    },
+    totals: {
+        exp:0,
+        inc: 0
+    }, 
+    budget: 0, 
+    percentage: -1
+};
+```
+
+3. add a new item to the data structure
+3-1. use designed `type` property 
+```
+//the type can be either exp or inc
+data.allItems[type].push(newItme)
+```
+
+3-2. add `ID` for every item: add 1 to the last item's id
+```
+if(data.allItems[type].length > 0){
+    ID=data.allItems[type][data.allItems[type].legnth - 1].id
+} else {
+    ID=0;
+}
+```
+
+4. calculate budget
+```
+data.allItems[type].forEach(function(cur){
+    sum+=cur.value;
+});
+
+data.totals[type]=sum;
+```
+
 
 
 #### in controller
@@ -99,33 +183,20 @@ return {
 };
 ````
 
+3. check if there is validated input 
+```
+if(input.description !== "" && !isNaN(input.value) && input.value>0)
+```
+4. updateBudget
+```
+//calculate the budget
 
-#### in model controller (budgetController)
-1. use a function constructor to create following Expense objects and Income objects, write methods on the .prototype
-```
-var exp=new Expense(1,'buy a car', 30000);
-```
+// return the budget
 
-2. data structure: store expense and income in an array
-```
-var data={
-    allItems: {
-        exp:[],
-        inc:[]
-    },
-    totals: {
-        exp:0,
-        inc: 0
-    }
-};
+// dipslay on UI
 ```
 
 
-
-
-
-
-8. querySelectorAll returns a list, similar to array but lack useful methods
 
 9. parseFloat to convert input string
 
