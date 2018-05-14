@@ -87,6 +87,36 @@ keyboard keycode: http://keycodes.atjayjo.com
 6. philosophy: return functions simply setting data or getting data
 
 
+7. parseFloat to convert input string
+
+8. testing in data control module to see the data structure
+
+9. consider edge case
+
+10. when you call a method on a string primitive, js engine wrap around it and coerce it to a string object
+
+11. can only delete a child of a parent, not the child it self
+
+12. how callback functions receive arguments
+```
+function nodeListForEach(nodelist,callback) {
+    for (var i=0; i< list.length; i++) {
+        callback(list[i],i);
+    }
+}
+```
+The callback here will receive list item and index, you just need to specify how to deal with the arguments when calling this function.
+```
+var fields=document.querySelectorAll(...);
+nodeListForEach(fields, function(cur,index){
+    cur.textContent=percentages[index]+'%';
+})
+
+```
+
+13. toFixed(2) is a Number.prototypr method, returns a string
+
+
 #### in UI controller
 
 1. value of a select is defined in the html
@@ -118,8 +148,53 @@ fieldsArr[0].focus()
 ```
 5. convert input string to a number `parseFloat`
 
-6. display budget
+6. deleteListItem from UI
+```
+deleteListItem: function(selectorID){
+    var el=document.getElementById(selectorID);
+    el.parentNode.removeChild(el);
+}
+}
+```
 
+7. display percentages on UI
+
+create a forEach method for nodeList
+```
+function nodeListForEach(nodelist,callback) {
+    for (var i=0; i< list.length; i++) {
+        callback(list[i],i);
+    }
+}
+```
+```
+var fields=document.querySelectorAll(...);
+nodeListForEach(fields, function(cur,index){
+    cur.textContent=percentages[index]+'%';
+})
+
+```
+8. formatting the strings on UI
+```
+formatNumber: function(num, type){
+    //+, -
+    
+    // 33.33
+    
+    // 20,300
+    
+    num=Math.abs(num);
+    num=num.toFixed(2);
+    
+    numSplit=num.split('.');
+    int=numSplit[0];
+    dec=numSplit[0];
+    
+    int.substr(0,int.length-3)+','+int.substr(int.length-3,3); 2310->2.310
+    
+    return type + int + '.'+ dec;
+}
+```
 
 #### in model controller (budgetController)
 1. use a function constructor to create following Expense objects and Income objects, write methods on the .prototype
@@ -168,6 +243,55 @@ data.allItems[type].forEach(function(cur){
 data.totals[type]=sum;
 ```
 
+5. delete item
+```
+deleteItem=(type,id) {
+    var ids= data.allItems[type].map(function(current){
+        return current.id;
+    })
+    
+    var index= ids.indexof(id);
+    
+    if(index!==-1){
+        data.allItems[type].splice(index,1);
+    }
+}
+
+```
+
+6. calculate expense percentage
+```
+Expense=function(){
+  this.percentage=-1;
+}
+
+
+Expense.prototye.calcPercentage=function(totalIncome){
+    this.percentage=....
+}
+
+Expense.prototye.getPercentage=function(){
+    return this.percentage;
+}
+
+```
+
+```
+calculatePercentage: funtion(){
+    data.allItems.exp.forEach(function(cur){
+        cur.calcPercentage(data.totals.inc);
+    });
+}
+
+getPercentage: function(){
+  var allPer=data.allItems.exp.map(function(cur){
+     return cur.getPercentage();
+  })
+  
+  return allPer;
+}
+```
+
 
 
 #### in controller
@@ -196,18 +320,37 @@ if(input.description !== "" && !isNaN(input.value) && input.value>0)
 // dipslay on UI
 ```
 
+5. class="container" is where we add event delegation: ctrlDeleteItem
+6. to get the `id` attribute of the list item to be deleted
+`itemID=event.target.parentNode.parentNode.parentNode.parentNode.id`
+7. `itemID` is like `inc-1` or `exp-1`, to get the type and number
+```javascript
+splitID=itemID.split('-');
+type=splitID[0];
+ID= splitID[1];
+```
+
+convert the string ID to number ID parseInt(ID)
+```
+budgetCtrl.deleteItem(type, parseInt(ID));
+UICtrl.deleteListItem(itemID);
+```
 
 
-9. parseFloat to convert input string
 
-10. testing in data control module to see the data structure
 
-11. edge case
 
-12. event.targetElement
 
-13. when you call a method on a string primitive, js engine wrap around it and coerce it to a string object
 
-14. can only delete a child of a parent not the child it self
 
-15. toFixed(1) is a Number.prototypr method, returns a string
+
+
+
+
+### event delegation
+1. attach event handler to the target element's parents and wait for the event to bubble up to the parent.
+2. use `event.target` property to do what we want to do
+3. use cases: a) an element with lots of child elements that we are interested in
+              b) we want to attach an event handler to an element that is not yet in the DOM when the page is loaded
+       
+
