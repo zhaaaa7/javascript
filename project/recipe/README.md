@@ -1,4 +1,4 @@
-### npm and node
+## npm and node
 1. npm comes with node
 2. `npm init` => `package.json` file is used to share the needed packages info
 ```
@@ -37,7 +37,7 @@ module.exports = {
 ```
 npm install webpack-cli --save-dev  // webpack command line interface
 ```
-```
+```javascript
 "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
@@ -49,12 +49,12 @@ npm install webpack-cli --save-dev  // webpack command line interface
 ```
 npm install webpack-dev-server --save-dev
 ```
-```
+```javascript
 devServer:{
         contentBase:'./dist'
     },
 ```
-```
+```javascript
 "scripts": {
     "dev": ...
     "build":...
@@ -73,7 +73,7 @@ npm install html-webpack-plugin --save-dev
 ```
 
 copy the html file from src folder to dist folder
-```
+```javascript
 const path=require('path');
 const HTMLWebpackPlugin=require('html-webpack-plugin');
 
@@ -97,7 +97,7 @@ npm install babel-core babel-preset-env babel-loader --save-dev
 `babel-loader` is for webpack to load babel
 
 2. loaders in webpack -- allow us to import and process different files, such as compile sass to css..
-```
+```javascript
 module.exports = {
     ...
     ...
@@ -117,7 +117,7 @@ module.exports = {
 ```
 
 3. `.babelrc` file -- set the target running environment
-```
+```javascript
 {
     "presets": [
         ["env",{
@@ -136,7 +136,7 @@ module.exports = {
 ```
 npm install babel-polyfill --save
 ```
-```
+```javascript
 module.exports = {
     entry: ['babel-polyfill','./src/js/index.js'],
     ...
