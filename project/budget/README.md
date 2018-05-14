@@ -11,7 +11,7 @@
 1. separation of concerns
 2. connect the separated module
 
-<img src="" alt="todo list mvc">
+<img src="https://github.com/zhaaaa7/javascript/blob/master/project/budget/img/mvc1.png" alt="todo list mvc">
 
 
 ### modules -- closures and IIFEs
@@ -372,3 +372,7 @@ UICtrl.deleteListItem(itemID);
               b) we want to attach an event handler to an element that is not yet in the DOM when the page is loaded
        
 
+### app structure
+<img src="https://github.com/zhaaaa7/javascript/blob/master/project/budget/img/step1.png" alt="todo list mvc">
+<img src="https://github.com/zhaaaa7/javascript/blob/master/project/budget/img/step2.png" alt="todo list mvc">
+<img src="https://github.com/zhaaaa7/javascript/blob/master/project/budget/img/step3.png" alt="todo list mvc">
