@@ -562,7 +562,7 @@ elements.recipe.addEventListener('click',e=>{
 
 **Note**: `Array.from(document.querySelectorAll('.recipe__count'));` to convert Nodelist to array
 
-### list.js (shooping list)
+### lists (shooping list)
 1. set id for each list item
 
 2. findIndex(), splice()
@@ -582,5 +582,72 @@ updateCount(id, newCount){
 ```
 
 
-15. localStorage.setItem('key','value'), getItem(), length
-16. JSON.parse('[]') will return null
+### likes
+1. isLiked() -- find the id in Liked list
+```javascript
+isLiked(id){
+    return this.likes.findIndex(el=>el.id===id) !== -1;
+}
+````
+
+2. toggle like button -- setAttribute of the svg for the heart
+```javascript
+export const toggleLikeBun= isliked =>{
+    const iconString=isliked ? 'icon-heart' : 'icon-heart-outlined';
+    document.querySelector('.recipe__love use').setAttribute('href',`img/icons.svg#${iconString}`);
+};
+```
+
+in recipeView.js -- retain the isLiked state
+```javascript
+...
+<button class="recipe__love">
+    <svg class="header__likes">
+        <use href="img/icons.svg#icon-heart${isLiked?'':'-outlined'}"></use>
+    </svg>
+</button>
+
+.....
+```
+3. toggle the like menu
+```javascript
+export const toggleLikeMenu= numLikes =>{
+    elements.likesMenu.style.visibility= numLikes>0 ? 'visible' : 'hidden' ; 
+};
+```
+
+4. delete like item in list
+```javascript
+export const deleteLike = id =>{
+    const el=document.querySelector(`.likes__link[href*="${id}"]`).parentElement;
+    if(el){
+        el.parentElement.removeChild(el);
+    }
+};
+```
+**Note**: ```querySelector(`.likes__link[href*="${id}"]`)```, attribute selector
+
+
+### web localStorage api -- data persist through page loads
+1. basics
+```javascript
+localStorage.setItem('key','value');
+localStorage.getItem('key');
+localStorage.length;
+```
+2. persist likes 
+```javascript
+persistData(){
+    localStorage.setItem('like',JSON.stringify(this.likes));
+}
+
+readStorage(){
+    const storage=JSON.parse(localStorage.getItem('like'));
+
+    if(storage){
+        this.likes=storage;
+    }
+}
+```
+
+**Note**: `JSON.parse('[]')` will return null
