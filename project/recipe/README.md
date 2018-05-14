@@ -1,3 +1,27 @@
+### npm and node
+1. npm comes with node
+2. `npm init` => `package.json` file is used to share the needed packages info
+```
+decDependencies: {"webpack":...},
+dependencies: {"jQuery":...}
+```
+
+install packages with npm
+```
+npm install webpack --save-dev
+npm install jquery --save
+npm uninstall jquery --save
+
+psudo npm install live-server --global
+```
+3. webpack -- bundle
+
+`webpack.config.js` file
+
+
+
+
+
 1. output need an absolute path
 2. webpack command line interface webpack-cli
 3. webpack-dev-server will bundle the file and directly inject it into the index.html
