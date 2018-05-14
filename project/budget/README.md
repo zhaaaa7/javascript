@@ -126,7 +126,7 @@ month=now.getMonth();
 15. `change` event on select 
 
 
-#### in UI controller
+### In UI controller
 
 1. value of a select is defined in the html
 
@@ -215,7 +215,7 @@ changedType: function(){
 }
 ```
 
-#### in model controller (budgetController)
+### In model controller (budgetController)
 1. use a function constructor to create following Expense objects and Income objects, write methods on the .prototype
 ```
 var exp=new Expense(1,'buy a car', 30000);
@@ -313,7 +313,7 @@ getPercentage: function(){
 
 
 
-#### in controller
+### In controller
 1. `DOM=UICtrl.getDOMstring();`
 
 2. initialization function
