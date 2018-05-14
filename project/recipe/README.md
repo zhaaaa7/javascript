@@ -223,7 +223,7 @@ const state={};
 ```javascript
 state.search=new Search(query);
 ```
-use await to pause the function and wait for the `this.result` to receive data
+**Note**: use `await` to wait for the async function `state.search.getResultes()` to resolve (return undefined). It pauses the function and ensure the `this.result` to receive data
 ```javascript
 await state.search.getResultes();
 
