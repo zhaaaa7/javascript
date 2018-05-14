@@ -213,6 +213,7 @@ changedType: function(){
         cur.classList.toggle('red-focus');
     });
 }
+```
 
 #### in model controller (budgetController)
 1. use a function constructor to create following Expense objects and Income objects, write methods on the .prototype
