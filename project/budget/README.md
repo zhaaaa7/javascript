@@ -116,6 +116,15 @@ nodeListForEach(fields, function(cur,index){
 
 13. toFixed(2) is a Number.prototypr method, returns a string
 
+14. Date object
+```
+var now= new Date();
+year=now.getFullYear();
+month=now.getMonth();
+```
+
+15. `change` event on select 
+
 
 #### in UI controller
 
@@ -195,6 +204,15 @@ formatNumber: function(num, type){
     return type + int + '.'+ dec;
 }
 ```
+
+9. change the outline of the form part when editing expenses
+```
+changedType: function(){
+    var fields=document.querySelectorAll(..+','+..+','+..);
+    nodeListForEach(fields, function(cur){
+        cur.classList.toggle('red-focus');
+    });
+}
 
 #### in model controller (budgetController)
 1. use a function constructor to create following Expense objects and Income objects, write methods on the .prototype
