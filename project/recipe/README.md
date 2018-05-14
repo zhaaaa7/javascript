@@ -14,21 +14,142 @@ npm uninstall jquery --save
 
 psudo npm install live-server --global
 ```
-3. webpack -- bundle
+
+## webpack -- bundle
+1. basic property: entry point, output, plug-ins and loaders
 
 `webpack.config.js` file
 
+```javascript
+const path=require('path');
+
+module.exports = {
+    entry: ['./src/js/index.js'],
+    output: {
+        path:path.resolve(__dirname,'dist'),   // need an absolute path
+        filename:'./js/bundle.js'
+    },
+};
+```
+**Note:** output need an absolute path
+
+2. To access webpack through command line
+```
+npm install webpack-cli --save-dev  // webpack command line interface
+```
+```
+"scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+}
+```
 
 
+3. webpack dev-server: real server and auto reload
+```
+npm install webpack-dev-server --save-dev
+```
+```
+devServer:{
+        contentBase:'./dist'
+    },
+```
+```
+"scripts": {
+    "dev": ...
+    "build":...
+    "start": "webpack-dev-server --mode development --open"
+  },
+```
+```
+npm run start
+```
+**Note:** webpack-dev-server will bundle the file and directly inject it into the index.html in dist folder, you don't need a real bundle.js file. If you want to see the file: `npm run dev` or `npm run build`.
 
 
-1. output need an absolute path
-2. webpack command line interface webpack-cli
-3. webpack-dev-server will bundle the file and directly inject it into the index.html
-4. loaders in webpack allow us to import and process different files, compile sass to css..
-5. babel 1) npm install babel-core babel-preset-env babel-loader --save-dev, add loader in webpack.config
+4. plug-ins -- allow us to do complex processing of input files
+```
+npm install html-webpack-plugin --save-dev
+```
+
+copy the html file from src folder to dist folder
+```
+const path=require('path');
+const HTMLWebpackPlugin=require('html-webpack-plugin');
+
+module.exports = {
+    ...
+    ...
+
+    plugins: [
+        new HTMLWebpackPlugin({
+            filename: 'index.html',
+            template: './src/index.html'
+        })
+    ],
+```
+
+### babel  -- a javascipt compiler
+1. 
+```
+npm install babel-core babel-preset-env babel-loader --save-dev
+```
+`babel-loader` is for webpack to load babel
+
+2. loaders in webpack -- allow us to import and process different files, such as compile sass to css..
+```
+module.exports = {
+    ...
+    ...
+    ...
+    module: {
+        rules:[
+            {
+                test:/\.js$/,   //find all js file, exclude those in node_modules
+                exclude:/node_modules/,
+                use: {
+                    loader:"babel-loader"
+                }
+            }
+        ]
+    }
+};
+```
+
+3. `.babelrc` file -- set the target running environment
+```
+{
+    "presets": [
+        ["env",{
+            "targets":{
+                "browser":[
+                    "last 5 versions",
+                    "ie >= 8"
+                ]
+            }
+        }]
+    ]
+}
+```
+
+4. polyfill -- directly go to the final code
+```
+npm install babel-polyfill --save
+```
+```
+module.exports = {
+    entry: ['babel-polyfill','./src/js/index.js'],
+    ...
+};
+```
+
+
+5. summarize step 
+         1) npm install babel-core babel-preset-env babel-loader --save-dev, add loader in webpack.config
          2) .babelrc
          3) npm install babel-polyfill --save and add to entry 'entry: ['babel-polyfill','./src/js/index.js']'
+
+
 
 
 6. uppercase for model module
