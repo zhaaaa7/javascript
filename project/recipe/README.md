@@ -288,6 +288,25 @@ export const limitRecipeTitle =(title, limit=17)=>{
     return title;  // if the title is short, return the original title
 };
 ```
+6. highlight the selected/active recipe
+
+```javascript
+export const highlightedSelector=id=>{
+    const resultsArr=Array.from(document.querySelectorAll('.results__link'));
+    resultsArr.forEach(el=>{
+        el.classList.remove('results__link--active');
+    });
+    document.querySelector(`.results__link[href*="${id}"]`).classList.add('results__link--active');
+};
+```
+in index.js: 
+```
+if(state.search){
+            searchView.highlightedSelector(id);
+}
+```
+
+**Note**: check if there is search there
 
 
 ### spinner
@@ -378,6 +397,8 @@ r.getRecipe();
 console.log(r);
 ```
 
+3. updateServings()
+
 ### recipe control
 1. read data from page URL `href="#${recipe.recipe_id}` in renderRecipe() so you can use the hashchange event
 ```javascript
@@ -391,23 +412,175 @@ window.addEventListener('hashchange',controlRecipe);
 ```    
 
 2. instanciate a Recipe
-```
+```javascript
 state.recipe=new Recipe(id);
 ```
 
 3. add same event handler to different event
-```
+
+'load' event : to retain the data when page reloads
+
+```javascript
 // window.addEventListener('hashchange',controlRecipe);
 // window.addEventListener('load',controlRecipe);
 ['hashchange','load'].forEach(event=>window.addEventListener(event,controlRecipe));
 ```
 
-4. pareIngredients() -- uniform the units
+4. pareIngredients() 
+```javascript
+...
+// 1. uniform units
+....
+unitsLong.forEach((unit,index)=>{
+    ingredient=ingredient.replace(unit, units[index]);
+});
 
-12. retain the data when page reloads
+// 2. remove parentheses with RegEx
+ingredient=ingredient.replace(/ *\([^)]*\) */g, ' ');
 
-13. const unitIndex=arrIngredient.findIndex(el2=>unitShort.includes(el2)); find the unkown item
-14. this.items.splice(); //find the deleted one, return it , mutate the original array, splice(start,numberToDelete)
+// 3. parse each ingredient to count unit ingredients
+const arrIngredient=ingredient.split(' ');
+
+//find the index of the unit, if any
+const unitIndex=arrIngredient.findIndex(el2=>units.includes(el2));
+```
+**Note**: `arrIngredient.findIndex(el2=>unitShort.includes(el2));` a solution to find the unkown item 
+
+5. eval('...') -- evaluate the string and execute it
+```javascript
+if(arrCount.length===1){
+    count=eval(arrIngredient[0].replace('-','+')); // 4-1/2 -> "4+1/2" => 4.5
+}else{
+    count=eval(arrIngredient.slice(0,unitIndex).join('+'));  // "4+1/2" => 4.5
+}
+```
+
+6. the new ingredient object is now 
+```javascript
+const newIngredients=this.ingredients.map(el=>{
+
+    ......
+    objIngredient={
+            count: 1,
+            unit: '',
+            ingredient: ingredient
+        };
+    }
+
+    return objIngredient;
+});
+
+this.ingredients=newIngredients;
+ ```
+
+
+### recipeView.js
+1. renderRecipe()
+render ingredients' list
+```javascript
+${recipe.ingredients.map(el=>createIngredient(el)).join('')}
+```
+2. Franctional package ----- 2.5 => 2 1/2
+```
+npm install fractional --save
+```
+```javascript
+import {Fraction} from 'fractional';
+
+..
+
+const formatCount=count=>{
+    if(count){    
+        const newCount=Math.round(count*10000)/10000; // deal with the long floating
+        const [int,dec]=newCount.toString().split('.').map(el=>parseInt(el,10)); //destructuring the float number
+
+        if(!dec){
+            return newCount;
+        }
+
+        if(int===0){
+            //0.6
+            const fr =new Fraction(newCount);
+            return `${fr.numerator}/${fr.denominator}`;
+        }else{
+            //1.6
+            const fr =new Fraction(newCount-int);
+            //0.6
+            return `${int} ${fr.numerator}/${fr.denominator}`;
+        }
+
+    }
+    return '?';
+};
+```
+
+### update the serving
+1. in Recipe.js
+```javascript
+updateServings(type){
+        //servings
+        const newServings = type ==='dec' ? this.servings-1 : this.servings+1;
+
+        //ingredients
+        this.ingredients.forEach(ing=>{
+            ing.count=ing.count*(newServings/this.servings);
+        });
+     
+        this.servings=newServings;
+    }
+```
+2. in recipeView.js
+```javascript
+export const updateServingsAndIngredients=recipe=>{
+    document.querySelector('.recipe__info-data--people').textContent=recipe.servings;
+
+    const countElements=Array.from(document.querySelectorAll('.recipe__count'));
+    countElements.forEach((el,index)=>{
+        el.textContent=formatCount(recipe.ingredients[index].count);
+    });
+};
+```
+3. add event listener to Recipe area
+```javacript
+elements.recipe.addEventListener('click',e=>{
+    //decrease the serving
+    if(e.target.matches('.btn-decrease, .btn-decrease *')){ // btn-increase * : all descendants of btn-increase
+        if(state.recipe.servings>1){
+            //update the serving in Recipe 
+            state.recipe.updateServings('dec');
+            //update the serving on UI
+            recipeView.updateServingsAndIngredients(state.recipe);
+        }   
+    //increase the serving     
+    }else if(e.target.matches('.btn-increase, .btn-increase *')){
+        state.recipe.updateServings('inc');
+        recipeView.updateServingsAndIngredients(state.recipe);
+    }
+    
+});
+```
+
+**Note**: `Array.from(document.querySelectorAll('.recipe__count'));` to convert Nodelist to array
+
+### list.js (shooping list)
+1. set id for each list item
+
+2. findIndex(), splice()
+```javascript
+//[1,2,3] -> spice(1,1)-> [1,3]
+deleteItem(id){      
+    const index=this.items.findIndex(el=>el.id===id); //find the el that matches the passes id
+    this.items.splice(index,1); 
+}
+````
+**Note**: splice(start,numberToDelete) --> find the deleted one, return it , mutate the original array
+3. find()
+```javascript
+updateCount(id, newCount){
+    this.items.find(el=>el.id===id).count=newCount;
+}
+```
+
 
 15. localStorage.setItem('key','value'), getItem(), length
 16. JSON.parse('[]') will return null
