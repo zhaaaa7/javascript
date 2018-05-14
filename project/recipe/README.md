@@ -150,6 +150,8 @@ module.exports = {
          3) npm install babel-polyfill --save and add to entry 'entry: ['babel-polyfill','./src/js/index.js']'
 
 
+## app architecture - MVC
+<img src="" alt="recipe app architecture" width="700px">
 
 
 6. uppercase for model module
