@@ -78,3 +78,15 @@ var eventHandler = {
     }
 }
 eventHandler.add(btn1,"click",show);
+```
+
+### event object
+1. property
+
+e.type --> click, onmouseover
+e.target --> DOM element triggers the event
+
+2. method
+e.stopPropagation() 
+e. preventDefault()  --> prevent the jumping behavior of `<a>`
+
