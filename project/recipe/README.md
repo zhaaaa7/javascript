@@ -330,7 +330,7 @@ renderLoader(elements.seachRes);
 ```
 
 
-### pagination
+### pagination -- render different slice of the array
 1.
 ```javascript
 export const renderResult = (recipes,page=1,resPerpage=10) => {
