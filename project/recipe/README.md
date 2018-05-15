@@ -145,9 +145,11 @@ module.exports = {
 
 
 5. summarize step 
-         1) npm install babel-core babel-preset-env babel-loader --save-dev, add loader in webpack.config
-         2) .babelrc
-         3) npm install babel-polyfill --save and add to entry 'entry: ['babel-polyfill','./src/js/index.js']'
+1) npm install babel-core babel-preset-env babel-loader --save-dev, add loader in webpack.config
+
+2) .babelrc
+
+3) npm install babel-polyfill --save and add to entry 'entry: ['babel-polyfill','./src/js/index.js']'
 
 
 ## app architecture - MVC
