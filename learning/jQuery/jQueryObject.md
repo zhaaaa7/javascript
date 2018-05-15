@@ -57,7 +57,7 @@ var $cr = $(cr);
 
 ### example
 1. .each() method
-```javadcript
+```javascript
    $(document.body).click(function () {
      $( "div" ).each(function (i) {
        if ( this.style.color != "blue" ) {
