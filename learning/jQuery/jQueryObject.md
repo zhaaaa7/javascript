@@ -1,11 +1,11 @@
 ### DOM object and jQuery object
 1. We use javascript to use the DOM API and get DOM object.
-```javascrpt
+```javascript
 var domObj = document.getElementById("id"); //DOM object
 ```
 
 2. We use `$()` selector to use the DOM API and get jQuery object.
-```javascrpt
+```javascript
 var $obj = $("#id"); //jQueryobject
 ```
 
