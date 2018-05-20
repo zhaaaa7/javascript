@@ -73,6 +73,8 @@ a snippet code, adapted from https://stackoverflow.com/questions/4616694/what-is
 
 </html>
 
+* When you click 5:
+
 ```
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/event.png" alt="event" width="500px"/>
 
