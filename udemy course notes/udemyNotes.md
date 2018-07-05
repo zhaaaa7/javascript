@@ -111,7 +111,7 @@ question.set(2,'ES6');
 question.set(3,'ES7');
 question.set('correct',3);
 question.set(true,'Correct!');
-question.set(false,'Wrong!);
+question.set(false,'Wrong!');
 
 question.get('question');
 question.size;
@@ -221,4 +221,57 @@ getIDs.then((ids)=>{
     console.log(err);
 });
 ```
+6. async/await -- simpler way to consume promise
+1) wait: wait for the Promise to resolve to a value
+```javascript
+async function getRecipes(){
+    const ids=await getIDs();
+    const rec= await getRecipe(ids[2]);   
+    
+    return 'done';
+}
 
+getRecipes();
+```
+2) async functions runs on the 'background', it returns a Promise which resolves to the return value
+```javascript
+
+getRecipes().then(res=>{
+    console.log(res); //done
+});
+```
+
+7. ajax: asynchronous javascript and xml
+
+   api: application programming interface
+   
+8. make ajax call with fetch -- web api, returns a promise
+```javascript
+fetch(url).then(res=>{
+    console.log(res); //ReadableStream
+    return result.json(); // a promise
+})
+.then(data=>{
+    console.log(data); //real data
+})
+.catch(err=>{
+console.log(err)});
+```
+
+9. make ajax call with async/await
+```javascript
+async function getWeather(){
+    try{
+        const res= await fetch(url);
+        const data=await res.json();
+        return data;
+    }catch(err){
+        console.log(err)});
+    }
+
+}
+
+getWeather().then(res=>{})
+
+
+```
