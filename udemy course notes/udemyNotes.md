@@ -53,5 +53,5 @@ function second() {
 * regular function call -- window
 * method call -- object
 
-- method borrowing
+    - method borrowing
 
