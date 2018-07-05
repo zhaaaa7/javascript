@@ -20,6 +20,9 @@ global execution context:
 
 
 execution context object 
+
+creation phase:
+
 1) Variable Object (VO)
 * argument object is created
 * function declarations -- real function code
@@ -32,4 +35,23 @@ execution context object
     
     - function scope -- lexical scope
 
+* scope chain -- [VO2,VO1,Global VO]
+
+```javascript
+var a=1;
+function first() {
+    var b=1;
+    second()
+}
+
+function second() {
+    console.log(b); //error
+}
+```
+
 3) `this` variable
+* regular function call -- window
+* method call -- object
+
+- method borrowing
+
