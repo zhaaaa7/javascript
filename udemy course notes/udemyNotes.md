@@ -54,4 +54,35 @@ function second() {
 * method call -- object
 
     - method borrowing
+    
+    
+    
+ES6
+1. variable declaration
+* let and const are block scoped, no hoisting
+* var is function scoped, hoisting
+
+
+2. data privacy
+* block
+* IIFE
+
+
+3. string
+* template literal: `${}`, startsWith(), endsWith(), includes(), repeat()
+* `+`
+
+
+
+4. arrow function
+* lexical `this`
+
+
+5. destrcturing
+* `const {firstName:a, lastName:b}=obj;`
+* `const [a,b]=[1,2];`
+
+
+6. array
+* 
 
