@@ -57,7 +57,7 @@ function second() {
     
     
     
-ES6
+## ES6
 1. variable declaration
 * let and const are block scoped, no hoisting
 * var is function scoped, hoisting
@@ -84,5 +84,141 @@ ES6
 
 
 6. array
-* 
+* `Array.from(nodeList)` <- `Array.prototype.slice().call(nodeLIst)`
+* `for (let cur of boxes) {cur...}` <- `for (var i=0;i<boxes.length;i++){boxes[i]...}`
+* findIndex(), find()
+
+7. spread operator --takes an array/object and transform it into single values
+* `addFourAges(...ageList)`<-`addFourAges.apply(null,ageList)`
+* `[...array1,...array2]`
+* `[h,...nodeList]`
+
+8. rest operator -- receive multiple values and make them into an array
+* allow us to pass arbitrary number of arguments into a function 
+* `function isFullAge(...years){years}` <- `arr=Array.prototype.slice.call(arguments)`
+
+9. default parameters
+* `function(name='Smith'){}`<-`name=name||'Smith'`
+
+10. Map -- a new key/value data structure
+* hashmap: map string keys to arbitrary pey
+* key can be any type
+```javascript
+consr question=new Map();
+question.set('question','what is your name?');
+question.set(1,'ES5');
+question.set(2,'ES6');
+question.set(3,'ES7');
+question.set('correct',3);
+question.set(true,'Correct!');
+question.set(false,'Wrong!);
+
+question.get('question');
+question.size;
+
+question.delete(3);
+question.has(3);
+question.clear();
+
+```
+* iterable
+```javascript
+question.forEach((value,key)=>{})
+
+
+for (let key of question){}
+
+for (let [key,value] of question.entries()){}
+```
+11. class
+
+```javascript
+var Person5=function(name,age){
+    this.name=name;
+    this.age=age;
+    
+}
+
+Person5.prototype.calAge=function(){};
+Person5.greeting=function(){}
+
+```
+
+
+```javascript
+class Person6 {
+    constructor(name.age) {
+        this.name=name;
+        this.age=age;
+    }
+    
+    calAge(){}
+    
+    static greeting() {}
+}
+```
+
+* non hoisting
+
+12. inheritance
+
+```javascript
+function Student5(name,age,job){
+    Person5.call(this,name,age);
+    this.job=job;
+}
+
+Student5.prototype=Object.create(Person5.prototype);
+```
+
+```javascript
+clss Student6 extends Person6 {
+    constructor(name,age,job){
+        super(name,age);
+        this.job=job
+    }
+}
+```
+
+## asynchronous javascript -- non-blocking
+1. Allows async functions to run in the 'background', which runs the callbacks once it finishes its work.
+2. event loop: push the callbacks in Message Queue to execution context
+3. web api -- live outside js engine: DOM methods, setTimeout(), http request, geolocation, localStorage
+4. used to be done with callbacks -- callback hell
+5. Promise -- the future value we are expecting
+1) is an Object that tracks whether a certain event has happened
+
+2) determines what happens next
+
+3) status: pending, resolved (fulfilled / rejected)
+
+4) 
+* produce a Promise: send a result/value with that Promise
+```javascript
+const getIDs= new Promise((resolve,reject)=>{
+    setTimeout(()=>{resolve([1,2,3,4])},1500);
+});
+
+const getRecipe=recID=>{
+    return new Promise(()=>{
+        setTimeout(()=>{resolve(`${ID}: recipe is`)},1500);
+    });
+};
+
+```
+
+
+* consume a Promise: use callbacks to use the value
+```javascript
+getIDs.then((ids)=>{
+    console.log(ids); //[1,2,3,4]
+    getRecipe(ids[2]);
+})
+.then((recipe)=>{
+    console.log(recipe);
+})
+.catch((err)=>{
+    console.log(err);
+});
+```
 
