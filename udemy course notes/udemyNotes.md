@@ -27,8 +27,9 @@ execution context object
 
 2) scope chain
 * scope 
-    a) where can we access a certain variable
+
+    - where can we access a certain variable
     
-    b) function scope -- lexical scope
+    - function scope -- lexical scope
 
 3) `this` variable
