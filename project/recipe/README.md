@@ -342,21 +342,23 @@ export const limitRecipeTitle =(title, limit=17)=>{
     return title;  // if the title is short, return the original title
 };
 ```
-6. highlight the selected/active recipe
+6. highlight the selected/active recipe -- based on the id
 
 ```javascript
 export const highlightedSelector=id=>{
+    //remove the active class
     const resultsArr=Array.from(document.querySelectorAll('.results__link'));
     resultsArr.forEach(el=>{
         el.classList.remove('results__link--active');
     });
+    //find the element with the target `href` attribute
     document.querySelector(`.results__link[href*="${id}"]`).classList.add('results__link--active');
 };
 ```
 in index.js: 
 ```
 if(state.search){
-            searchView.highlightedSelector(id);
+    searchView.highlightedSelector(id);
 }
 ```
 
@@ -542,7 +544,7 @@ add same event handler to different event
 ### recipeView.js
 1. renderRecipe()
 
-render ingredients' list
+render ingredients' list -- render each ingredient and join it as a long html string
 ```javascript
 ${recipe.ingredients.map(el=>createIngredient(el)).join('')}
 ```
@@ -553,26 +555,27 @@ npm install fractional --save
 ```javascript
 import {Fraction} from 'fractional';
 
-..
+...
 
 const formatCount=count=>{
     if(count){    
         const newCount=Math.round(count*10000)/10000; // deal with the long floating
-        const [int,dec]=newCount.toString().split('.').map(el=>parseInt(el,10)); //destructuring the float number
+        const [int,dec]=newCount.toString().split('.').map(el=>parseInt(el,10)); 
+        //destructuring the float number to integer and decimal part
 
         if(!dec){
             return newCount;
         }
 
         if(int===0){
-            //0.6
+            //0.5
             const fr =new Fraction(newCount);
-            return `${fr.numerator}/${fr.denominator}`;
+            return `${fr.numerator}/${fr.denominator}`; //1/2
         }else{
             //1.6
             const fr =new Fraction(newCount-int);
             //0.6
-            return `${int} ${fr.numerator}/${fr.denominator}`;
+            return `${int} ${fr.numerator}/${fr.denominator}`; // 1 3/5
         }
 
     }
@@ -580,22 +583,22 @@ const formatCount=count=>{
 };
 ```
 
-### update the serving
+### update the serving -- based on type
 1. in Recipe.js
 ```javascript
 updateServings(type){
-        //servings
-        const newServings = type ==='dec' ? this.servings-1 : this.servings+1;
+    //servings
+    const newServings = type ==='dec' ? this.servings-1 : this.servings+1;
 
-        //ingredients
-        this.ingredients.forEach(ing=>{
-            ing.count=ing.count*(newServings/this.servings);
-        });
-     
-        this.servings=newServings;
-    }
+    //ingredients
+    this.ingredients.forEach(ing=>{
+        ing.count=ing.count*(newServings/this.servings);
+    });
+
+    this.servings=newServings;
+}
 ```
-2. in recipeView.js
+2. in recipeView.js -- update the overall serving and count of each ingredient on UI with `textContent`
 ```javascript
 export const updateServingsAndIngredients=recipe=>{
     document.querySelector('.recipe__info-data--people').textContent=recipe.servings;
@@ -606,11 +609,13 @@ export const updateServingsAndIngredients=recipe=>{
     });
 };
 ```
-3. add event listener to Recipe area
+3. add event listener to Recipe area -- `matches` to add listener to various elements
 ```javacript
 elements.recipe.addEventListener('click',e=>{
     //decrease the serving
-    if(e.target.matches('.btn-decrease, .btn-decrease *')){ // btn-increase * : all descendants of btn-increase
+    if(e.target.matches('.btn-decrease, .btn-decrease *')){ 
+       //click increase button or its descendants, all counted
+       // btn-increase * : all descendants of btn-increase
         if(state.recipe.servings>1){
             //update the serving in Recipe 
             state.recipe.updateServings('dec');
@@ -628,12 +633,12 @@ elements.recipe.addEventListener('click',e=>{
 
 **Note**: `Array.from(document.querySelectorAll('.recipe__count'));` to convert Nodelist to array
 
-### lists (shooping list)
+### lists (shopping list)
 1. set id for each list item
 
 2. findIndex(), splice()
 ```javascript
-//[1,2,3] -> spice(1,1)-> [1,3]
+//arr=[1,2,3] -> splice(1,1) returns [2]-> arr=[1,3]
 deleteItem(id){      
     const index=this.items.findIndex(el=>el.id===id); //find the el that matches the passes id
     this.items.splice(index,1); 
@@ -649,7 +654,7 @@ updateCount(id, newCount){
 
 
 ### likes
-1. isLiked() -- find the id in Liked list
+1. isLiked() -- if finding the id in Liked list, show different UI of heart
 ```javascript
 isLiked(id){
     return this.likes.findIndex(el=>el.id===id) !== -1;
