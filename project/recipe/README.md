@@ -1,18 +1,38 @@
-## npm and node
-1. npm comes with node
-2. `npm init` => `package.json` file is used to share the needed packages info
-```
-decDependencies: {"webpack":...},
-dependencies: {"jQuery":...}
-```
+## modern javascript -- ecosystem
+1. 3rd-party packages 
+* libraries/frameworks (Angular, jQuery)
+* development tools (babel)
+2. ES6/ESNext => babel => ES5 to run in browser
+3. ES6 modules => module bundler, webpack => bundle.js
 
-install packages with npm
+## npm and node
+1. npm comes with node, it is a command line interface, download node.js from offical website
+2. run npm packages (babel,webpack) with `npm scripts`
+3. `npm init` => `package.json` file is used to share the needed packages info
+
+* install development tool
 ```
 npm install webpack --save-dev
-npm install jquery --save
-npm uninstall jquery --save
 
+decDependencies: {"webpack":...},
+
+```
+* install libraries
+```
+npm install jquery --save
+
+dependencies: {"jQuery":...}
+
+```
+* uninstall
+```
+npm uninstall jquery --save
+```
+* install on the computer
+```
 psudo npm install live-server --global
+
+liver-server
 ```
 
 ## webpack -- bundle
@@ -29,26 +49,31 @@ module.exports = {
         path:path.resolve(__dirname,'dist'),   // need an absolute path
         filename:'./js/bundle.js'
     },
+    mode: 'development'
 };
 ```
 **Note:** output need an absolute path
 
-2. To access webpack through command line
+2. To access webpack through command line -- `webpack-cli`
 ```
 npm install webpack-cli --save-dev  // webpack command line interface
 ```
+move the `mode` from webpack.config.js to package.json
 ```javascript
 "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
 }
 ```
+```
+npm run dev
+```
 
-
-3. webpack dev-server: real server and auto reload
+3. webpack dev-server: real http server and auto reload
 ```
 npm install webpack-dev-server --save-dev
 ```
+in webpack.config.js
 ```javascript
 devServer:{
         contentBase:'./dist'
@@ -67,12 +92,12 @@ npm run start
 **Note:** webpack-dev-server will bundle the file and directly inject it into the index.html in dist folder, you don't need a real bundle.js file. If you want to see the file: `npm run dev` or `npm run build`.
 
 
-4. plug-ins -- allow us to do complex processing of input files
+4. plug-ins -- allow us to do complex processing of input files, here is index.html
 ```
 npm install html-webpack-plugin --save-dev
 ```
 
-copy the html file from src folder to dist folder
+copy the html file from src folder to dist folder, not visible in dev-server
 ```javascript
 const path=require('path');
 const HTMLWebpackPlugin=require('html-webpack-plugin');
@@ -89,14 +114,14 @@ module.exports = {
     ],
 ```
 
-### babel  -- a javascipt compiler
+## babel  -- a javascipt compiler
 1. 
 ```
 npm install babel-core babel-preset-env babel-loader --save-dev
 ```
 `babel-loader` is for webpack to load babel
 
-2. loaders in webpack -- allow us to import and process different files, such as compile sass to css..
+2. loaders in webpack -- allow us to import and process different files, such as compile sass to css, compile ES6 to ES5
 ```javascript
 module.exports = {
     ...
@@ -132,7 +157,7 @@ module.exports = {
 }
 ```
 
-4. polyfill -- directly go to the final code
+4. polyfill -- directly go to the final code, something does not exists in ES5, such as `Array.from()`
 ```
 npm install babel-polyfill --save
 ```
@@ -158,18 +183,36 @@ module.exports = {
 
 ## notes
 1. uppercase name for model module file
+```
+Search.js
+searchView.js
+```
 2. different kinds of import
+```javascript
+//default export
+export default 'lala';
+
+//named export
+export const add=()=>{};
+export const multiply()=>{};
+export const id=12;
+export default name='lili';
+```
 ```javascript
 import str from './models/Search';   
 
-import {add as a, multi, id} from './views/searchView';  
+import {add as a, multiply, id} from './views/searchView';  
  
-import * as searchView from './views/searchView'; 
+//just for named export
+import name, * as searchView from './views/searchView'; 
+searchView.add()...
 
 ```
 3. api: http://food2fork.com/about/api
 
-### axios 
+api key is like password and can be used to track how many requests you make
+
+### axios -- works in all browsers
 1. `npm install axios --save`
 2. `import axios from 'axios';`
 3. axios automatically returns json, not like fetch which needs transform
