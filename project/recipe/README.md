@@ -268,47 +268,54 @@ const state={};
 ```javascript
 state.search=new Search(query);
 ```
-**Note**: use `await` to wait for the async function `state.search.getResultes()` to resolve (return undefined). It pauses the function and ensure the `this.result` to receive data
+**Note**: use `await` to wait for the async function `state.search.getResultes()` to resolve (return undefined). It pauses the function and ensure the `this.result` property of Search instance to receive data
 ```javascript
 await state.search.getResultes();
 
 console.log(state.search.result);
 ```
 ### base.js
-1. element object to save all html string
+1. elements object to save all html string
 
 ### seachView.js
 1. getInput -- return the input value
 2. renderResults -- show all retrieved recipes on UI
-3. template string `...`, add variable to html attribute `#${..}`, append new list item `insertAdjacentHTML('beforeend',markup);`
+```javascript
+recipes.forEach(renderRecipe);
+```
+renderRecipe -- render html markup
+3. template string `...`
+-- add variable to html, can add varibale anywhere
+
+-- append new list item `insertAdjacentHTML('beforeend',markup);`
 
 ```javascript
 const renderRecipe  = recipe => {
     const markup=`
-                    <li>
-                        <a class="results__link" href="#${recipe.recipe_id}">
-                            <figure class="results__fig">
-                                <img src="${recipe.image_url}" alt="Test">
-                            </figure>
-                            <div class="results__data">
-                                <h4 class="results__name">${limitRecipeTitle(recipe.title)}</h4>
-                                <p class="results__author">${recipe.publisher}</p>
-                            </div>
-                        </a>
-                    </li>
-                `;
+                <li>
+                    <a class="results__link" href="#${recipe.recipe_id}">
+                        <figure class="results__fig">
+                            <img src="${recipe.image_url}" alt="Test">
+                        </figure>
+                        <div class="results__data">
+                            <h4 class="results__name">${limitRecipeTitle(recipe.title)}</h4>
+                            <p class="results__author">${recipe.publisher}</p>
+                        </div>
+                    </a>
+                </li>
+            `;
     elements.seachResLidt.insertAdjacentHTML('beforeend',markup);
 };
 ```
 ```javascript
 searchView.renderResult(state.search.result);
 ```
-4. clear result
+4. clearInput and clearResults for each new search
 ```
 .value='';
 .innerHTML='';
 ```
-5. limit recipe title to <17
+5. limit recipe title'length to <17
 ```javascript
 // pasta with tomato and spinach
 // ['pasta','with','tomato','and','spinach']
@@ -316,6 +323,8 @@ searchView.renderResult(state.search.result);
 // acc: 5
 // acc: 9
 // acc: 15
+// acc: 18
+// acc: 24
 
 export const limitRecipeTitle =(title, limit=17)=>{
     const newTitle=[];
@@ -355,7 +364,8 @@ if(state.search){
 
 
 ### spinner
-1. spinner is inserted as the first child of the `parent` element
+1. spinner is inserted as the first child of the `parent` element -- `afterBegin`
+2. in css file, it is a infinite animation of rotation
 ```javascript
 export const renderLoader = parent => {
     const loader=`
@@ -368,13 +378,17 @@ export const renderLoader = parent => {
     parent.insertAdjacentHTML('afterbegin',loader);
 };
 ```
+insert into `result_list`
 ```javascript
 renderLoader(elements.seachRes);
+
+//after request is done
+clearLoader();
 ```
 
 
 ### pagination -- render different slice of the array
-1.
+1. api returns 30 recipes each time, render 10 recipe on each page
 ```javascript
 export const renderResult = (recipes,page=1,resPerpage=10) => {
     //render results of current page
@@ -384,7 +398,7 @@ export const renderResult = (recipes,page=1,resPerpage=10) => {
     recipes.slice(start,end).forEach(renderRecipe);  //recipes.forEach(relement=>renderRecipe(element));
 };
 ```
-2. HTML data-* attribute
+2. createButton-- render different button (prec/next) on different page
 ```javascript
 const createButton = (page, type)=>`
     <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page-1 : page+1}>
@@ -395,13 +409,14 @@ const createButton = (page, type)=>`
     </button>
 `;
 ```
-
-3. closest -- get the closest element that matches the selector
+3. HTML `data-*` and `.closest` attribute -- get the closest element that matches the selector
 ```javascript
+//event delegation
 elements.seachResPages.addEventListener('click',e=>{
-    const btn=e.target.closest('.btn-inline');   // get the closest button, so clicking on the text or h2 or svg
+    const btn=e.target.closest('.btn-inline');   
+    // get the closest button, so clicking on the text or h2 or svg will find the button with the `data-goto` attribute
     if(btn){
-        const goToPage=parseInt(btn.dataset.goto,10); //a string
+        const goToPage=parseInt(btn.dataset.goto,10); //parse a string to integar
         searchView.clearResults();
         searchView.renderResult(state.search.result,goToPage);
     }
@@ -444,37 +459,11 @@ console.log(r);
 
 3. updateServings()
 
-### recipe control
-1. read data from page URL `href="#${recipe.recipe_id}` in renderRecipe() so you can use the hashchange event
-```javascript
-const controlRecipe=async ()=>{
-    const id=window.location.hash.;
-    console.log(id); //#47746
- }
- 
-// if the hash changes
-window.addEventListener('hashchange',controlRecipe);
-```    
-
-2. instanciate a Recipe
-```javascript
-state.recipe=new Recipe(id);
-```
-
-3. add same event handler to different event
-
-'load' event : to retain the data when page reloads
-
-```javascript
-// window.addEventListener('hashchange',controlRecipe);
-// window.addEventListener('load',controlRecipe);
-['hashchange','load'].forEach(event=>window.addEventListener(event,controlRecipe));
-```
 
 4. pareIngredients() 
 ```javascript
 ...
-// 1. uniform units
+// 1. uniform units -- replace orginal units with new, short ones
 ....
 unitsLong.forEach((unit,index)=>{
     ingredient=ingredient.replace(unit, units[index]);
@@ -488,12 +477,15 @@ const arrIngredient=ingredient.split(' ');
 
 //find the index of the unit, if any
 const unitIndex=arrIngredient.findIndex(el2=>units.includes(el2));
+
+if(unitIndex>-1)
 ```
 **Note**: `arrIngredient.findIndex(el2=>unitShort.includes(el2));` a solution to find the unkown item 
 
 5. eval('...') -- evaluate the string and execute it
 ```javascript
 if(arrCount.length===1){
+    //dash
     count=eval(arrIngredient[0].replace('-','+')); // 4-1/2 -> "4+1/2" => 4.5
 }else{
     count=eval(arrIngredient.slice(0,unitIndex).join('+'));  // "4+1/2" => 4.5
@@ -518,9 +510,38 @@ const newIngredients=this.ingredients.map(el=>{
 this.ingredients=newIngredients;
  ```
 
+### recipe control
+1. read data from page URL in each recipe's html `href="#${recipe.recipe_id}` in renderRecipe(), so you can use the `hashchange` event and get the corresponding id
+```javascript
+const controlRecipe=async ()=>{
+    const id=window.location.hash.;
+    console.log(id); //#47746
+ }
+ 
+// if the hash changes
+window.addEventListener('hashchange',controlRecipe);
+```    
+
+2. instanciate a Recipe and store in `state`
+```javascript
+state.recipe=new Recipe(id);
+```
+
+3. 'load' event : to retain the data when page reloads
+
+add same event handler to different event
+
+```javascript
+// window.addEventListener('hashchange',controlRecipe);
+// window.addEventListener('load',controlRecipe);
+['hashchange','load'].forEach(event=>window.addEventListener(event,controlRecipe));
+```
+
+
 
 ### recipeView.js
 1. renderRecipe()
+
 render ingredients' list
 ```javascript
 ${recipe.ingredients.map(el=>createIngredient(el)).join('')}
