@@ -92,3 +92,5 @@ console.log(map); // Map { { a: [ 1, 2 ] } => 'set x' }
 console.log(weakmap); //WeakMap {}, memory is cleared
 
 ```
+#### use case
+https://stackoverflow.com/questions/29413222/what-are-the-actual-uses-of-es6-weakmap
