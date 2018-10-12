@@ -74,6 +74,8 @@ console.log(iterator.next());
 console.log(iterator.next());
 ```
 4. `return` terminates the iterator
+https://stackoverflow.com/questions/37202369/using-return-in-es6-generator-function
+
 ```javascript
 function *generator(){
    yield 1;
