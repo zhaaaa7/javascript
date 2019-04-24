@@ -72,3 +72,51 @@ stat.a=function(){console.log('inside static a', this)};
 stat.a(); // this => stat
 stat();  // this => global
 ```
+
+5. IIFE
+```js
+
+var myObject = {
+    foo: "bar",
+    func: function () {
+        var self = this;
+        console.log("outer func:  this.foo = " + this.foo); //bar
+        console.log("outer func:  self.foo = " + self.foo);  //bar
+        (function () {
+            console.log("inner func:  this = " + this); //[object Window]
+            console.log("inner func:  self = " + self); //[object Object]
+        }());
+    }
+};
+myObject.func();
+```
+
+## case -- directly call V.S. call object method
+```js
+var length = 10;
+function fn() {
+  console.log(this);  // global, arguments
+}
+var obj = {
+  length: 5,
+  method: function(fn) {
+    fn();
+    arguments[0]();
+  }
+}
+obj.method(fn);
+
+var length = 10;
+const fn = () => {
+    console.log(this.length); //global, global
+}
+var obj = {
+    length: 5,
+    method: function (fn) {
+        fn();
+        arguments[0]();
+    }
+}
+obj.method(fn);
+
+```
