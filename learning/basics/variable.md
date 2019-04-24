@@ -1,4 +1,4 @@
-1.
+## lexical variable
 ```js
 function F1() {
     var a = 100;
@@ -24,4 +24,19 @@ function f() {
 }
 f();
 console.log(g);
+```
+
+
+## block scope
+```js
+{
+    var func = 1;
+    const funn = 2;
+
+}
+
+{
+    console.log(func); //1
+    console.log(funn); //funn is not defined
+}
 ```
