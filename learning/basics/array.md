@@ -302,3 +302,11 @@ for (const value of iterator) {
 }
 ```
 
+
+## toString()
+```
+const arr = ['red', 'blue', 'yellow'];
+console.log(arr.valueOf()); //["red", "blue", "yellow"]
+console.log(arr.toString());  //red,blue,yellow
+console.log(arr.toLocaleString()); // red,blue,yellow
+```
