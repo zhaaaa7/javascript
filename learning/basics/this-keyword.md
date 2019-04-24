@@ -92,10 +92,11 @@ myObject.func();
 ```
 
 ## case -- directly call V.S. call object method
+1.
 ```js
 var length = 10;
 function fn() {
-  console.log(this);  // global, arguments
+  console.log(this);  // global, Arguments
 }
 var obj = {
   length: 5,
@@ -119,4 +120,14 @@ var obj = {
 }
 obj.method(fn);
 
+```
+
+2. 
+```js
+function arr1() {
+    console.log(this.length); //4. this->arrTest
+}
+
+const arrTest = [arr1, 2,2,2];
+arrTest[0]();
 ```
