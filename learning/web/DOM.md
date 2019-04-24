@@ -84,9 +84,39 @@ eventHandler.add(btn1,"click",show);
 1. property
 
 e.type --> click, onmouseover
+
 e.target --> DOM element triggers the event
 
 2. method
 e.stopPropagation() 
+
 e. preventDefault()  --> prevent the jumping behavior of `<a>`
 
+3. event delegation
+```js
+//事件代理
+    function bindEvent(elem, type, selector, fn) {
+        if (fn == null) {
+            fn = selector;
+            selector = null;
+        }
+        elem.addEventListener(type, function (e) {
+            if (selector) {
+                var target = e.target;
+                if (target.matches(selector));
+                fn.call(target, e);
+            } else {
+                fn(e);
+            }
+        });
+
+
+
+    }
+
+    //div1 代理 所有a子节点的事件
+    bindEvent(div1,'click','a',function(e){
+        e.preventDefault();
+        console.log(this.textContent);
+    });
+```
