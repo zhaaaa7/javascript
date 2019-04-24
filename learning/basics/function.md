@@ -320,6 +320,56 @@ x.add(2).subtract(1).log(); //1
 
 ```
 
+3. customize prototype
+```js
+Function.prototype.before = function (beforefn) {
+    var self = this;
+    console.log('[before]',this);
+
+    return function () {
+        beforefn.apply(this, arguments);
+        return self.apply(this.arguments);
+    };
+};
+
+Function.prototype.after = function (afterfn) {
+    var self = this;
+    console.log('[after]',this);
+    return function () {
+        var ret = self.apply(this.arguments);
+        afterfn.apply(this, arguments);
+        return ret;
+    };
+};
+
+var func = function () {
+    console.log(2);
+    return 'original';
+};
+
+
+func = func.before(function () {
+    console.log(1);
+}).after(function () {
+    console.log(3);
+});
+
+console.log(func());
+
+//[before] ƒ () {
+//    console.log(2);
+//    return 'original';
+//}
+//[after] ƒ () {
+//        beforefn.apply(this, arguments);
+//        return self.apply(this.arguments);
+//    }
+//1
+//2
+//3
+//original
+```
+
 
 ## closure
 1. The inner function is bind to the variable object of the outer funtion in the scope chain, not the specific value of the variable in variable object. The will only be 1 value of the variable.
