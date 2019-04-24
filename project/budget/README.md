@@ -6,6 +6,7 @@
 3. add new item to data structure
 4. add new item to UI
 5. calculate budget
+6. update UI
 
 ### mvc pattern
 1. separation of concerns
@@ -57,12 +58,13 @@ var controller=(function(budgetCtrl,UICtrl){
 
 })(budgetController,UIController);
 ```
-
+**controller** now knows the API of budgetController and UIController and can use them
 
 ## notes
 1. detect when user press the "Enter" key
 ```javascript
 document.addEventListener('keypress',function(event){
+    
     // keycode property of KeyboardEvent, for "Enter" is 13
     // for old browsers, the property is which
     if(event.keycode === 13 || event.which===13) {
@@ -71,11 +73,12 @@ document.addEventListener('keypress',function(event){
 });
 ```
 
-The event here is a KeyboardEvent, `KeyboardEvent.__proto__=== UIEvent`
+The event here is a KeyBoardEvent, `KeyboardEvent.__proto__=== UIEvent`
 keyboard keycode: http://keycodes.atjayjo.com
 
 
 2. controller tell what other modules to do: call the public methods in "c" in "mvc", get the data and use the data
+
 
 
 3. inserAdjacentHTML()
@@ -128,25 +131,34 @@ month=now.getMonth();
 
 ### In UI controller
 
-1. value of a select is defined in the html
+1. read data from HTML input types: UIController.getInput()
+-- select / text input --> input group object {type: 'inc',description: 'lala', value: 300}
+
+**value of a select is defined in the html**
 
 `document.querySelector('.add__type').value; // inc / exp`
+```
+<select class="add__type">
+    <option value="inc" selected>+</option>
+    <option value="exp">-</option>
+</select>
+```
 
 2. a private object to store DOMstrings (DOM selectors), a public method to return the object
 
 3. add new item to UI
-```
+```javascript
 addListItem(obj, type){
     // 1. add HTML string placeholder: html= '...';
     
     // 2. replace with actual data : html.replace('%id%',obj.id);
     
-    // insert html into the DOM: element.inserAdjacentHTML('beforeend',newhtml);
+    // 3. insert html into the DOM: element.inserAdjacentHTML('beforeend',newhtml);
 }
 ```
 4. clear input field
-```
-fields = document.querySelectorAll('.. , ..');
+```javascript
+fields = document.querySelectorAll('.. , ..'); //returns NodeList
 fieldsArr=Array.prototype.slice.call(fields);
 
 forEach(function(current,index,array){
@@ -155,7 +167,7 @@ forEach(function(current,index,array){
 
 fieldsArr[0].focus()
 ```
-5. convert input string to a number `parseFloat`
+5. convert text input field string to a number `parseFloat`
 
 6. deleteListItem from UI
 ```
@@ -216,12 +228,12 @@ changedType: function(){
 ```
 
 ### In model controller (budgetController)
-1. use a function constructor to create following Expense objects and Income objects, write methods on the .prototype
+1. use a function constructor to create following Expense objects/instances and Income objects/instances, write methods on the .prototype
 ```
 var exp=new Expense(1,'buy a car', 30000);
 ```
 
-2. private data structure: store expense and income in an array
+2. one, central private data structure: store expense and income in an array
 ```
 var data={
     allItems: {
@@ -238,7 +250,7 @@ var data={
 ```
 
 3. add a new item to the data structure
-3-1. use designed `type` property 
+3-1. use designed `type` property of `data` object
 ```
 //the type can be either exp or inc
 data.allItems[type].push(newItme)
@@ -262,8 +274,8 @@ data.allItems[type].forEach(function(cur){
 data.totals[type]=sum;
 ```
 
-5. delete item
-```
+5. delete item -- find the index of the item to delete and splice it
+```javascript
 deleteItem=(type,id) {
     var ids= data.allItems[type].map(function(current){
         return current.id;
@@ -278,12 +290,16 @@ deleteItem=(type,id) {
 
 ```
 
-6. calculate expense percentage
-```
+6. calculate percentage of each expense 
+
+1) add new property to every Expense instance
+```javascript
 Expense=function(){
   this.percentage=-1;
 }
-
+```
+2) define function for pure cal and return 
+```javascript
 
 Expense.prototye.calcPercentage=function(totalIncome){
     this.percentage=....
@@ -295,7 +311,7 @@ Expense.prototye.getPercentage=function(){
 
 ```
 
-```
+```javascript
 calculatePercentage: funtion(){
     data.allItems.exp.forEach(function(cur){
         cur.calcPercentage(data.totals.inc);
@@ -316,7 +332,7 @@ getPercentage: function(){
 ### In controller
 1. `DOM=UICtrl.getDOMstring();`
 
-2. initialization function
+2. set up initialization function and open it to public
 ```javascript
 setupEventListeners=function(){};
 return {
@@ -324,13 +340,19 @@ return {
         setupEventListeners();
     }
 };
-````
+```
+call it when the js file is loaded
+```javascript
+controller.init();
+```
 
-3. check if there is validated input 
+3. check if there is validated input and then use the input value to create new Income/Expense item
+```javascript
+if(input.description !== "" && !isNaN(input.value) && input.value>0) {
+    var newItem=budgetCtrl.addItem(input.type, input.description, input.value);
+}
 ```
-if(input.description !== "" && !isNaN(input.value) && input.value>0)
-```
-4. updateBudget
+4. updateBudget -- DRY principle
 ```
 //calculate the budget
 
@@ -340,9 +362,11 @@ if(input.description !== "" && !isNaN(input.value) && input.value>0)
 ```
 
 5. class="container" is where we add event delegation: ctrlDeleteItem
-6. to get the `id` attribute of the list item to be deleted
+6. DOM traversing to get the `id` attribute of the list item to be deleted
 `itemID=event.target.parentNode.parentNode.parentNode.parentNode.id`
-7. `itemID` is like `inc-1` or `exp-1`, to get the type and number
+7. connect data stucture and UI using `id` attribute
+
+`itemID` is like `inc-1` or `exp-1`, to get the type and number
 ```javascript
 splitID=itemID.split('-');
 type=splitID[0];
