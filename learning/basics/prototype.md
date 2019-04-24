@@ -1,4 +1,10 @@
 
+## [Function objects inherit from Function.prototype.  Function.prototype cannot be modified.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype#Description)
+
+```js
+Function.prototype===Function.__proto__ //true
+```
+
 reference: https://segmentfault.com/a/1190000014717972
 
 ## Function object
