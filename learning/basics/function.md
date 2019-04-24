@@ -7,6 +7,18 @@ function log(){
 log(1,2);
 ```
 
+### 追踪变化
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments#%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0%E3%80%81%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E5%92%8C%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC%E5%8F%82%E6%95%B0
+
+```js
+function b(x, y, a) {
+  arguments[2] = 10;
+  console.log(a); //10
+}
+
+b(1, 2, 3);
+```
+
 
 ## closure
 * lexical environment: everything outside can be accessed by everything inside
