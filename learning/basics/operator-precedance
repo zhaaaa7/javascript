@@ -1,0 +1,15 @@
+1. `|| &&`
+```js
+const fn = () => {
+    console.log('call');
+    return 'lalla';
+};
+
+const ex = 0 || fn() && fn();
+
+console.log(ex);
+
+//call
+//call
+//lalla
+```
