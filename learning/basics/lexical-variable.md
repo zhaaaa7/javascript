@@ -1,3 +1,4 @@
+1.
 ```js
 function F1() {
     var a = 100;
@@ -11,4 +12,16 @@ function F2(f1) {
 }
 var f1 = F1();
 F2(f1);
+```
+
+
+2. 
+```js
+g = 10;
+function f() {
+    g = 20;
+    var h = 10;
+}
+f();
+console.log(g);
 ```
