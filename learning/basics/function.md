@@ -160,6 +160,22 @@ const bat=new Bat(4,true);  //  Bat { legs: 4, isVegetarian: true }
 const list=[1,2,3];
 console.log(Math.min.apply(null,list));
 ```
+```js
+const bob = {
+name: 'bob',
+age: 22,
+log(a, b) {
+    console.log(this.name + this.age, a, b);
+}
+};
+
+const an = {
+name: 'an',
+age: 33
+};
+
+bob.log.apply(an, ['lal ', 'wulll']); //an33 lal  wulll
+```
 
 2-4. bind method back to the object
 ```javascript
