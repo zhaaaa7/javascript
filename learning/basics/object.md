@@ -548,3 +548,16 @@ const superman=humanFactory(flymanFactory({}));
 console.log(superman.fly().cry().isCrying()); //true
 console.log(superman.fly().cry().isFlying()); //true
 ```
+
+## methods
+1. Object.values => returns an array
+```js
+const INGREDIENT_PRICES = {
+salad: 0.5,
+cheese: 0.4,
+meat: 1.3,
+bacon: 0.7
+};
+
+console.log(Object.values(INGREDIENT_PRICES)); //[0.5, 0.4, 1.3, 0.7]
+```
