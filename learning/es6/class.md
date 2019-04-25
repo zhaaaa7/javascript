@@ -1,4 +1,4 @@
-1. Why class:
+## Why class:
 To share data and methods between objects.
 
 ```javascript
@@ -27,7 +27,7 @@ const Car=(function(){
   return _car;
 })();
 ```
-2. inheritance
+## inheritance
 
 The subclass inherits all of the parent's getters, setters, and methods. You can also use the super keyword to set properties in the parent class. Each instance of a class has the same properties, getters, setters, and methods. Only the property values change.
 
@@ -75,7 +75,7 @@ class Toycar extends Car {
 
 ```
 
-3.  class is not a native object type, just a key word.-- syntax sugar
+##  class is not a native object type, just a key word.-- syntax sugar
 ```javascript
 const toy=new Toycar('d','a','b','c');
 
@@ -83,7 +83,7 @@ console.log(toy.__proto__); // Toycar {}
 console.log(toy.constructor); // f Toycar
 ```
 
-4. static method -- class method
+## static method -- class method
 
 They are made directly on the class and are not callable on instances of the class. 
 
@@ -155,4 +155,29 @@ class Toycar extends Car {
 const toy1=new Toycar(1000);
 const toy2=new Toycar(2000);
 console.log(Toycar.comparePrice(toy1,toy2)); //Toycar -1000
+```
+
+
+## prototype chain
+```js
+class Animal {
+    constructor() {
+        this.name = 'lal';
+    }
+}
+
+
+class Dog extends Animal {
+
+}
+
+console.log(Animal.__proto__); // Function.prototype
+console.log(Animal.prototype); // {constructor: class Animal}
+console.log(Dog.__proto__);  // class Animal {constructor() {this.name = 'lal';}}
+console.log(Dog.prototype);  // {constructor: class Dog}
+
+const puppy = new Dog();
+console.log(puppy.__proto__); // {constructor: class Dog} === Dog.prototype
+
+Dog.prototype.__proto__===Animal.prototype //true
 ```
