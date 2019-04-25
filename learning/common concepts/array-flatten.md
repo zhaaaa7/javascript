@@ -17,6 +17,27 @@ function flatten(arr){
 }
 ```
 
+```js
+const flatten = (array) => {
+    let arr = [];
+
+    const each = (array) => {
+        array.forEach(item => {
+            console.log(item);
+            if (item instanceof Array) {
+                each(item);
+            } else {
+                arr.push(item);
+            }
+        });
+    };
+
+    each(array);
+    return arr;
+};
+
+```
+
 2. reduce()
 ```javascript
 function flatten(arr){
