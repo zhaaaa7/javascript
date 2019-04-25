@@ -19,6 +19,34 @@ function b(x, y, a) {
 b(1, 2, 3);
 ```
 
+```js
+function sidEffecting(ary) {
+    ary[0] = ary[2];
+}
+function bar(a, b, c) {
+    c = 10
+    sidEffecting(arguments);
+    console.log('args', arguments);
+    return a + b + c;
+}
+bar(1, 1, 1);
+//args Arguments(3) [10, 1, 10, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+//21
+```
+```js
+function sidEffecting2(ary) {
+    ary[0] = ary[2];
+}
+function bar2(a, b, c = 3) {
+    c = 10
+    sidEffecting2(arguments);
+    console.log('[ars2]', arguments);
+    return a + b + c;
+}
+bar2(1, 1,1);
+//[ars2] Arguments(3) [1, 1, 1, callee: (...), Symbol(Symbol.iterator): ƒ]
+//12
+```
 
 ## closure
 * lexical environment: everything outside can be accessed by everything inside
