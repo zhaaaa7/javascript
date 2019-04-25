@@ -59,3 +59,45 @@ now is 1
 now is 2
 now is 3
 ```
+
+2. 
+```js
+const fakeDatabase = {
+    todos: [{
+        id: 1,
+        text: 'hey',
+        completed: true,
+    }, {
+        id: 2,
+        text: 'ho',
+        completed: true,
+    }, {
+        id: 3,
+        text: 'let’s go',
+        completed: false,
+    }],
+};
+
+const delay = (ms) =>
+    new Promise(resolve => setTimeout(resolve, ms));
+
+const fetchTodos = () =>
+    delay(500).then(() => fakeDatabase.todos);
+
+console.log(fetchTodos().then((val) => {
+    console.log(val);
+}));
+```
+```
+Promise {<pending>}
+__proto__: Promise
+[[PromiseStatus]]: "resolved"
+[[PromiseValue]]: undefined
+
+
+(3) [{…}, {…}, {…}]
+0: {id: 1, text: "hey", completed: true}
+1: {id: 2, text: "ho", completed: true}
+2: {id: 3, text: "let’s go", completed: false}
+length: 3
+```
