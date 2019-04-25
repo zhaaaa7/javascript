@@ -127,14 +127,11 @@ console.log(array1.reduce(reducer, 5));
 // expected output: 15
 ```
 
-flat an array
+flat an 1-level nested array
 ```javascript
-var flattened = [[0, 1], [2, 3], [4, 5]].reduce(
-  function(accumulator, currentValue) {
+var flattened = [[0, 1], [2, 3], [4, 5]].reduce((accumulator, currentValue)=> {
     return accumulator.concat(currentValue);
-  },
-  []
-);
+  },[]);
 // flattened is [0, 1, 2, 3, 4, 5]
 ```
 
