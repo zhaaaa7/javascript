@@ -159,6 +159,7 @@ console.log(Toycar.comparePrice(toy1,toy2)); //Toycar -1000
 
 
 ## prototype chain
+1.
 ```js
 class Animal {
     constructor() {
@@ -183,3 +184,28 @@ Dog.prototype.__proto__===Animal.prototype //true
 ```
 
 <img src="https://github.com/zhaaaa7/javascript/blob/master/img/es6class.png" alt="es6Class" width="600px"/>
+
+2. 
+```js
+class Component {
+    constructor(props = {}) {
+        this.props = props;
+    }
+}
+
+class Button extends Component {
+    constructor(props) {
+        super(props);
+    }
+}
+
+const button = new Button({ type: 'add' });
+console.log(button);
+
+// console.log
+Button {props: {…}}
+props: {type: "add"}
+__proto__: Component
+  constructor: class Button
+  __proto__: Object
+```
