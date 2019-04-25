@@ -561,3 +561,21 @@ bacon: 0.7
 
 console.log(Object.values(INGREDIENT_PRICES)); //[0.5, 0.4, 1.3, 0.7]
 ```
+
+
+2. get() set()
+```js
+const obj1 = {
+	_key1: 1,
+	get key() {
+	    return this._key1;
+	},
+	set key(value) {
+	    this._key1 = value;
+	}
+};
+
+console.log(obj1.key); //1
+obj1.key = 2;
+console.log(obj1.key); //2
+```
