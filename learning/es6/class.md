@@ -181,3 +181,5 @@ console.log(puppy.__proto__); // {constructor: class Dog} === Dog.prototype
 
 Dog.prototype.__proto__===Animal.prototype //true
 ```
+
+<img src="https://github.com/zhaaaa7/javascript/blob/master/img/es6class.png" alt="es6Class" width="600px"/>
