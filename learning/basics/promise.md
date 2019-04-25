@@ -5,9 +5,7 @@ const sleep = delay => {
     setTimeout(_ => resolve(), delay);
   })
 }
-```
 
-```js
 const task = (i) => {
   return new Promise(async (resolve, reject) => {
     await sleep(500);
@@ -23,12 +21,31 @@ const task = (i) => {
   return task(res);
 }, 0);
 ```
+结果
+```
+0
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 1
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 2
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 3
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 4
+
+now is 0
+now is 1
+now is 2
+now is 3
+```
+
 
 ```js
+const sleep = delay => {
+  return new Promise((resolve, reject) => {
+    setTimeout(_ => resolve(), delay);
+  })
+}
+
 const task = (i) => {
     return new Promise(async (resolve, reject) => {
       await sleep(500)         
-      i++
       resolve(i)
     })
 }
@@ -44,24 +61,21 @@ task(0).then((param)=>{
     return task(3);
 }).then((param)=>{
     console.log(`now is ${param}`);
-    return task(4);
 })
 ```
+结果
 ```
-0
-Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 1
-Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 2
-Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 3
-Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 4
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: undefined
+VM20092:15 now is 0
+VM20092:18 now is 1
+VM20092:21 now is 2
+VM20092:24 now is 3
+```
 
-now is 0
-now is 1
-now is 2
-now is 3
-```
 
 2. 
 ```js
+
 const fakeDatabase = {
     todos: [{
         id: 1,
