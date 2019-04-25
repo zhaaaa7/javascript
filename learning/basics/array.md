@@ -150,6 +150,25 @@ var countedNames = names.reduce(function (allNames, name) {
 }, {});
 // countedNames is:
 // { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 }
+
+
+//another format
+const toreduce = ['dog', 'cat', 'elephant', 'dog', 'cat', 'dog', 'cat', 'monkey'];
+const reduced = toreduce.reduce((acc, ele) => {
+    if (ele in acc) {
+        return {
+            ...acc,
+            [ele]: acc[ele] + 1
+        };
+    } else {
+        return {
+            ...acc,
+            [ele]: 1
+        }
+    }
+}, {});
+
+console.log(reduced);
 ```
 
 ## concat()
