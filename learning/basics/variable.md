@@ -40,3 +40,13 @@ console.log(g);
     console.log(funn); //funn is not defined
 }
 ```
+## hoisting
+```js
+console.log(testArg); //ƒ testArg() { }
+var testArg = 'lal';
+
+function testArg() { };
+
+console.log(testArg); //lal
+
+```
