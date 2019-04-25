@@ -1,3 +1,14 @@
+## common concern
+```js
+const arr = [1, 2, 3, 4];
+console.log(arr.splice(1, 1)); //[2]
+console.log(arr); //[1,3,4]
+
+const arr2 = [1, 2, 3, 4];  
+console.log(arr2.slice(1, 2)); //[2]
+console.log(arr2); //[1,2,3,4]
+```
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 
 List method:
