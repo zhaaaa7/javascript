@@ -225,3 +225,13 @@ console.log(Object.getPrototypeOf(A)); //ƒ () { [native code] }
 console.log(Object.getPrototypeOf(B)); //class A {}
 console.log(Object.getPrototypeOf(B.prototype) === A.prototype); //true
 ```
+
+4. 
+```js
+class nullExtends extends null {
+    constructor() { }
+}
+
+Object.getPrototypeOf(nullExtends)=== Function.prototype; //true
+Object.getPrototypeOf(nullExtends.prototype)===null; //true
+```
