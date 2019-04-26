@@ -74,6 +74,20 @@ console.log(addThree); //[ Function: inner]
 console.log(addThree(1)); //4
 ```
 
+### es6 arguments
+```js
+function fun({ a: d }, b = 1, ...rest) {
+    console.log('a:', d); //a: 1 
+    console.log('b:', b); //b: 1
+    console.log('rest:', rest); //rest: []
+    console.log('arguments:', arguments); //Arguments [{…}, callee: (...), Symbol(Symbol.iterator): ƒ]
+					  //0: {a: 1}
+}
+
+fun({ a: 1 });
+
+```
+
 ## callback / higher order functions
 1. functions are firsclass objects, pass functions as arguments into functions
 
