@@ -115,3 +115,102 @@ __proto__: Promise
 2: {id: 3, text: "let’s go", completed: false}
 length: 3
 ```
+
+### Promise.resolve
+```
+let p1=new Promise(...);
+let p=Promise.resolve(p1);
+
+p===p1;//true
+```
+
+1. 
+```js
+var pro4, pro3;
+setTimeout(() => {
+    console.log('1');
+    setTimeout(() => {
+        console.log('hahha');
+    }, 1000);
+
+    const pro = new Promise((resolve, reject) => {
+        resolve('2');
+    });
+    console.log('resolved', pro);
+    pro.then(val => {
+        console.log('???', val);
+    }).then(() => {
+        console.log('interrupt');
+    });
+
+    const pro2 = Promise.resolve('3');
+    console.log('resolved2', pro2);
+    pro2.then(val => {
+        console.log('???', val);
+    });
+
+    pro3 = new Promise((resolve, reject) => {
+        fetch('https://jsonplaceholder.typicode.com/users/2').then(response => resolve('wait'))
+    });
+    console.log('pending', pro3);
+    pro3.then(val => {
+        console.log(val);
+    });
+
+
+
+    pro4 = new Promise((resolve, reject) => {
+        console.log('!!!');
+    });
+
+    console.log('dead', pro4);
+
+}, 1000);
+
+
+setTimeout(() => {
+    console.log('4');
+    const pro = Promise.resolve('5');
+
+    pro.then(val => {
+        console.log(val);
+    });
+}, 1000);
+
+setTimeout(() => {console.log(123);  });
+
+const p = Promise.resolve(
+    new Promise(resolve => {
+        setTimeout(() => { resolve('p'); console.log(55); }, 1000);
+        new Promise(resolve => { resolve('p1'); }).then(r => console.log(r));
+    })
+);
+
+setTimeout(() => { console.log(456); });
+
+p.then(r => console.log(r));
+```
+```
+p1
+VM10936:52 123
+VM10936:61 456
+
+进入setTimeout-1000
+VM10936:3 1
+VM10936:11 resolved Promise {<resolved>: "2"}
+VM10936:19 resolved2 Promise {<resolved>: "3"}
+VM10936:27 pending Promise {<pending>}
+VM10936:35 !!!
+VM10936:38 dead Promise {<pending>}
+VM10936:13 ??? 2
+VM10936:21 ??? 3
+VM10936:15 interrupt
+VM10936:44 4
+VM10936:48 5
+VM10936:56 55
+VM10936:63 p
+VM10936:29 wait
+
+进入setTimeout-2000
+VM10936:5 hahha
+```
