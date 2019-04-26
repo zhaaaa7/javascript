@@ -337,3 +337,19 @@ console.log(arr.valueOf()); //["red", "blue", "yellow"]
 console.log(arr.toString());  //red,blue,yellow
 console.log(arr.toLocaleString()); // red,blue,yellow
 ```
+
+## reference value
+```js
+let arr = [];
+for (let i = 0; i < 2; i++) {
+    let test = arr;// [],[0]
+    console.log('test',test);
+    for (let j = 0; j < 2; j++) {
+        test.push(j);
+        test = [];
+    }
+
+}
+
+console.log(arr); //[0,0]
+```
