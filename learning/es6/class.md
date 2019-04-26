@@ -209,3 +209,19 @@ __proto__: Component
   constructor: class Button
   __proto__: Object
 ```
+
+3. 
+```js
+class A {
+
+}
+class B extends A {
+    constructor() {
+        super();
+
+    }
+}
+console.log(Object.getPrototypeOf(A)); //ƒ () { [native code] }
+console.log(Object.getPrototypeOf(B)); //class A {}
+console.log(Object.getPrototypeOf(B.prototype) === A.prototype); //true
+```
