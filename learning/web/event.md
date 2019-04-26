@@ -7,7 +7,7 @@ https://www.sitepoint.com/event-bubbling-javascript/
 
 a snippet code, adapted from https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
