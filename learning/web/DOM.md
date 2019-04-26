@@ -2,6 +2,14 @@
 
 2. .nextSibling returns all kinds of nodes, including the carriage return, which is “text” node
 
+3. document.querySelector() 
+https://stackoverflow.com/a/46845715
+
+```js
+document.querySelector('.class1.class2'); //.class1.class2 indicates an element with both classe
+```
+
+
 
 1. HTML tag needs to be parsed by broswer so as to become DOM nodes.
 
