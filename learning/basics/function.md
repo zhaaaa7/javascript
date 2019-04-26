@@ -59,6 +59,7 @@ function fun({ a: d }, b = 1, ...rest) {
 }
 
 fun({ a: 1 });
+```
 
 ## closure
 * lexical environment: everything outside can be accessed by everything inside
@@ -86,8 +87,6 @@ console.log(addThree); //[ Function: inner]
 console.log(addThree(1)); //4
 ```
 
-
-```
 
 ## callback / higher order functions
 1. functions are firsclass objects, pass functions as arguments into functions
