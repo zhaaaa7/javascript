@@ -48,6 +48,18 @@ bar2(1, 1,1);
 //12
 ```
 
+### es6 arguments
+```js
+function fun({ a: d }, b = 1, ...rest) {
+    console.log('a:', d); //a: 1 
+    console.log('b:', b); //b: 1
+    console.log('rest:', rest); //rest: []
+    console.log('arguments:', arguments); //Arguments [{…}, callee: (...), Symbol(Symbol.iterator): ƒ]
+					  //0: {a: 1}
+}
+
+fun({ a: 1 });
+
 ## closure
 * lexical environment: everything outside can be accessed by everything inside
 
@@ -74,17 +86,6 @@ console.log(addThree); //[ Function: inner]
 console.log(addThree(1)); //4
 ```
 
-### es6 arguments
-```js
-function fun({ a: d }, b = 1, ...rest) {
-    console.log('a:', d); //a: 1 
-    console.log('b:', b); //b: 1
-    console.log('rest:', rest); //rest: []
-    console.log('arguments:', arguments); //Arguments [{…}, callee: (...), Symbol(Symbol.iterator): ƒ]
-					  //0: {a: 1}
-}
-
-fun({ a: 1 });
 
 ```
 
