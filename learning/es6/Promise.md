@@ -145,6 +145,8 @@ foo();
 ## async
 await is like `promise.then()`
 
+https://github.com/baiyuze/notes/issues/8
+
 ```js
 async function async1() {
   console.log('async1 start');
